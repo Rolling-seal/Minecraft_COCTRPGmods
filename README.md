@@ -4,6 +4,8 @@
 
 A Call of Cthulhu 7e tabletop layer for **Minecraft 1.20.1 / Forge 47.x**.
 
+[**Download the latest release**](https://github.com/Rolling-seal/Minecraft_COCTRPGmods/releases/latest)
+
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-3C8527)
 ![Forge](https://img.shields.io/badge/Forge-47.4.29-DA6E00)
 ![Version](https://img.shields.io/badge/Version-2.0.0-C9A227)
