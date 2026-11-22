@@ -1,0 +1,104 @@
+{
+  "id": "s_dw_ritual",
+  "title": "第十幕：守梦人",
+  "description": "地窖的门被推开。剩下的村民穿着法衣走进来，像没有睡醒一样开始吟唱。石台上的人形随着节拍抬起手。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "打断吟唱",
+      "skill": "fighting_brawl",
+      "difficulty": "regular",
+      "success": {
+        "text": "你撞倒领唱的人。吟唱断了，村民像被剪断线的木偶一样倒下，但石台上的人形已经坐了起来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "hp",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "仪式被打断，但沉睡者已经坐起。"
+      },
+      "failure": {
+        "text": "他们唱完了最后一个音节。地窖里的油灯同时熄灭。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:husk",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "混入吟唱",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "你压低声音跟着念。最后一句是：『伊奥斯，回到梦里去。』你记住了真名。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "仪式最后一句：『伊奥斯，回到梦里去。』"
+      },
+      "failure": {
+        "text": "一个村民转过头，用你的声音继续唱。所有人的脸都朝向你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "躲起来观察",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "你听见领唱的人说：『只要画像还在，它就醒不了。』他们都在看石台后的画框。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "守梦人的话：只要画像还在，它就醒不了。"
+      },
+      "failure": {
+        "text": "有人吹灭了你的灯。黑暗里，吟唱声围了过来。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "s_lb_generator",
+  "title": "第九幕：点亮灯塔",
+  "description": "发电机修好了。你可以点亮灯塔，或保持黑暗。海蚀洞方向传来搬动石头的声音。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "点亮灯塔",
+      "skill": "elec_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "灯塔亮了。光柱扫过海面，也扫过礁石上的蹼爪。你听见洞里传来愤怒的尖叫。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "灯塔点亮：海岸警卫队可能看见；洞里的东西被激怒。"
+      },
+      "failure": {
+        "text": "灯泡爆了。黑暗里，所有蹼爪同时朝灯塔转过来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "只发无线电",
+      "skill": "elec_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你调好频道，发出求救信号。对面回：『黎明到。坚持住。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "无线电求救成功：海岸警卫队黎明到。"
+      },
+      "failure": {
+        "text": "无线电里只有静电和海水声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "保持黑暗/设陷阱",
+      "skill": "survival",
+      "difficulty": "regular",
+      "success": {
+        "text": "你们用绳、椅子和煤油在门口设了陷阱；黑暗里，蹼爪踩上了第一根绳。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "小屋门口设好绳套与煤油陷阱。"
+      },
+      "failure": {
+        "text": "你拉绳子时，绳套自己松了。黑暗里有人在笑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ]
+}

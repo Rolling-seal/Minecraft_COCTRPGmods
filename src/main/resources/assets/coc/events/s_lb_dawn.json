@@ -1,0 +1,105 @@
+{
+  "id": "s_lb_dawn",
+  "title": "第十一幕：黎明",
+  "description": "天边发白。海岸警卫队的船出现在雾里；洞穴里还有声音。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "发信号",
+      "skill": "survival",
+      "difficulty": "regular",
+      "success": {
+        "text": "信号枪的红色焰火穿过雾。警卫队的船鸣笛回应，放下救生艇。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "结局：信号成功，海岸警卫队救援。"
+      },
+      "failure": {
+        "text": "信号弹受潮，只冒出白烟。警卫队的船从雾里驶过，没有看见。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "封住洞穴",
+      "skill": "mech_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你们用石块和渔网封住洞口。最后一铲落下时，洞里传来一声像叹息的水声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d6"
+          }
+        ],
+        "handout": "结局：海蚀洞被封住；洞里传来叹息。"
+      },
+      "failure": {
+        "text": "封口塌了一半；海水从石缝里涌出来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "烧掉金币",
+      "skill": "throw",
+      "difficulty": "regular",
+      "success": {
+        "text": "金币在火里熔化，发出腥臭。洞里的声音停了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "结局：金币被烧毁；洞里的声音停止。"
+      },
+      "failure": {
+        "text": "金币烧不化。火焰变成蓝色，洞里的声音更近了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "带走金币",
+      "outcome": {
+        "text": "你把金币装进口袋。离开时，口袋比海水更冷。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "结局：带走金币；口袋比海水更冷。"
+      }
+    }
+  ]
+}

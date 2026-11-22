@@ -1,0 +1,95 @@
+{
+  "id": "s_dark_wispers_church",
+  "title": "第四幕：教堂",
+  "description": "教堂的门虚掩着。长椅上坐满了人，他们都低着头，像是在祈祷，又像是睡着了。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "阅读祭坛铭文",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "铭文记载：『它被埋在地下，靠梦为生。只要还有人记得它，它就醒不来。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "祭坛铭文：它靠梦为生。只要还有人记得它，它就醒不来。"
+      },
+      "failure": {
+        "text": "铭文在你读完后自行剥落，露出下面一层更古老的文字。那些文字在流血。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "搜查告解室",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在告解室找到一本日记，主人是二十年前失踪的牧师。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:book",
+            "count": 1
+          }
+        ],
+        "handout": "牧师的日记：『它要求我们不要停止做梦。』"
+      },
+      "failure": {
+        "text": "告解室的帘子后面有人。你拉开帘子，只看见一套空衣服。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "祈祷",
+      "skill": "psychoanalysis",
+      "difficulty": "regular",
+      "success": {
+        "text": "你闭上眼睛。祷词让长椅上的『人』同时抬起了头。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      },
+      "failure": {
+        "text": "你的祈祷得到了回应，但回应你的不是神。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

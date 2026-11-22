@@ -1,0 +1,85 @@
+{
+  "id": "clock_stopped",
+  "title": "停摆的钟",
+  "description": "所有的钟都停在 3:17。包括你手腕上的表，以及远处教堂的钟楼。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "clock",
+    "time"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "修理钟表",
+      "skill": "mech_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你把表拆开，发现齿轮之间夹着一小片干枯的膜。表重新走动，但倒着走。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:clock",
+            "count": 1
+          }
+        ]
+      },
+      "failure": {
+        "text": "齿轮突然全部崩开。你听见表壳里传来一声很轻的叹息。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "等待指针再次走动",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "3:18 时，所有钟同时响了一声。你听见空气里有人松了口气。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "3:18，所有钟同时响了一声。"
+      },
+      "failure": {
+        "text": "指针没有动，但秒针在你耳边越走越快。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "砸碎它",
+      "outcome": {
+        "text": "你砸碎了表。碎片里爬出一只没有壳的蜗牛。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

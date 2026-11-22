@@ -1,0 +1,70 @@
+{
+  "id": "s_dw_side_child",
+  "title": "支线：窗后的孩子",
+  "description": "一扇窗开了一条缝。一个七八岁的孩子把手指放在嘴唇上，示意你过去。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "问他看到了什么",
+      "skill": "charm",
+      "difficulty": "regular",
+      "success": {
+        "text": "孩子说：『他们每天晚上都去教堂做梦，醒来就忘了。你别去。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "孩子的话：村民每晚去教堂做梦，醒来就忘。"
+      },
+      "failure": {
+        "text": "孩子突然尖叫，窗户被从里面猛地关上。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "给他一点食物",
+      "skill": "persuade",
+      "difficulty": "regular",
+      "success": {
+        "text": "孩子收下食物，从窗缝塞给你一张蜡笔画：一个没有脸的人站在画框里。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          }
+        ],
+        "handout": "孩子的蜡笔画：没有脸的人站在画框里。"
+      },
+      "failure": {
+        "text": "孩子盯着你的口袋，说：『你也有那个名字。』然后关上了窗。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家在村中与窗后的孩子搭话、给孩子食物，或注意到窗缝里的人影时。"
+}

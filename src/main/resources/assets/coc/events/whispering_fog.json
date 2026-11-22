@@ -1,0 +1,91 @@
+{
+  "id": "whispering_fog",
+  "title": "雾中低语",
+  "description": "浓雾毫无征兆地从林间涌出。雾里有细碎的说话声，像许多人在同时低声念着你的名字。",
+  "weight": 20,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "fog",
+    "voice"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "凝神倾听",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "你听清了几个词：『门』、『潮汐』、『它还醒着』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "雾中的词句：门、潮汐、它还醒着。"
+      },
+      "failure": {
+        "text": "声音突然贴到耳边。你猛地回头，只看见自己的影子。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    {
+      "text": "循声走进雾中",
+      "skill": "navigate",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在雾里走了很久，最后在一块湿石头上发现一枚冰凉的碎片。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:amethyst_shard",
+            "count": 1
+          }
+        ],
+        "handout": "雾散后，你手里多了一枚不属于任何已知矿物的碎片。"
+      },
+      "failure": {
+        "text": "雾里有什么东西跟着你。你听见了蹄声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:husk",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "捂住耳朵快步离开",
+      "outcome": {
+        "text": "你走出雾区，但耳膜里仍残留着低频的震动。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

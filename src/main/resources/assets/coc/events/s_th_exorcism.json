@@ -1,0 +1,124 @@
+{
+  "id": "s_th_exorcism",
+  "title": "第十幕：驱逐",
+  "description": "维尔站在暗室中央。他的脸像一张被水泡过的照片，身后的墙里伸出许多只手。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "烧掉遗骸与匕首",
+      "skill": "throw",
+      "difficulty": "regular",
+      "success": {
+        "text": "火从匕首烧到遗骸；维尔发出无声的尖叫，墙里的手缩了回去。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "结局：遗骸与匕首被烧毁；墙里的手缩回。"
+      },
+      "failure": {
+        "text": "火熄灭了；维尔转向你，墙里的手继续往前伸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          }
+        ]
+      }
+    },
+    {
+      "text": "念出束缚咒",
+      "skill": "occult",
+      "difficulty": "hard",
+      "success": {
+        "text": "你念出维尔的全名和束缚词；他像被抽走骨头一样塌下去。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "结局：念出全名与束缚词；维尔塌落，墙里安静。"
+      },
+      "failure": {
+        "text": "你念错一个音节；墙里的手抓住了你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          },
+          {
+            "type": "hp",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "封墙并填入盐铁",
+      "skill": "mech_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你把盐和铁填进墙缝，砖墙合拢；敲击声停了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "结局：盐铁封墙；敲击声停止。"
+      },
+      "failure": {
+        "text": "墙合拢到一半，里面伸出一只手。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "逃跑",
+      "skill": "dodge",
+      "difficulty": "regular",
+      "success": {
+        "text": "你逃出房子；身后的门自己关上。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "结局：逃出旧宅；门在身后关上。"
+      },
+      "failure": {
+        "text": "楼梯变成向下的墙；你又回到暗室。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          }
+        ]
+      }
+    }
+  ]
+}

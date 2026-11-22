@@ -1,0 +1,75 @@
+{
+  "id": "s_dark_wispers_village",
+  "title": "第二幕：沉默的村庄",
+  "description": "村口没有人。每一扇窗后都有人影，但没有一扇窗打开。井边放着一只还在滴水的木桶。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "询问村民",
+      "skill": "persuade",
+      "difficulty": "regular",
+      "success": {
+        "text": "门开了一条缝。有人说：『教堂下面有东西在敲墙。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "村民的话：教堂下面有东西在敲墙。"
+      },
+      "failure": {
+        "text": "门后的人压低声音说：『你不该回来。』然后门被彻底关死。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "查看井",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "井壁上刻着与石碑相同的螺旋。井底传来规律的敲击声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "井壁上的螺旋与石碑一致，井底有敲击声。"
+      },
+      "failure": {
+        "text": "你探头时，井底有什么东西也抬起了头。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "直接去教堂",
+      "outcome": {
+        "text": "你穿过空无一人的街道。钟楼上的钟停在 3:17。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

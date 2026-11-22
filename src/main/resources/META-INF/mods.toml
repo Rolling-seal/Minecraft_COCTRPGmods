@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="coc"
+version="2.0.0"
+displayName="克苏鲁的呼唤"
+authors="Rolling-seal"
+logoFile="icon.png"
+description='''在 Minecraft 1.20.1 中复刻《克苏鲁的呼唤》跑团：角色卡、KP 专属公开 d100 检定、幕布式剧本推进、KP 剧情之书、道具发放/使用检定、SAN/HP/幸运调整、玩家剧本导入与低 SAN 屏幕扭曲。'''
+
+[[dependencies.coc]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.coc]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="BOTH"

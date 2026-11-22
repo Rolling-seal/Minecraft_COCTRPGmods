@@ -1,0 +1,94 @@
+{
+  "id": "s_dark_wispers_finale",
+  "title": "第十一幕：真名",
+  "description": "石台上的人形坐了起来。它的脸是一张空白画布，而你忽然想起了那个名字。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "念出真名",
+      "skill": "occult",
+      "difficulty": "hard",
+      "success": {
+        "text": "你念出名字。人形僵住，身体像旧墙皮一样剥落。地窖里恢复了安静。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "你念出的真名：它被重新封回地下。"
+      },
+      "failure": {
+        "text": "你念错了一个音节。人形转向你，空白画布上慢慢浮现出你的脸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "用火把烧掉画像",
+      "skill": "throw",
+      "difficulty": "regular",
+      "success": {
+        "text": "火把准确命中石台后的画像。人形发出无声的尖叫，化作一摊盐水。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "画像被烧毁，人形化作盐水。"
+      },
+      "failure": {
+        "text": "火把落在地上。画像里的脸笑了，火焰无法靠近。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          }
+        ]
+      }
+    },
+    {
+      "text": "逃跑",
+      "skill": "dodge",
+      "difficulty": "regular",
+      "success": {
+        "text": "你逃出地窖。身后传来一声叹息，然后是长久的沉默。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      },
+      "failure": {
+        "text": "石阶变成了向下延伸的街道。你跑了很久，又回到了石台前。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          }
+        ]
+      }
+    }
+  ]
+}

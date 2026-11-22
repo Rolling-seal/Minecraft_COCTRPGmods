@@ -1,0 +1,96 @@
+{
+  "id": "deep_one_tracks",
+  "title": "深潜者的足迹",
+  "description": "河岸泥地上出现了一串巨大的蹼状脚印，从水里一直延伸到芦苇深处。空气里有股腥咸的潮气。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "deep_one",
+    "water"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "采集黏液",
+      "skill": "science",
+      "difficulty": "regular",
+      "success": {
+        "text": "你刮下一小瓶黏液。它在瓶壁内侧缓慢地逆着重力爬行。",
+        "effects": [
+          {
+            "type": "item",
+            "id": "minecraft:slime_ball",
+            "count": 2
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "深潜者黏液样本：具有逆重力运动特征。"
+      },
+      "failure": {
+        "text": "黏液突然沸腾，溅到你的手背。皮肤下有什么东西短暂地鼓起。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    {
+      "text": "沿足迹追踪",
+      "skill": "track",
+      "difficulty": "hard",
+      "success": {
+        "text": "你在芦苇深处发现一块被啃干净的鱼骨，上面刻着与石碑相同的螺旋。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:bone",
+            "count": 1
+          }
+        ],
+        "handout": "鱼骨上的螺旋与石碑铭文一致。"
+      },
+      "failure": {
+        "text": "水面上浮起一双没有眼白的眼睛。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:drowned",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "离开河岸",
+      "outcome": {
+        "text": "你退回安全距离。直到天黑，你都没敢喝水。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

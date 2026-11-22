@@ -1,0 +1,63 @@
+{
+  "id": "s_dark_wispers_prologue",
+  "title": "第一幕：没有署名的信",
+  "description": "你收到一封没有署名的信。信纸上有海水干涸后的盐渍，正文只有一句：『回村里来，它又开始做梦了。』",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查信封",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "邮戳来自一个已经废弃二十年的小镇。信封内侧写着你的旧名。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "信封内侧：你的旧名，以及一个废弃小镇的邮戳。"
+      },
+      "failure": {
+        "text": "信封里掉出一根干枯的黑色草茎。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "直接出发",
+      "outcome": {
+        "text": "你收拾行李，踏上回村的路。一路上，海风都从同一个方向吹来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "烧掉信",
+      "outcome": {
+        "text": "信烧完后，灰烬在桌上拼出村子的轮廓。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

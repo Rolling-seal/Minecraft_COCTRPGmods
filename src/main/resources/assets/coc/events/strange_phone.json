@@ -1,0 +1,81 @@
+{
+  "id": "strange_phone",
+  "title": "陌生来电",
+  "description": "你的手机响了。来电显示是你自己的号码。接听键自己在屏幕上微微发亮。",
+  "weight": 8,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "phone",
+    "voice"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "接听",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "电话那头是你自己的声音：『不要相信镜子里的那个。』然后是一阵忙音。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "电话留言：不要相信镜子里的那个。"
+      },
+      "failure": {
+        "text": "电话那头只有呼吸声。呼吸的节奏越来越快，最后变成了你的心跳。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    {
+      "text": "挂断",
+      "outcome": {
+        "text": "你按下挂断。手机立刻又响了，还是你自己的号码。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "回拨",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "接电话的是一个老妇人。她说：『你终于打回来了。』然后念出一串坐标。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "回拨得到的坐标：一处废弃教堂。"
+      },
+      "failure": {
+        "text": "电话接通了，但对面是海底。你听见气泡和某种巨大的翻身声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

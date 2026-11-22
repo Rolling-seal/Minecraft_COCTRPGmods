@@ -1,0 +1,71 @@
+{
+  "id": "s_lb_side_allen",
+  "title": "支线：艾伦的金币",
+  "description": "艾伦的手一直捂着口袋。你看见里面露出一点金色的边。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "逼问",
+      "skill": "intimidate",
+      "difficulty": "regular",
+      "success": {
+        "text": "艾伦交出两枚金币，哭着说：『我只拿了两枚。它们说只要还回去就没事。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 2
+          }
+        ],
+        "handout": "艾伦交出两枚金币：‘它们说只要还回去就没事。’"
+      },
+      "failure": {
+        "text": "艾伦突然尖叫，把口袋里的东西扔进海里。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "安慰他",
+      "skill": "charm",
+      "difficulty": "regular",
+      "success": {
+        "text": "艾伦把金币交给你，告诉你海蚀洞的位置和‘它们怕火’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "艾伦：海蚀洞位置；它们怕火。"
+      },
+      "failure": {
+        "text": "艾伦抱住头，反复说：『别让它们看见我。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家注意、逼问或安慰艾伦，或追问他的口袋/金币时。"
+}

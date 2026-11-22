@@ -1,0 +1,92 @@
+{
+  "id": "s_th_ground_floor",
+  "title": "第三幕：一楼",
+  "description": "门厅的灰尘有半指厚。客厅家具都被白布盖着，壁炉冷得像一口井。地下室的门被一个衣柜堵住，衣柜后面传来三下敲击。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查客厅与壁炉",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "壁炉里有一张烧了一半的照片：维尔家族站在墙前，墙上有一道新砖。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "烧焦的照片：维尔家族站在一道新砖墙前。"
+      },
+      "failure": {
+        "text": "照片里的脸都转向你。你把照片放下时，它还是热的。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "听墙并回敲",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "你敲三下，墙里回三下；你敲两下，墙里回两下。它在模仿你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "墙里的敲击会模仿你的节奏。"
+      },
+      "failure": {
+        "text": "墙里传来你的声音：『进来。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "移开衣柜",
+      "skill": "climb",
+      "difficulty": "regular",
+      "success": {
+        "text": "衣柜后面是地下室门，门缝里吹出冷风。门上刻着‘维尔’两个字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "地下室门：门上刻着‘维尔’，门缝有冷风。"
+      },
+      "failure": {
+        "text": "衣柜倒下来，灰尘里有人咳嗽。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d3"
+          },
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

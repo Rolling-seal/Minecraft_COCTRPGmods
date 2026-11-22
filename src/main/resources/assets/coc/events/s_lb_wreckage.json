@@ -1,0 +1,98 @@
+{
+  "id": "s_lb_wreckage",
+  "title": "第六幕：沉船残骸",
+  "description": "退潮后，礁石间露出沉船残骸和一只钉死的木箱。箱子上有达贡的印记。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "撬开木箱",
+      "skill": "locksmith",
+      "difficulty": "regular",
+      "success": {
+        "text": "箱子里全是旧金币和几枚刻着怪脸的护符；金币上沾着干掉的海藻。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 3
+          }
+        ],
+        "handout": "木箱：旧金币、怪脸护符、干海藻。"
+      },
+      "failure": {
+        "text": "箱盖弹开，里面爬出一只像鱼又像人的小东西。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:silverfish",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "沿足迹",
+      "skill": "track",
+      "difficulty": "regular",
+      "success": {
+        "text": "蹼状脚印从木箱一直延伸到海蚀洞；洞里有微弱的蓝光。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "足迹通向海蚀洞；洞里有蓝光。"
+      },
+      "failure": {
+        "text": "足迹在礁石上绕成圈，最后回到你脚下。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "检查船名",
+      "skill": "history",
+      "difficulty": "regular",
+      "success": {
+        "text": "船首刻着‘达贡号’；这是一艘二十年前失踪的走私船，船上载着南洋古钱。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "沉船是二十年前失踪的走私船‘达贡号’，载有南洋古钱。"
+      },
+      "failure": {
+        "text": "船名在你读完后变成了你的名字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

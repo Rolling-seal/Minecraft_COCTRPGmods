@@ -1,0 +1,60 @@
+{
+  "id": "s_th_side_letters",
+  "title": "支线：信箱里的旧信",
+  "description": "信箱最底层压着一叠没有寄出的信，收件人都是‘奥古斯特·维尔’，日期停在二十年前。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "拆开最上面一封",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "信里只有一句：『你说过墙里的东西不会出来。』署名是伊莱亚斯。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "旧信：伊莱亚斯写给维尔——‘你说过墙里的东西不会出来’。"
+      },
+      "failure": {
+        "text": "信纸在你手里碎成盐。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "全部带走",
+      "outcome": {
+        "text": "你把信塞进包里。它们比看起来重得多。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 2
+          }
+        ],
+        "handout": "一叠旧信：收件人维尔，日期停在二十年前。"
+      }
+    }
+  ],
+  "triggerHint": "玩家检查信箱、翻找旧信或查看维尔家族邮件时。"
+}

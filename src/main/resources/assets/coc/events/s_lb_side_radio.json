@@ -1,0 +1,54 @@
+{
+  "id": "s_lb_side_radio",
+  "title": "支线：无线电里的第三个人",
+  "description": "无线电里有人在报坐标，声音像被水泡过。你数了数，房间里只有你们几个人。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "回应",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "对方重复了你的名字，然后说：『别让灯灭。』信号断了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "无线电：对方叫出你的名字，说‘别让灯灭’。"
+      },
+      "failure": {
+        "text": "无线电里传来海水灌进麦克风的声音。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "关闭无线电",
+      "outcome": {
+        "text": "你关掉无线电。静电声停了，但房间里还有第三个呼吸声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家使用无线电后继续回应、调频或追问“你是谁”时。"
+}

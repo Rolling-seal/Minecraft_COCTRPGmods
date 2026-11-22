@@ -1,0 +1,90 @@
+{
+  "id": "old_monolith",
+  "title": "古老石碑",
+  "description": "林间空地上立着一块黑色石碑，表面刻满不属于任何人类文字的螺旋。苔藓在它脚下长成环状。",
+  "weight": 15,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "monolith",
+    "mythos"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "辨认碑文",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "你的目光顺着螺旋滑下去，某种比语言更古老的东西在你脑中短暂地睁开了一只眼。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "石碑铭文：『当群星归位，沉睡者将不再梦见自己。』"
+      },
+      "failure": {
+        "text": "碑文在你眼中开始蠕动。你踉跄后退，鼻腔里满是海水味。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "拓印碑文",
+      "skill": "art_craft",
+      "difficulty": "regular",
+      "success": {
+        "text": "拓印成功。纸上留下清晰的螺旋，但边缘似乎多出了几道原本不存在的笔画。",
+        "effects": [
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 3
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "一份可疑的石碑拓片。"
+      },
+      "failure": {
+        "text": "纸在拓印过程中自行裂开，像被什么东西从内侧划破。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "绕开石碑",
+      "outcome": {
+        "text": "你远远绕开。走出很远后，你才发现自己一直在数着脚步，仿佛在配合某种节奏。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

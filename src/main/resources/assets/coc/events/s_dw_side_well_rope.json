@@ -1,0 +1,77 @@
+{
+  "id": "s_dw_side_well_rope",
+  "title": "支线：下井",
+  "description": "你们把井绳系在腰上，顺着湿滑的井壁往下。水面比想象中深，井壁上全是螺旋。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "继续下潜",
+      "skill": "swim",
+      "difficulty": "regular",
+      "success": {
+        "text": "水下有一扇被海草缠住的木门。门缝里卡着一枚铜钥匙和一片孩子的指甲。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:iron_nugget",
+            "count": 1
+          }
+        ],
+        "handout": "井底：一扇被海草缠住的木门；铜钥匙；一片孩子的指甲。"
+      },
+      "failure": {
+        "text": "有什么东西从水下握住了你的脚踝。你被拖下去时，看见井壁上的螺旋在转动。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "立刻上井",
+      "skill": "climb",
+      "difficulty": "regular",
+      "success": {
+        "text": "你爬出井口时，井绳在身后断了。井底传来一声失望的叹息。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "井绳被从下面割断。你抓住井沿时，脚踝上多了一圈青紫的手印。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家系绳下井、探头看井底或试图打捞井底物品时。"
+}

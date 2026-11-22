@@ -1,0 +1,9 @@
+{
+  "key.categories.coc": "克苏鲁的呼唤",
+  "key.coc.sheet": "打开角色卡",
+  "key.coc.dice": "掷骰 / 检定",
+  "key.coc.kp": "守秘人面板",
+  "key.coc.journal": "线索日志",
+  "item.coc.kp_panel": "KP面板",
+  "item.coc.kp_panel.desc": "右键打开守秘人面板（仅KP）"
+}

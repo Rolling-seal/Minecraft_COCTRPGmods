@@ -1,0 +1,134 @@
+{
+  "id": "dark_whispers",
+  "title": "黑暗中的低语",
+  "description": "一封没有署名的信把你带回故乡。村庄沉默，教堂地窖里有东西在敲墙。",
+  "intro": "你收到一封没有署名的信。信纸上有海水干涸后的盐渍，正文只有一句：『回村里来，它又开始做梦了。』\n\n（KP 提示：本剧本共十二幕。请按玩家行动推进；不要连续点“下一幕”，也不要用“自动结算”代替玩家的选择。）",
+  "outro": "地窖重新安静下来。你走出教堂时，天已经亮了。村口有人向你点头，但没有人和你说话。\n\n你低头看信，纸上的字迹已经消失，只剩下一片盐渍。",
+  "sanReward": "1d10",
+  "events": [
+    "s_dark_wispers_prologue",
+    "s_dark_wispers_village",
+    "s_dw_well",
+    "s_dark_wispers_church",
+    "s_dw_confessional",
+    "s_dw_graveyard",
+    "s_dark_wispers_cellar",
+    "s_dw_slab",
+    "s_dark_wispers_dream",
+    "s_dw_ritual",
+    "s_dark_wispers_finale",
+    "s_dw_dawn"
+  ],
+  "acts": [
+    {
+      "act": 1,
+      "event": "s_dark_wispers_prologue",
+      "title": "没有署名的信",
+      "summary": "收到无署名信，决定回村；确认旧名与回村动机。",
+      "trigger": "开场读信；玩家检查信封或决定出发时。",
+      "sideEvents": []
+    },
+    {
+      "act": 2,
+      "event": "s_dark_wispers_village",
+      "title": "沉默的村庄",
+      "summary": "村口无人、窗后有人影；获得“教堂地下有东西”的线索。",
+      "trigger": "玩家进入村庄、询问村民、查看井或前往教堂时。",
+      "sideEvents": [
+        "s_dw_side_child"
+      ]
+    },
+    {
+      "act": 3,
+      "event": "s_dw_well",
+      "title": "井底的回声",
+      "summary": "井壁螺旋、井底敲击；可捞到童鞋与铜钥匙。",
+      "trigger": "玩家调查井、放下井绳或倾听井底时。",
+      "sideEvents": [
+        "s_dw_side_well_rope"
+      ]
+    },
+    {
+      "act": 4,
+      "event": "s_dark_wispers_church",
+      "title": "教堂",
+      "summary": "长椅上坐满“睡着的人”；祭坛铭文/告解室/祈祷。",
+      "trigger": "玩家进入教堂并开始调查时。",
+      "sideEvents": [
+        "s_dw_side_priest_room"
+      ]
+    },
+    {
+      "act": 5,
+      "event": "s_dw_confessional",
+      "title": "牧师的告解",
+      "summary": "日记揭示仪式与真名“伊奥斯”；暗格里有画像草图。",
+      "trigger": "玩家搜查告解室、阅读日记或寻找暗格时。",
+      "sideEvents": [
+        "s_dw_side_priest_room"
+      ]
+    },
+    {
+      "act": 6,
+      "event": "s_dw_graveyard",
+      "title": "没有名字的坟",
+      "summary": "发现自家旧坟与新坟草人；村庄献祭名字的真相。",
+      "trigger": "玩家去墓地、找自家坟或挖开新坟时。",
+      "sideEvents": [
+        "s_dw_side_night"
+      ]
+    },
+    {
+      "act": 7,
+      "event": "s_dark_wispers_cellar",
+      "title": "地下",
+      "summary": "掀开祭坛地板；潜行、火把或正面闯入地窖。",
+      "trigger": "玩家掀开地板、进入地窖时。",
+      "sideEvents": []
+    },
+    {
+      "act": 8,
+      "event": "s_dw_slab",
+      "title": "石台",
+      "summary": "人形穿着你的旧衣服；信件、画像锚点与真名。",
+      "trigger": "玩家检查石台人形、信件或画像时。",
+      "sideEvents": [
+        "s_dw_side_portrait"
+      ]
+    },
+    {
+      "act": 9,
+      "event": "s_dark_wispers_dream",
+      "title": "梦",
+      "summary": "海底城市与门；一次 SAN；带回门/真名的线索。",
+      "trigger": "玩家在地窖失去意识、入睡或被拖入梦时。",
+      "sideEvents": []
+    },
+    {
+      "act": 10,
+      "event": "s_dw_ritual",
+      "title": "守梦人",
+      "summary": "村民举行仪式；打断、混入或躲藏观察。",
+      "trigger": "玩家醒来、地窖来人、仪式开始时。",
+      "sideEvents": []
+    },
+    {
+      "act": 11,
+      "event": "s_dark_wispers_finale",
+      "title": "真名",
+      "summary": "人形坐起；念真名、烧画像或逃跑。",
+      "trigger": "仪式被阻止或玩家正面面对人形时。",
+      "sideEvents": []
+    },
+    {
+      "act": 12,
+      "event": "s_dw_dawn",
+      "title": "黎明",
+      "summary": "烧教堂、封地窖、带走证据或离开；决定村子的结局。",
+      "trigger": "终幕结束后，玩家处理现场、准备离开时。",
+      "sideEvents": [
+        "s_dw_side_portrait"
+      ]
+    }
+  ]
+}

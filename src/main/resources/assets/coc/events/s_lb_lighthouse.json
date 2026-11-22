@@ -1,0 +1,88 @@
+{
+  "id": "s_lb_lighthouse",
+  "title": "第五幕：灯塔",
+  "description": "灯塔的灯室被砸碎，镜片上有弹孔。发电机被人为破坏，无线电还亮着微弱的绿灯。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "修发电机",
+      "skill": "mech_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你接上被扯断的线，发电机咳嗽着转起来。灯塔的灯泡亮了一下，又灭了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "发电机修好：灯塔灯泡闪了一下，线路仍不稳定。"
+      },
+      "failure": {
+        "text": "你被电了一下，手麻了半分钟。发电机没有反应。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d2"
+          }
+        ]
+      }
+    },
+    {
+      "text": "用无线电",
+      "skill": "elec_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你调到一个海岸警卫队频道，断断续续地喊出岛名和‘灯塔熄灭’。对面回了三个字：『坚持住。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "无线电：联系上海岸警卫队，对方说‘坚持住’。"
+      },
+      "failure": {
+        "text": "无线电里只有海浪声，然后是一个不属于人类的呼吸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "查灯室",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "镜片是从里面被砸碎的；地上有蹼爪印和一枚旧金币。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "灯室：镜片从里面被砸碎；蹼爪印、旧金币。"
+      },
+      "failure": {
+        "text": "你抬头时，灯室顶上有东西动了一下。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ]
+}

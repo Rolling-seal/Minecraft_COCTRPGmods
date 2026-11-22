@@ -1,0 +1,30 @@
+{
+  "targets": ["swap", "temp"],
+  "passes": [
+    {
+      "name": "color_convolve",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "uniforms": [
+        { "name": "Saturation", "values": [ 0.15 ] }
+      ]
+    },
+    {
+      "name": "wobble",
+      "intarget": "swap",
+      "outtarget": "temp",
+      "uniforms": [
+        { "name": "Frequency", "values": [ 10.0, 7.0 ] },
+        { "name": "WobbleAmount", "values": [ 0.006, 0.005 ] }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "temp",
+      "outtarget": "minecraft:main",
+      "uniforms": [
+        { "name": "ColorModulate", "values": [ 1.0, 0.8, 0.82, 1.0 ] }
+      ]
+    }
+  ]
+}

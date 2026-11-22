@@ -1,0 +1,101 @@
+{
+  "id": "s_th_hidden_room",
+  "title": "第八幕：砖墙后的房间",
+  "description": "砖墙后面是一间没有窗的暗室。一把旧椅子对着墙，椅子上坐着一具干瘪的遗体，胸口插着一把骨匕首。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查遗骸",
+      "skill": "medicine",
+      "difficulty": "regular",
+      "success": {
+        "text": "遗骸是奥古斯特·维尔；他的下颌被撬开，像死前在喊什么。匕首柄上刻着‘锚’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "遗骸：奥古斯特·维尔；下颌被撬开；匕首柄刻着‘锚’。"
+      },
+      "failure": {
+        "text": "遗骸的嘴唇动了一下，像是在数你的心跳。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "取匕首与护符",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "匕首是锚点；铜护符能暂时挡住它。你拿走时，遗体叹了口气。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 1
+          }
+        ],
+        "handout": "匕首是锚点；铜护符可暂时阻挡；遗体在叹气。"
+      },
+      "failure": {
+        "text": "你碰到匕首时，椅子上的遗体抬起了头。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "砸碎遗骸",
+      "skill": "fighting_brawl",
+      "difficulty": "regular",
+      "success": {
+        "text": "遗骸碎成盐和骨头；墙里传来尖叫。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "遗骸被砸碎；墙里传来尖叫。"
+      },
+      "failure": {
+        "text": "椅子上的遗体抓住你的手臂，力气大得不像死人。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

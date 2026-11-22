@@ -1,0 +1,93 @@
+{
+  "id": "s_th_attic",
+  "title": "第五幕：阁楼",
+  "description": "阁楼比房子本身更旧。纸箱堆到屋顶，墙上贴满剪报和一张孩子的蜡笔画：一个男人站在砖墙里面。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "查旧箱子",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "箱子里有维尔家族的相册、一枚铜护符和骨匕首的草图。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 1
+          }
+        ],
+        "handout": "旧箱子：维尔家族相册、铜护符、骨匕首草图。"
+      },
+      "failure": {
+        "text": "相册里的每一张脸都缺了眼睛。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "读剪报",
+      "skill": "library_use",
+      "difficulty": "regular",
+      "success": {
+        "text": "二十年前，奥古斯特·维尔在自家地下室失踪；警方封了房子，没有找到尸体。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "剪报：奥古斯特·维尔二十年前在地下室失踪；警方封屋，未找到尸体。"
+      },
+      "failure": {
+        "text": "剪报上的日期每天都在变。今天的日期是你的生日。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "看孩子的画",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "画背面写着：『他说只要墙还在，他就不会走。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "孩子的画：男人站在砖墙里；背面写着‘只要墙还在，他就不会走’。"
+      },
+      "failure": {
+        "text": "画里的男人少了一只手，你的手开始发麻。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ]
+}

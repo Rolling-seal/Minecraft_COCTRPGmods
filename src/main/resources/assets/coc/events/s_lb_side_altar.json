@@ -1,0 +1,74 @@
+{
+  "id": "s_lb_side_altar",
+  "title": "支线：石槽祭坛",
+  "description": "洞穴深处有一只石槽，里面堆着金币和骨头。石槽底部刻着‘归还’两个字。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查祭坛",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "石槽是达贡的祭坛；金币不是财宝，是‘租金’。拿走它们的人会被追讨。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "石槽祭坛：金币是‘租金’；拿走的人会被追讨。"
+      },
+      "failure": {
+        "text": "你读懂了‘归还’，然后听见洞里所有年轻者同时吸气。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "破坏符号",
+      "skill": "fighting_brawl",
+      "difficulty": "regular",
+      "success": {
+        "text": "你砸碎石槽边缘。洞里的蓝光暗了一瞬，年轻者发出尖叫。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "石槽被破坏；蓝光暗了一瞬。"
+      },
+      "failure": {
+        "text": "石槽纹丝不动，你的手却开始抽筋。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d3"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家在海蚀洞检查石槽、金币堆或墙上符号时。"
+}

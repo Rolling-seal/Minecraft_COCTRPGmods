@@ -1,0 +1,85 @@
+{
+  "id": "whisper_in_ear",
+  "title": "耳畔低语",
+  "description": "有人贴着你耳边说话，但你身后空无一人。低语用的是你母亲的声音。",
+  "weight": 15,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "whisper",
+    "voice"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "回应",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "低语告诉你一个地址，并说：『别带别人来。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "低语给的地址：城郊一间废弃诊所。"
+      },
+      "failure": {
+        "text": "你回应后，低语变成了许多个声音同时喊你的名字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:enderman",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "捂住耳朵",
+      "outcome": {
+        "text": "你捂住耳朵。低语改为从你的胸腔里响起。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "循声寻找",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在墙角找到一只小小的骨哨。吹响时，低语停了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:bone",
+            "count": 1
+          }
+        ]
+      },
+      "failure": {
+        "text": "声音把你引到一面墙前。墙上浮现出一张正在说话的嘴。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

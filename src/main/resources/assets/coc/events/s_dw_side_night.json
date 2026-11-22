@@ -1,0 +1,58 @@
+{
+  "id": "s_dw_side_night",
+  "title": "支线：夜宿村庄",
+  "description": "你们决定在村里过夜。午夜，所有窗户同时亮起，又同时熄灭。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "守夜",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "你听见村民们赤脚走过街道，朝教堂走去。他们边走边低声念着同一个名字：『伊奥斯。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "午夜：村民赤脚走向教堂，低声念着『伊奥斯』。"
+      },
+      "failure": {
+        "text": "你打了一个盹。醒来时，你站在教堂门口，手里握着一根不属于你的蜡烛。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "睡觉",
+      "outcome": {
+        "text": "梦里，你站在海底城市的门口。门后有人用你的声音说：『回来。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "夜梦：海底城市的门；门后用你的声音说『回来』。"
+      }
+    }
+  ],
+  "triggerHint": "玩家决定在村庄过夜、留宿或守夜时。"
+}

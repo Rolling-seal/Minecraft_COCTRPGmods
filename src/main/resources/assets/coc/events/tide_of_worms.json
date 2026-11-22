@@ -1,0 +1,98 @@
+{
+  "id": "tide_of_worms",
+  "title": "蠕虫潮",
+  "description": "地面开始起伏。成千上万条灰白色蠕虫从土里钻出来，朝同一个方向缓慢迁移。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "worms",
+    "sea"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "逃跑",
+      "skill": "dodge",
+      "difficulty": "regular",
+      "success": {
+        "text": "你踩着石块跳过虫潮。它们没有追你，只是继续朝海边前进。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "你摔进虫堆。它们没有咬你，只是从你的衣领里爬过，留下黏滑的痕迹。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "踩出一条路",
+      "skill": "fighting_brawl",
+      "difficulty": "regular",
+      "success": {
+        "text": "你硬生生踩出一条路。鞋底被腐蚀出几个小洞。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "虫群突然改变方向，全部涌向你的脚。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "观察它们的去向",
+      "skill": "natural_world",
+      "difficulty": "hard",
+      "success": {
+        "text": "它们全部钻进海里。海面下有什么巨大的东西张开嘴，接住了这场盛宴。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "蠕虫潮的终点：海面下的巨口。"
+      },
+      "failure": {
+        "text": "虫群停下，齐齐抬头看你。你听见它们同时发出细小的笑声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

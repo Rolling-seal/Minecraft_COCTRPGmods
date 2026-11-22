@@ -1,0 +1,92 @@
+{
+  "id": "s_lb_voyage",
+  "title": "第一幕：夜航",
+  "description": "1926 年 4 月 12 日，新月的夜晚。海鸥号在暴雨里颠簸，白塔岛的灯塔本该在午夜亮起，但海面上只有黑。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "帮水手收帆",
+      "skill": "climb",
+      "difficulty": "regular",
+      "success": {
+        "text": "你抓住湿滑的缆绳，看见礁石间有一线白光——不是灯塔，是浪打在沉船上的反光。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "夜航：礁石间有沉船反光，灯塔没有亮。"
+      },
+      "failure": {
+        "text": "浪把你从桅杆上掀下来，你抓住栏杆，肩膀撞在船舷上。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d3"
+          },
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "问船长",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "船长盯着黑掉的海面：『灯塔三小时前就该亮了。这不对劲。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "船长：灯塔三小时前就该亮了。"
+      },
+      "failure": {
+        "text": "船长突然闭嘴，把望远镜塞给你。镜片里只有黑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "检查货舱",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "货舱里有一只钉死的木箱，箱角刻着盐沼镇的地址和达贡的印记。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "货舱木箱：盐沼镇地址；达贡印记。"
+      },
+      "failure": {
+        "text": "你碰到木箱时，里面传来硬币碰撞的声音，像有人在数钱。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

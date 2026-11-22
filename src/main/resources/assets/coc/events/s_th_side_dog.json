@@ -1,0 +1,70 @@
+{
+  "id": "s_th_side_dog",
+  "title": "支线：邻居的狗",
+  "description": "邻居的狗对着二楼空窗狂吠，然后夹着尾巴躲到门廊下。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "安抚它",
+      "skill": "charm",
+      "difficulty": "regular",
+      "success": {
+        "text": "狗安静下来，用鼻子顶你的口袋，里面多了一枚旧纽扣。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "狗叼来的旧纽扣：刻着‘V’字。"
+      },
+      "failure": {
+        "text": "狗突然咬住你的袖子，把你往街上拖。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d2"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "观察它在看什么",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "二楼窗后站着一个人影；你眨眼时，那里只有木板。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "狗在看二楼空窗：窗后曾站着一个人影。"
+      },
+      "failure": {
+        "text": "狗对着你身后叫。你回头，什么也没有。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家注意邻居的狗、靠近狗或询问邻居时。"
+}

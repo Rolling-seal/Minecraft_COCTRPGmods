@@ -1,0 +1,83 @@
+{
+  "id": "s_dw_dawn",
+  "title": "第十二幕：黎明",
+  "description": "地窖安静下来。你们爬出教堂时，天边刚泛白。村口站着一些人，他们不再躲藏，只是沉默地看着你们。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "烧掉教堂",
+      "outcome": {
+        "text": "火焰从长椅烧到祭坛。你听见地底传来一声很长的叹息，然后村庄第一次安静得像个正常的早晨。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "结局：教堂烧毁；地底的梦暂时安静了。"
+      }
+    },
+    {
+      "text": "封住地窖",
+      "skill": "mech_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你用木板和石块封死地窖入口。最后一锤落下时，门后传来一声轻轻的敲门声，像是告别。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d6"
+          }
+        ],
+        "handout": "结局：地窖被封死；门后传来一声告别般的敲击。"
+      },
+      "failure": {
+        "text": "封口没有完全合拢。你离开时，身后仍有一线海水从石缝里渗出来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "结局：地窖只封住了一半；海水仍在渗出。"
+      }
+    },
+    {
+      "text": "带走日记与画像",
+      "outcome": {
+        "text": "你带走日记和烧焦的画框。离开村口时，照片里的孩子似乎眨了一下眼。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "结局：带走日记与画像；照片里的孩子眨了一下眼。"
+      }
+    },
+    {
+      "text": "直接离开",
+      "outcome": {
+        "text": "你没有回头。走出很远后，你才发现口袋里多了一小撮湿沙。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "结局：离开村庄；口袋里多了一小撮湿沙。"
+      }
+    }
+  ]
+}

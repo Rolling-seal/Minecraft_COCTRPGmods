@@ -1,0 +1,95 @@
+{
+  "id": "blood_moon",
+  "title": "血月",
+  "description": "月亮变成了暗红色。村里的狗同时停止吠叫，所有影子都朝向同一个方向。",
+  "weight": 6,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "blood_moon",
+    "night"
+  ],
+  "conditions": {
+    "daytime": "night"
+  },
+  "options": [
+    {
+      "text": "观察天象",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "你看懂了血色云层的走向——那不是气象，是一张正在合拢的嘴。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "血月笔记：云层是一张正在合拢的嘴。"
+      },
+      "failure": {
+        "text": "你盯得太久，月亮里似乎有一只瞳孔在收缩。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:darkness",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "躲进屋里",
+      "outcome": {
+        "text": "你关紧门窗。整夜都有什么东西在屋顶上踱步。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "向血月祈祷",
+      "skill": "occult",
+      "difficulty": "hard",
+      "success": {
+        "text": "祈祷得到了回应。一道温热的视线落在你后颈上。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ]
+      },
+      "failure": {
+        "text": "你念错了音节。屋顶上的脚步声停在你正上方。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:zombie",
+            "count": 1
+          }
+        ]
+      }
+    }
+  ]
+}

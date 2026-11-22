@@ -1,0 +1,93 @@
+{
+  "id": "s_lb_shore",
+  "title": "第三幕：白塔岛",
+  "description": "你们被浪冲上黑礁滩。白塔岛的灯塔在头顶沉默，海风里有鱼腥味。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "找路上灯塔",
+      "skill": "navigate",
+      "difficulty": "regular",
+      "success": {
+        "text": "你找到一条湿滑的石阶，阶上有巨大的蹼状脚印，一直通向灯塔。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "石阶上的蹼状脚印，通向灯塔。"
+      },
+      "failure": {
+        "text": "你在礁石间绕了很久，最后回到原地。潮水正在上涨。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "搜海滩",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在残骸里找到一只钉死的木箱和几枚刻着怪脸的旧金币。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 2
+          }
+        ],
+        "handout": "海滩残骸：钉死的木箱、刻着怪脸的旧金币。"
+      },
+      "failure": {
+        "text": "你翻开一块船板，下面是一只被啃掉一半的海鸟。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "先去船屋",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "船屋里有微弱的呼吸声，还有金属轻轻碰撞的声音。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "船屋里有呼吸声和金属碰撞声。"
+      },
+      "failure": {
+        "text": "船屋的门自己开了一条缝，里面很黑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

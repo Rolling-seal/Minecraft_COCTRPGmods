@@ -1,0 +1,82 @@
+{
+  "id": "nyarlathotep_herald",
+  "title": "奈亚拉托提普的使者",
+  "description": "一个穿着旧式西装的男人站在路口。他的影子有太多关节，笑起来时牙齿数量不对。",
+  "weight": 3,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "nyarlathotep",
+    "mythos"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "与他交涉",
+      "skill": "persuade",
+      "difficulty": "hard",
+      "success": {
+        "text": "他告诉你一个名字，并说：『在正确的时刻念出它。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "使者给的名字：阿撒托斯之下的一个音节。"
+      },
+      "failure": {
+        "text": "他歪了歪头，你的舌头突然不受控制地说出一串陌生语言。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "拒绝他",
+      "outcome": {
+        "text": "他礼貌地让开路。你走出十步后，发现自己的影子少了一只手。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:enderman",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "注视他的脸",
+      "outcome": {
+        "text": "你看见了他的脸。之后你再也无法准确回忆起自己的脸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:blindness",
+            "duration": 200
+          }
+        ]
+      }
+    }
+  ]
+}

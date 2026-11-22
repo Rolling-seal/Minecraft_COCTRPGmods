@@ -1,0 +1,72 @@
+{
+  "id": "mirror_reflection",
+  "title": "镜中倒影",
+  "description": "镜子里的你比你慢了一拍。你抬手，它先抬手；你放下，它仍举着。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "mirror"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "凝视镜中",
+      "skill": "psychology",
+      "difficulty": "hard",
+      "success": {
+        "text": "倒影终于与你同步。它在镜面上哈了一口气，写下：『放我出去』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "镜面的字：放我出去。"
+      },
+      "failure": {
+        "text": "倒影伸出手，穿过了镜面。你后退时撞翻了椅子。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:blindness",
+            "duration": 100
+          }
+        ]
+      }
+    },
+    {
+      "text": "打碎镜子",
+      "outcome": {
+        "text": "镜子碎成七片。每一片里都有一个没有离开的你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "hp",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "转身离开",
+      "outcome": {
+        "text": "你背对镜子。身后传来轻轻的敲击声，三下，停顿，三下。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

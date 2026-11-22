@@ -1,0 +1,84 @@
+{
+  "id": "star_spawn",
+  "title": "星之眷族",
+  "description": "夜空裂开一道缝。某个由触须和光组成的庞大轮廓从裂缝里垂下来，像在钓什么。",
+  "weight": 4,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "star_spawn",
+    "mythos"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "躲藏",
+      "skill": "stealth",
+      "difficulty": "hard",
+      "success": {
+        "text": "它没有发现你。你听见它用某种类似鲸歌的声音叹了口气。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "它的触须擦过你的藏身处。你闻到了星际尘埃的味道。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:enderman",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "观察它",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "你数清了它的一条触须上有十三个关节。这个数字让你安心，也让你恐惧。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "星之眷族观察记录：十三节触须。"
+      },
+      "failure": {
+        "text": "它忽然转向你所在的方向。你听见自己的名字从天上落下来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          }
+        ]
+      }
+    },
+    {
+      "text": "逃跑",
+      "outcome": {
+        "text": "你跑进树林。头顶的裂缝合拢时，整片天空发出湿纸撕裂的声音。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

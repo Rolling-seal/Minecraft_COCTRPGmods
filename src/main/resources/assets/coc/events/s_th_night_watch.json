@@ -1,0 +1,90 @@
+{
+  "id": "s_th_night_watch",
+  "title": "第九幕：守夜",
+  "description": "天黑了。你们决定留下守夜。十一点十七分，所有钟停在同一秒，楼上的床开始吱呀作响。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "守夜",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "你看见一个穿旧西装的男人从墙里走出来；他念着自己的名字，像在确认自己还在。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "守夜：穿旧西装的男人从墙里走出，念着‘奥古斯特·维尔’。"
+      },
+      "failure": {
+        "text": "他走到你面前，用你的声音说：『你替我留下来。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "去卧室查看",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "床下有一道暗门，通往墙里的夹层；里面有孩子的玩具和维尔的怀表。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 1
+          }
+        ],
+        "handout": "床下暗门：墙里夹层；孩子玩具、维尔怀表。"
+      },
+      "failure": {
+        "text": "床下伸出一只手，抓住你的脚踝。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d3"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "睡觉/被诱",
+      "outcome": {
+        "text": "梦里，维尔坐在你床边。他说只要有人记得他，他就无法离开。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "梦中的维尔：只要有人记得他，他就无法离开。"
+      }
+    }
+  ]
+}

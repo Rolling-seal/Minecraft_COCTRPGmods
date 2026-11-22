@@ -1,0 +1,82 @@
+{
+  "id": "s_dark_wispers_dream",
+  "title": "第九幕：梦",
+  "description": "你在地窖里失去了意识。梦里，你站在那座海底城市的中央，所有街道都通向同一扇门。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "记住城市布局",
+      "skill": "navigate",
+      "difficulty": "hard",
+      "success": {
+        "text": "你记住了门的位置。醒来时，你的手心里攥着一把湿沙。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "梦中的门：位于城市最低处的广场中央。"
+      },
+      "failure": {
+        "text": "街道在你脚下折叠。你听见门后有人在叫你的名字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          }
+        ]
+      }
+    },
+    {
+      "text": "抵抗醒来",
+      "skill": "psychoanalysis",
+      "difficulty": "regular",
+      "success": {
+        "text": "你用疼痛唤醒自己。地窖的油灯还在燃烧，但你的头发湿透了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "你醒不过来。梦里有人替你做了决定。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "接受这一切",
+      "outcome": {
+        "text": "你向门走去。门后是另一个你，正等着交换位置。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d10"
+          }
+        ]
+      }
+    }
+  ]
+}

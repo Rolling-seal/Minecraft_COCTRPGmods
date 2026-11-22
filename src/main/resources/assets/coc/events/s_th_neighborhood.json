@@ -1,0 +1,76 @@
+{
+  "id": "s_th_neighborhood",
+  "title": "第二幕：槐树街 17 号",
+  "description": "槐树街 17 号是一栋维多利亚式旧宅，窗玻璃被木板封了一半。隔壁邻居站在门廊上，假装在浇一盆已经枯死的花。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "询问邻居",
+      "skill": "persuade",
+      "difficulty": "regular",
+      "success": {
+        "text": "邻居说，前一个租客半夜跑出来，说墙里有人走路；再之前的人都没住满一个月。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "邻居：前一个租客说墙里有人走路；之前的租客都没住满一个月。"
+      },
+      "failure": {
+        "text": "邻居把水浇到你鞋上，转身进门。门后有人低声说：『别进去。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "检查信箱与门廊",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "信箱里塞满二十年前的广告和一张维尔家族的讣告；门廊地板上有拖拽痕迹。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "信箱：二十年前的广告、维尔家族讣告、门廊拖拽痕迹。"
+      },
+      "failure": {
+        "text": "信箱里有一只死老鼠，嘴里咬着写你名字的纸片。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "直接进门",
+      "outcome": {
+        "text": "钥匙插进锁孔时，门自己开了一条缝。里面很冷。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "id": "s_th_basement",
+  "title": "第七幕：地下室",
+  "description": "地下室比外面低十度。架子上摆满玻璃罐，里面泡着看不清的东西。最里面的砖墙是新的，砖缝里渗出盐霜。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "搜查酒窖",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "你找到一把铁锤、一袋盐和一本被水泡过的仪式笔记。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:iron_ingot",
+            "count": 1
+          }
+        ],
+        "handout": "酒窖：铁锤、一袋盐、被水泡过的仪式笔记。"
+      },
+      "failure": {
+        "text": "一个罐子自己碎了，里面的东西在笑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "听砖墙",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "墙后有呼吸，节奏和你一样；你停下，它也停下。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "新砖墙后有呼吸，节奏与你同步。"
+      },
+      "failure": {
+        "text": "墙里传来你母亲的声音，叫你的小名。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "拆砖",
+      "skill": "mech_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "砖墙被拆开一个洞，里面是暗室。冷风从洞里吹出来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "砖墙被拆开：里面是一间没有窗的暗室。"
+      },
+      "failure": {
+        "text": "砖墙塌了一角，灰尘里有什么抓住你的手腕。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

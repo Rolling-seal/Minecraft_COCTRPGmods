@@ -1,0 +1,65 @@
+{
+  "id": "s_dw_side_portrait",
+  "title": "支线：取走画像",
+  "description": "你伸手去取石台后的画像。画框是温的，像刚从火边拿下来。画布上那张没有脸的脸，正对着你。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "取下画像",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "画框背面刻着真名『伊奥斯』，还有一行小字：『烧掉锚点，它就会回到梦里。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "画像背面：真名『伊奥斯』；『烧掉锚点，它就会回到梦里』。"
+      },
+      "failure": {
+        "text": "你碰到画框时，画布上慢慢浮现出你的脸。你猛地松手，画像却没有掉下去。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "当场烧掉",
+      "skill": "throw",
+      "difficulty": "regular",
+      "success": {
+        "text": "画像烧起来时发出尖叫声。石台上的人形僵住了一瞬，但火很快被地窖的湿气压灭。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "画像被烧毁一部分；人形僵住了一瞬，但火熄灭了。"
+      },
+      "failure": {
+        "text": "火把刚靠近，火焰就自己缩了回去。画布里的脸笑了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家在石台或地窖试图取走、烧掉或检查画像时。"
+}

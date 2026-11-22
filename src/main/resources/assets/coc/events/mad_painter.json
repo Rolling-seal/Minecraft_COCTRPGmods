@@ -1,0 +1,95 @@
+{
+  "id": "mad_painter",
+  "title": "疯狂的画家",
+  "description": "一间废弃画室里挂满了同一张脸。画中人没有五官，但每一幅都在用不同的姿势看着门口。",
+  "weight": 12,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "artist",
+    "mirror"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "与他交谈",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "画家说他只是『替它画像』。他求你带走最后一幅，别再让它看见。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "画家的话：我只是替它画像。它一直在看。"
+      },
+      "failure": {
+        "text": "画家突然开始用画笔戳自己的眼睛。你退出画室时，听见画布后面有人在笑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "查看画作",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在画布背面发现一行小字：『她住在镜子里』。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "画布背面的字：她住在镜子里。"
+      },
+      "failure": {
+        "text": "画中那张没有五官的脸，在你注视时慢慢转向了你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:blindness",
+            "duration": 100
+          }
+        ]
+      }
+    },
+    {
+      "text": "买下最后一幅画",
+      "outcome": {
+        "text": "画家只收了一枚硬币。画框背面刻着你的名字。",
+        "effects": [
+          {
+            "type": "item",
+            "id": "minecraft:painting",
+            "count": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

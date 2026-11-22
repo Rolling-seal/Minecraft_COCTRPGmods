@@ -1,0 +1,109 @@
+{
+  "id": "s_lb_wreck",
+  "title": "第二幕：触礁",
+  "description": "船底传来一声闷响。海水从货舱涌进来，船长在甲板上喊：『放救生艇！』",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "抓住救生艇",
+      "skill": "dodge",
+      "difficulty": "regular",
+      "success": {
+        "text": "你抓住艇绳，和两名水手一起把救生艇放进水里。你顺手带上了医疗包。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          }
+        ],
+        "handout": "救生艇：医疗包、绳子、一盏还能亮的提灯。"
+      },
+      "failure": {
+        "text": "浪把救生艇拍在船舷上。你被甩进水里，呛了一口咸水。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "跳海游向岛",
+      "skill": "swim",
+      "difficulty": "regular",
+      "success": {
+        "text": "你游过冰冷的浪，脚下偶尔碰到礁石。上岸时，你看见灯塔的黑影就在头顶。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "海流把你往礁石上推。你抓住一块尖石，手掌被割开。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "抢救物资",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在货舱口抓住一只防水袋，里面有一卷绳、一盒火柴和一把信号枪。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:iron_ingot",
+            "count": 1
+          }
+        ],
+        "handout": "防水袋：绳子、火柴、信号枪。"
+      },
+      "failure": {
+        "text": "货舱门在你面前关上。你砸开一条缝，只抢出一只空箱子。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d2"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

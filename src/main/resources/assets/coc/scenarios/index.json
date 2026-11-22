@@ -1,0 +1,7 @@
+{
+  "scenarios": [
+    "dark_whispers.json",
+    "the_haunting.json",
+    "lightless_beacon.json"
+  ]
+}

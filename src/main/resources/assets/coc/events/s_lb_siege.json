@@ -1,0 +1,124 @@
+{
+  "id": "s_lb_siege",
+  "title": "第十幕：围攻",
+  "description": "午夜，海蚀洞方向传来湿漉漉的脚步声。年轻者爬上礁石，成熟体在灯塔下站着。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "守住小屋",
+      "skill": "firearms_rifle",
+      "difficulty": "regular",
+      "success": {
+        "text": "你们守住房门，打退了第一波年轻者；成熟体退到灯塔阴影里。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "hp",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "守住第一波：成熟体退进灯塔阴影。"
+      },
+      "failure": {
+        "text": "年轻者从窗户涌进来。你们退到二楼，弹药不多了。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "用火/灯",
+      "skill": "throw",
+      "difficulty": "regular",
+      "success": {
+        "text": "煤油灯砸在礁石上，火墙把年轻者逼回海里；成熟体在火后看着你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "火墙逼退年轻者；成熟体还在。"
+      },
+      "failure": {
+        "text": "火被海风吹灭。年轻者跨过余烬。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "用金币引开",
+      "skill": "throw",
+      "difficulty": "regular",
+      "success": {
+        "text": "你把金币撒向海蚀洞。年轻者转身去抢，成熟体发出一声低吼。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "金币引开年轻者；成熟体没有动。"
+      },
+      "failure": {
+        "text": "金币落在水裡，没有人去捡。成熟体朝你走来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "躲进灯塔",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "你们躲进灯室，听着蹼爪在铁梯上上下下；它们没有找到你们。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "躲进灯室：蹼爪在铁梯上搜索，没有找到你们。"
+      },
+      "failure": {
+        "text": "灯室的门被撞开。你看见成熟体的脸贴着玻璃。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "black_goat",
+  "title": "黑山羊幼崽",
+  "description": "灌木丛里站着一只没有脸的黑山羊。它的蹄子踩过的地方，草叶全部朝同一个方向倒伏。",
+  "weight": 6,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "goat",
+    "mythos"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "逃跑",
+      "skill": "dodge",
+      "difficulty": "regular",
+      "success": {
+        "text": "你跑出很远才敢回头。山羊仍站在原地，但它的角变长了一截。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "你的脚踝被什么东西绊住。低头时，你看见草叶正缠绕上来。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "战斗",
+      "skill": "fighting_brawl",
+      "difficulty": "hard",
+      "success": {
+        "text": "你打断了它的一根角。断口里流出的不是血，而是黑色的草籽。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:bone",
+            "count": 1
+          }
+        ]
+      },
+      "failure": {
+        "text": "它的蹄子踢中了你的肋骨。你听见自己体内有什么东西裂开。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d8"
+          }
+        ]
+      }
+    },
+    {
+      "text": "献上祭品",
+      "outcome": {
+        "text": "你放下随身携带的食物。山羊低下头，用没有脸的一面『看』了你很久。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "s_th_side_client",
+  "title": "支线：罗兰的秘密",
+  "description": "你跟踪罗兰。他没有回事务所，而是绕到槐树街后巷，对着旧宅的地下室窗户说话。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "偷听",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "罗兰说：『再撑一个月，等合同到期。』墙里有人回答：『你答应过让我出去。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "罗兰与墙里的对话：再撑一个月；墙里说‘你答应过让我出去’。"
+      },
+      "failure": {
+        "text": "罗兰突然回头，直直看向你藏身的地方。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "当面质问",
+      "skill": "intimidate",
+      "difficulty": "regular",
+      "success": {
+        "text": "罗兰承认：维尔家族付钱让他定期送人来‘看房’，但他不知道墙里是什么。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "罗兰承认：维尔家族付钱让他定期送人来看房。"
+      },
+      "failure": {
+        "text": "罗兰尖叫着跑开；墙里传来笑声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家跟踪罗兰、观察他离开事务所后的去向时。"
+}

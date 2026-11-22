@@ -1,0 +1,85 @@
+{
+  "id": "s_dw_well",
+  "title": "第三幕：井底的回声",
+  "description": "井台的石沿被磨得发亮。木桶还在滴水，井绳却像被人从下面拽过，绷得笔直。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "放下井绳打水",
+      "skill": "survival",
+      "difficulty": "regular",
+      "success": {
+        "text": "水桶提上来时，里面没有水，只有一只湿透的童鞋、一把小铜钥匙，和一层黑色的海水。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:iron_nugget",
+            "count": 1
+          }
+        ],
+        "handout": "井底打捞物：一只童鞋、一把小铜钥匙、黑色的海水。"
+      },
+      "failure": {
+        "text": "井绳突然绷紧，另一端传来重量。你松手时，井底有什么东西已经爬到了半途。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:drowned",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "侧耳倾听井底",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "敲击的节奏和你的心跳完全一致。你数到第七下时，井底传来一声很轻的叹息。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "井底的敲击节奏与你的心跳一致。"
+      },
+      "failure": {
+        "text": "井底有人用你的旧名叫你。你抬头时，井口的光已经变成了海水的颜色。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "投石问路",
+      "outcome": {
+        "text": "石头落水的声音很浅。敲击停了一拍，然后从更近的地方重新响起。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

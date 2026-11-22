@@ -1,0 +1,80 @@
+{
+  "id": "shadow_figure",
+  "title": "影中人",
+  "description": "街角站着一个完全由阴影构成的人形。它没有五官，但你确信它正在笑。",
+  "weight": 12,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "shadow"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "追踪",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "它把你带到一间空屋，在墙上留下一行字后消失了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "影中人留下的字：它已经进来了。"
+      },
+      "failure": {
+        "text": "你跟着它转过街角，却发现它在等你。它抬起手指了指你身后。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "无视它",
+      "outcome": {
+        "text": "你目不斜视地走过。它在你经过时轻轻鼓了鼓掌。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "照亮它",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "光照过去，它像被烫到一样缩进墙缝。地上留下一小撮灰。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "影中人畏惧强光。"
+      },
+      "failure": {
+        "text": "光线下，它的影子里露出无数张重叠的脸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:blindness",
+            "duration": 100
+          }
+        ]
+      }
+    }
+  ]
+}

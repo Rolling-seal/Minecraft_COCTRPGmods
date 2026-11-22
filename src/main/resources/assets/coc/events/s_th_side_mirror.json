@@ -1,0 +1,54 @@
+{
+  "id": "s_th_side_mirror",
+  "title": "支线：镜中密室",
+  "description": "你掀开镜子上的黑布。镜中映出的不是卧室，而是一间没有窗的砖墙密室。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "凝视镜中",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "穿旧西装的男人在镜中转身。他指着自己胸口，那里插着一把骨匕首。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "镜中：维尔指着胸口的骨匕首。"
+      },
+      "failure": {
+        "text": "镜中的你伸出手，指尖碰到你的脸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "把布盖回去",
+      "outcome": {
+        "text": "你盖回黑布。镜子里传来一声很轻的‘谢谢’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家掀开卧室镜子上的黑布、检查镜子或触摸镜面时。"
+}

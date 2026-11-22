@@ -1,0 +1,93 @@
+{
+  "id": "cult_ritual",
+  "title": "邪教仪式",
+  "description": "谷仓里传出有节奏的吟唱。门缝下渗出蓝光，空气里漂着盐和铁锈的味道。",
+  "weight": 8,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "cult",
+    "ritual"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "潜入",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "你躲在草垛后，看清了祭坛上的符号与一本摊开的笔记。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "祭坛符号：与石碑上的螺旋同源。"
+      },
+      "failure": {
+        "text": "一块松动的木板在你脚下断裂。吟唱停了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:zombie",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "打断仪式",
+      "skill": "firearms_handgun",
+      "difficulty": "regular",
+      "success": {
+        "text": "枪声打断了吟唱。教徒四散奔逃，祭坛上只留下一枚温热的硬币。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 3
+          }
+        ]
+      },
+      "failure": {
+        "text": "子弹打在祭坛上，弹孔里流出海水。教徒们同时转头看向你。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "加入吟唱",
+      "outcome": {
+        "text": "你跟着念了三个音节。第四个音节不需要你念，它自己从你喉咙里长了出来。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d10"
+          }
+        ]
+      }
+    }
+  ]
+}

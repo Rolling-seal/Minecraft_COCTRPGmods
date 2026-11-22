@@ -1,0 +1,101 @@
+{
+  "id": "s_dw_confessional",
+  "title": "第五幕：牧师的告解",
+  "description": "告解室的木门半掩着。里面没有神父，只有一件挂着的旧法衣，和一本来不及合上的日记。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "阅读日记",
+      "skill": "library_use",
+      "difficulty": "regular",
+      "success": {
+        "text": "日记最后一页写着：『它叫伊奥斯。不要让它忘记自己。』旁边画着一扇门和一个空白的人形。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "牧师日记：真名『伊奥斯』；不要让它忘记自己；门与空白人形。"
+      },
+      "failure": {
+        "text": "字迹在你眼前化开，像被水浸过的墨。你只来得及记住一个音节：『伊……』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "日记残页：一个音节『伊……』"
+      }
+    },
+    {
+      "text": "搜查暗格",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "告解室地板下有一个小暗格：一把黄铜钥匙、一张画像草图，草图背面写着『烧掉它』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          }
+        ],
+        "handout": "暗格：黄铜钥匙、画像草图、背面写着『烧掉它』。"
+      },
+      "failure": {
+        "text": "你摸到暗格时，黑暗里有一只手也摸到了你的手腕。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "hp",
+            "value": "-1d2"
+          }
+        ]
+      }
+    },
+    {
+      "text": "听告解室后面",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "墙后是空的。你听见地窖里的油灯燃烧声，还有很多人同时低声念着同一个词。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "告解室墙后是空的，声音通向地窖。"
+      },
+      "failure": {
+        "text": "有人贴着你的耳朵呼吸。你转身，只看见那件旧法衣在动。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

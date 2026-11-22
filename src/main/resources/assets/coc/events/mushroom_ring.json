@@ -1,0 +1,85 @@
+{
+  "id": "mushroom_ring",
+  "title": "蘑菇圈",
+  "description": "草地上长出一圈完美的白色蘑菇。圈内的草比外面矮一截，像被什么压过。",
+  "weight": 12,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "mushroom",
+    "fae"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "踏入圈中",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "你站在圈里，听见远处传来宴会的声音。离开时，口袋里多了一块冷掉的蛋糕。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "蘑菇圈：圈内能听见不属于此处的宴会声。"
+      },
+      "failure": {
+        "text": "圈内的地面突然变软。你低头，看见无数细小的菌丝正沿着鞋底往上爬。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "观察",
+      "skill": "natural_world",
+      "difficulty": "regular",
+      "success": {
+        "text": "你发现蘑菇的排列与某张星图一致。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "蘑菇圈对应一张陌生星图。"
+      },
+      "failure": {
+        "text": "蘑菇在你注视下缓慢转向，全部朝向你的影子。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "绕开",
+      "outcome": {
+        "text": "你绕开蘑菇圈。走出几步后，听见圈里有人礼貌地鼓了鼓掌。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

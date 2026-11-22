@@ -1,0 +1,97 @@
+{
+  "id": "s_th_bedroom",
+  "title": "第四幕：二楼卧室",
+  "description": "二楼的卧室门半掩着。床铺得很整齐，像有人刚离开；镜子被一块黑布盖住，床头柜上放着一本翻开的日记。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "读日记",
+      "skill": "library_use",
+      "difficulty": "regular",
+      "success": {
+        "text": "伊莱亚斯记录：墙里有人每晚敲三下；他开始梦见一个叫维尔的人；最后一页只有‘它在我床下’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "伊莱亚斯的日记：墙里敲三下；梦见维尔；最后一页‘它在我床下’。"
+      },
+      "failure": {
+        "text": "字迹在你眼前爬动，你只读懂‘床下’两个字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "掀开镜子",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "镜子里不是卧室，是一间砖墙密室；一个穿旧西装的男人站在镜中，背对着你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "镜子：映出砖墙密室，一个穿旧西装的男人背对着你。"
+      },
+      "failure": {
+        "text": "镜中的男人慢慢转身，你看见自己的脸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "检查床",
+      "skill": "medicine",
+      "difficulty": "regular",
+      "success": {
+        "text": "床板下有皮带扣和干涸的血迹；床垫里缝着一小袋盐。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          }
+        ],
+        "handout": "床下：皮带扣、干涸血迹、床垫里的一小袋盐。"
+      },
+      "failure": {
+        "text": "床单自己收紧，缠住你的手腕。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d2"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

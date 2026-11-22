@@ -1,0 +1,91 @@
+{
+  "id": "s_dw_graveyard",
+  "title": "第六幕：没有名字的坟",
+  "description": "教堂后的墓地没有一块碑上写着名字。只有最里面一座新坟前，插着一块木牌，上面是你的旧名。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "查看自家旧坟",
+      "skill": "history",
+      "difficulty": "regular",
+      "success": {
+        "text": "碑上的日期停在二十年前。你在旁边的土里找到一张泡烂的全家福，照片里的孩子和你很像。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "旧坟：日期停在二十年前；一张泡烂的全家福；照片里的孩子很像你。"
+      },
+      "failure": {
+        "text": "坟里是空的。土是温的，像刚有人从里面坐起来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "挖开新坟",
+      "skill": "climb",
+      "difficulty": "regular",
+      "success": {
+        "text": "棺材里只有一个稻草人，穿着你的旧衣服，脸上贴着你的照片。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "新坟：稻草人穿着你的旧衣服，贴着你的照片。"
+      },
+      "failure": {
+        "text": "一只冰冷的手从土里抓住你的脚踝。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "在坟前祈祷",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "你念完祷词。所有无字碑同时安静下来，像在听。你忽然明白：这些坟里埋的是被献上的名字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "无字碑下埋的是被献给沉睡者的名字。"
+      },
+      "failure": {
+        "text": "所有无字碑同时转向你。你听见土下有东西在笑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

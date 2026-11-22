@@ -1,0 +1,76 @@
+{
+  "id": "lost_child",
+  "title": "迷路的孩子",
+  "description": "一个穿旧外套的孩子站在路灯下。他说自己找不到家，但你注意到他没有影子。",
+  "weight": 12,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "child",
+    "ghost"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "送他回家",
+      "skill": "navigate",
+      "difficulty": "regular",
+      "success": {
+        "text": "你按他指的路走到一栋空屋。门开后，屋里只有一面镜子，镜中是你小时候的房间。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "空屋的镜子：映出你童年的房间。"
+      },
+      "failure": {
+        "text": "路越走越偏。孩子在你身后轻轻哼歌，歌词是你的名字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "追问来历",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "孩子说：『我在等上一个送我回家的人。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "孩子的话：我在等上一个送我回家的人。"
+      },
+      "failure": {
+        "text": "孩子的脸在你注视下模糊起来，像被水泡过的照片。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "置之不理",
+      "outcome": {
+        "text": "你继续走。身后传来脚步声，一直跟到你家门口才停。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

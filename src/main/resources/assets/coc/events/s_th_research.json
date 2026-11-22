@@ -1,0 +1,88 @@
+{
+  "id": "s_th_research",
+  "title": "第六幕：旧记录",
+  "description": "镇图书馆的地方志里夹着维尔家的记录；教区教堂的牧师记得那场‘没有尸体的葬礼’。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "查教区记录",
+      "skill": "history",
+      "difficulty": "regular",
+      "success": {
+        "text": "记录写着：维尔‘未被埋葬，封于宅内’；附有盐、铁与真名的束缚仪式。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "教区记录：维尔未被埋葬，封于宅内；盐、铁、真名可束缚。"
+      },
+      "failure": {
+        "text": "记录被墨水涂掉，只剩一句：『不要打开墙。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "询问牧师",
+      "skill": "persuade",
+      "difficulty": "regular",
+      "success": {
+        "text": "老牧师告诉你：念出维尔的全名，把盐和铁放进墙里，再烧掉他的锚点。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "牧师的建议：念全名，盐与铁封墙，烧掉锚点。"
+      },
+      "failure": {
+        "text": "牧师突然用拉丁语念了一段驱魔词，然后忘了你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "查旧报纸",
+      "skill": "library_use",
+      "difficulty": "regular",
+      "success": {
+        "text": "过去二十年，槐树街 17 号的租客都失踪或搬走；最近一个是伊莱亚斯。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "旧报纸：二十年里租客不断失踪/搬走；最近一个是伊莱亚斯。"
+      },
+      "failure": {
+        "text": "报纸上多了一篇讣告，死者的名字是你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

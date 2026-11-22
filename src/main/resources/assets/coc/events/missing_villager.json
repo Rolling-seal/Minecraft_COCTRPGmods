@@ -1,0 +1,86 @@
+{
+  "id": "missing_villager",
+  "title": "失踪的村民",
+  "description": "村口的木门上钉着一张寻人启事。照片里的男人在微笑，但照片背面写着日期——三年前。",
+  "weight": 15,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "village",
+    "missing"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "追踪足迹",
+      "skill": "track",
+      "difficulty": "regular",
+      "success": {
+        "text": "你在一处废弃矿井旁找到他的工具袋，里面有一块刻着螺旋的骨头。",
+        "effects": [
+          {
+            "type": "item",
+            "id": "minecraft:bone",
+            "count": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "失踪者的工具袋：一把锈锤、一块刻着螺旋的骨头。"
+      },
+      "failure": {
+        "text": "足迹在一面墙前消失。墙后传来指甲刮擦的声音。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:zombie",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "询问村民",
+      "skill": "persuade",
+      "difficulty": "regular",
+      "success": {
+        "text": "一个老妇人告诉你：『他每晚都回来，但我们不敢开门。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "老妇人的话：他每晚都回来，但我们不敢开门。"
+      },
+      "failure": {
+        "text": "所有村民同时停下手中的活，盯着你，直到你离开。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "不介入",
+      "outcome": {
+        "text": "你撕下寻人启事，把它塞进口袋。照片上的男人仍在微笑。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

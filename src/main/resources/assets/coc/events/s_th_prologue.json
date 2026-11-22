@@ -1,0 +1,76 @@
+{
+  "id": "s_th_prologue",
+  "title": "第一幕：委托",
+  "description": "事务所的窗外在下雨。罗兰先生把一串黄铜钥匙推过桌面，钥匙上挂着一块褪色的木牌：槐树街 17 号。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查合同与钥匙",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "合同上的房主是‘维尔家族’，签名日期是二十年前。钥匙冷得像刚从冰水里捞出来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "委托合同：房主维尔家族，二十年前的签名；钥匙异常冰冷。"
+      },
+      "failure": {
+        "text": "钥匙在你手里转了一圈，木牌上的字变成了‘别进去’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "询问罗兰",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "罗兰避开你的眼睛：『上一个租客只是搬走了。』你确定他在说谎。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "罗兰在说谎：上一个租客不是‘搬走’。"
+      },
+      "failure": {
+        "text": "罗兰突然闭嘴，盯着你身后。你回头，只看见雨。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "直接去旧宅",
+      "outcome": {
+        "text": "你收下钥匙。雨停之前，你已经站在槐树街口。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

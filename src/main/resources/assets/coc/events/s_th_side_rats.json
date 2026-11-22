@@ -1,0 +1,66 @@
+{
+  "id": "s_th_side_rats",
+  "title": "支线：地窖鼠群",
+  "description": "你踩到一块松动的砖，几十只老鼠从罐子后面涌出来，朝同一个方向跑——砖墙。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "驱赶鼠群",
+      "skill": "fighting_brawl",
+      "difficulty": "regular",
+      "success": {
+        "text": "老鼠四散；砖墙前留下一小堆骨头和一枚铜扣。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "鼠群留下的骨头与铜扣。"
+      },
+      "failure": {
+        "text": "老鼠没有咬你，只是从你脚边绕过，像在躲什么。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "跟着它们",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "老鼠全部钻进砖墙下的缝隙；你听见墙里有什么在啃东西。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "老鼠钻进砖墙缝隙；墙里有啃咬声。"
+      },
+      "failure": {
+        "text": "鼠群突然停下，齐齐回头看你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家进入地窖、踩到松动砖块或搜索罐子后面时。"
+}

@@ -1,0 +1,123 @@
+{
+  "id": "lightless_beacon",
+  "title": "无光信标",
+  "description": "向官方免费入门模组《无光信标》(The Lightless Beacon) 致敬的中文原创改编：海难、熄灭的灯塔、守塔人之死与礁石洞里的‘租金’。",
+  "intro": "1926 年 4 月 12 日，新月的夜晚。海鸥号在暴风雨里颠簸。白塔岛的灯塔本该在午夜亮起，但海面上只有黑。\n\n（KP 提示：本剧本共十一幕，适合新手。正文为中文原创改编，不包含官方原文。建议关闭随机事件，按玩家行动在“幕”页触发。）",
+  "outro": "天亮时，海岸警卫队的船把你们接走。白塔岛的灯塔仍然黑着。你低头看口袋里的古钱，它比海水更冷。",
+  "sanReward": "1d10",
+  "events": [
+    "s_lb_voyage",
+    "s_lb_wreck",
+    "s_lb_shore",
+    "s_lb_cottage",
+    "s_lb_lighthouse",
+    "s_lb_wreckage",
+    "s_lb_cave",
+    "s_lb_survivor",
+    "s_lb_generator",
+    "s_lb_siege",
+    "s_lb_dawn"
+  ],
+  "acts": [
+    {
+      "act": 1,
+      "event": "s_lb_voyage",
+      "title": "夜航",
+      "summary": "海鸥号在风暴中航行；灯塔未亮，货舱有达贡印记的木箱。",
+      "trigger": "玩家在船上、帮忙收帆/问船长/查货舱时。",
+      "sideEvents": []
+    },
+    {
+      "act": 2,
+      "event": "s_lb_wreck",
+      "title": "触礁",
+      "summary": "船触礁；救生艇、跳海或抢救物资。",
+      "trigger": "船体进水、玩家决定如何逃生时。",
+      "sideEvents": []
+    },
+    {
+      "act": 3,
+      "event": "s_lb_shore",
+      "title": "白塔岛",
+      "summary": "登岛；石阶蹼爪印、海滩残骸、船屋呼吸声。",
+      "trigger": "玩家上岸、找路/搜海滩/去船屋时。",
+      "sideEvents": [
+        "s_lb_side_coins"
+      ]
+    },
+    {
+      "act": 4,
+      "event": "s_lb_cottage",
+      "title": "守塔人小屋",
+      "summary": "守塔人尸体、小生物尸体、手枪；日志与金币。",
+      "trigger": "玩家进入小屋、检查尸体/搜屋/看小生物时。",
+      "sideEvents": [
+        "s_lb_side_log"
+      ]
+    },
+    {
+      "act": 5,
+      "event": "s_lb_lighthouse",
+      "title": "灯塔",
+      "summary": "灯室被砸、发电机被破坏、无线电可用；可求救。",
+      "trigger": "玩家进灯塔、修发电机/用无线电/查灯室时。",
+      "sideEvents": [
+        "s_lb_side_radio"
+      ]
+    },
+    {
+      "act": 6,
+      "event": "s_lb_wreckage",
+      "title": "沉船残骸",
+      "summary": "退潮后的达贡号残骸、木箱金币、通向海蚀洞的足迹。",
+      "trigger": "玩家搜海滩残骸、撬木箱/沿足迹时。",
+      "sideEvents": [
+        "s_lb_side_coins"
+      ]
+    },
+    {
+      "act": 7,
+      "event": "s_lb_cave",
+      "title": "海蚀洞",
+      "summary": "达贡符号、金币石槽、年轻者与成熟体；可潜行/观察/冲突。",
+      "trigger": "玩家进入海蚀洞、观察祭坛或与深潜者冲突时。",
+      "sideEvents": [
+        "s_lb_side_altar"
+      ]
+    },
+    {
+      "act": 8,
+      "event": "s_lb_survivor",
+      "title": "船屋里的幸存者",
+      "summary": "水手艾伦；守塔人偷金币卖给盐沼镇；船屋有划艇。",
+      "trigger": "玩家发现/安抚/追问艾伦，或检查船屋时。",
+      "sideEvents": [
+        "s_lb_side_allen"
+      ]
+    },
+    {
+      "act": 9,
+      "event": "s_lb_generator",
+      "title": "点亮灯塔",
+      "summary": "点亮灯塔/只发无线电/保持黑暗设陷阱；会激怒洞里的东西。",
+      "trigger": "玩家决定开灯、发信号或设防时。",
+      "sideEvents": []
+    },
+    {
+      "act": 10,
+      "event": "s_lb_siege",
+      "title": "围攻",
+      "summary": "年轻者与成熟体夜袭；守屋/火/金币/躲灯塔。",
+      "trigger": "天黑后、蹼爪逼近小屋/灯塔时。",
+      "sideEvents": []
+    },
+    {
+      "act": 11,
+      "event": "s_lb_dawn",
+      "title": "黎明",
+      "summary": "海岸警卫队或逃生；封洞/烧金币/带走金币。",
+      "trigger": "天亮、救援出现或玩家处理洞穴/金币时。",
+      "sideEvents": []
+    }
+  ]
+}

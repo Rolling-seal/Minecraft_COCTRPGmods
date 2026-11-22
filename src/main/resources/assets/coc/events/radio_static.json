@@ -1,0 +1,86 @@
+{
+  "id": "radio_static",
+  "title": "收音机杂音",
+  "description": "一台老收音机自行开机。杂音里有人用你的声音播报一场尚未发生的葬礼。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "radio",
+    "voice"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "调频",
+      "skill": "elec_repair",
+      "difficulty": "regular",
+      "success": {
+        "text": "你调到一个清晰频道。广播念出了一串坐标，位于你脚下。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "广播坐标：就在你脚下。"
+      },
+      "failure": {
+        "text": "收音机外壳变得滚烫，杂音里有人在倒数。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    {
+      "text": "关闭收音机",
+      "outcome": {
+        "text": "你拔掉电源，它仍在播放。你只好把音量调到最小。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "记录杂音",
+      "skill": "science",
+      "difficulty": "regular",
+      "success": {
+        "text": "你录下了三段重复的摩尔斯码，译出来是：『别回头』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          }
+        ],
+        "handout": "杂音译码：别回头。"
+      },
+      "failure": {
+        "text": "录音在回放时多了一个人的呼吸声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "s_lb_survivor",
+  "title": "第八幕：船屋里的幸存者",
+  "description": "船屋的渔网下面有人在发抖。是海鸥号的水手艾伦，他说守塔人偷了‘不该拿的东西’。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "安抚他",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "艾伦告诉你：守塔人马修从沉船里捞了金币，想卖给盐沼镇的人；昨晚‘他们’就来了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "艾伦：马修捞了沉船金币，想卖给盐沼镇；昨晚‘他们’来了。"
+      },
+      "failure": {
+        "text": "艾伦抓住你的袖子，反复说：『别开灯。别开灯。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "追问",
+      "skill": "persuade",
+      "difficulty": "regular",
+      "success": {
+        "text": "艾伦承认：他也拿了两枚金币，藏在船屋地板下。他把金币交给你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 2
+          }
+        ],
+        "handout": "艾伦交出两枚藏起来的金币。"
+      },
+      "failure": {
+        "text": "艾伦突然改口，说他不认识守塔人。你看见他口袋里有金币的轮廓。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "检查船屋",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "船屋后门停着一艘还能用的划艇，油箱里还有半箱油；墙上有马修的便条：『别让灯灭。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "船屋：可用的划艇、半箱油、马修的便条‘别让灯灭’。"
+      },
+      "failure": {
+        "text": "你拉开防水布，下面是一具被啃过的水手尸体。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ]
+}

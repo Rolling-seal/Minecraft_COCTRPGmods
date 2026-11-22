@@ -1,0 +1,99 @@
+{
+  "id": "s_dark_wispers_cellar",
+  "title": "第七幕：地下",
+  "description": "祭坛后的地板可以掀开。下面是一条向下的石阶，墙上挂着还在燃烧的油灯。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "潜入",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "你无声地下到地窖。中央的石台上躺着一个人形，胸口放着你的信。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "地窖石台上的人形：胸口放着与你收到的一模一样的信。"
+      },
+      "failure": {
+        "text": "一块石板在你脚下断裂。地窖深处的敲击声停了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:husk",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "点燃火把",
+      "skill": "survival",
+      "difficulty": "regular",
+      "success": {
+        "text": "火光驱散了部分阴影。你看见墙上刻满了名字，其中一行是你的。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "地窖墙上的名字：其中一行是你的。"
+      },
+      "failure": {
+        "text": "火把突然熄灭。黑暗里有人吹了一口气。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "正面闯入",
+      "skill": "fighting_brawl",
+      "difficulty": "regular",
+      "success": {
+        "text": "你打倒了一个守在石台上的教徒。他倒下时还在笑。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d3"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "三个教徒同时扑上来。你勉强脱身，但丢掉了火把。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ]
+}

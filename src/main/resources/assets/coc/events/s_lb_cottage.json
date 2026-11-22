@@ -1,0 +1,97 @@
+{
+  "id": "s_lb_cottage",
+  "title": "第四幕：守塔人小屋",
+  "description": "小屋门开着。守塔人倒在发电机旁，胸口被撕开；地上有几条鱼一样的小东西的尸体，还有一把打空的手枪。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查尸体",
+      "skill": "medicine",
+      "difficulty": "regular",
+      "success": {
+        "text": "他被有蹼的爪子撕开；手枪少了三发子弹。他死前曾向什么东西开枪。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "守塔人：被蹼爪撕开；手枪少了三发子弹。"
+      },
+      "failure": {
+        "text": "尸体还是温的。他的手指在灰尘里写了一个字：『箱』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "搜屋子",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "你找到守塔人的日志、一袋旧金币和一把还能用的霰弹枪。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 2
+          }
+        ],
+        "handout": "守塔人物品：日志、一袋旧金币、霰弹枪。"
+      },
+      "failure": {
+        "text": "抽屉里只有一张盐沼镇的名片，背面写着你的名字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "检查小生物",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "它们不是鱼。它们有四肢、有肺，眼睛像人。你在其中一只的胃里找到一枚金币。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "小生物：有四肢和肺，眼睛像人；胃里有金币。"
+      },
+      "failure": {
+        "text": "其中一只突然抽动，咬住你的手指。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d2"
+          },
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

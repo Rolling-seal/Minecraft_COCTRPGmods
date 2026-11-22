@@ -1,0 +1,95 @@
+{
+  "id": "dream_city",
+  "title": "梦中之城",
+  "description": "你闭上眼，却看见一座沉在海底的城市。街道以不可能的角度折叠，某个巨大的影子正在城市中央翻身。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "dream",
+    "city"
+  ],
+  "conditions": {
+    "daytime": "night"
+  },
+  "options": [
+    {
+      "text": "记住城市布局",
+      "skill": "navigate",
+      "difficulty": "hard",
+      "success": {
+        "text": "你记住了三条街与一座塔的位置。醒来后，这些图案仍清晰地烙在视网膜上。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "梦中的城市布局：三条倾斜的街道，一座没有门的塔。"
+      },
+      "failure": {
+        "text": "街道在你注视下重组。你听见自己的名字从海底传来。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:darkness",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    {
+      "text": "强迫自己醒来",
+      "skill": "psychoanalysis",
+      "difficulty": "regular",
+      "success": {
+        "text": "你用疼痛把自己拽回现实。枕边有一层湿漉漉的盐霜。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "你醒不过来。梦里的城市开始下雨，雨滴是温的。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "沉溺其中",
+      "outcome": {
+        "text": "你放任自己沉下去。醒来时，嘴角带着海水味，记忆里多了一段不属于你的童年。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d8"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ]
+      }
+    }
+  ]
+}

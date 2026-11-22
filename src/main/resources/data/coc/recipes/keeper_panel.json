@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GEG",
+    "EBE",
+    "GEG"
+  ],
+  "key": {
+    "G": { "item": "minecraft:gold_ingot" },
+    "E": { "item": "minecraft:ender_pearl" },
+    "B": { "item": "minecraft:book" }
+  },
+  "result": {
+    "item": "coc:kp_panel",
+    "count": 1
+  }
+}

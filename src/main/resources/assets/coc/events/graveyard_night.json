@@ -1,0 +1,103 @@
+{
+  "id": "graveyard_night",
+  "title": "墓园之夜",
+  "description": "墓园的土是新的，但没有一座坟前有名字。远处有人在挖坑，铁锹声停了一下，又继续。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "graveyard",
+    "night"
+  ],
+  "conditions": {
+    "daytime": "night"
+  },
+  "options": [
+    {
+      "text": "守夜",
+      "skill": "listen",
+      "difficulty": "regular",
+      "success": {
+        "text": "你听见土里传来心跳。节奏和你的一模一样。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ],
+        "handout": "墓园笔记：土里的心跳与我同步。"
+      },
+      "failure": {
+        "text": "铁锹声停了。有什么东西从背后拍了拍你的肩。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:zombie",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "挖开一座新坟",
+      "skill": "climb",
+      "difficulty": "regular",
+      "success": {
+        "text": "棺材里只有一具穿着你衣服的稻草人。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:bone",
+            "count": 2
+          }
+        ]
+      },
+      "failure": {
+        "text": "你挖到一半，土里伸出一只手抓住了你的脚踝。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "spawn",
+            "id": "minecraft:husk",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "text": "祈祷",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "你念完祷词，土里的心跳慢了半拍。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "你的祷词被另一个声音接了下去。它念得比你熟练。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    }
+  ]
+}

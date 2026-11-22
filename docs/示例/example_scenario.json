@@ -1,0 +1,59 @@
+{
+  "format": "coc-scenario-v1",
+  "id": "my_story",
+  "title": "My Scenario",
+  "description": "A one-line summary.",
+  "intro": "The opening curtain text the players see.",
+  "outro": "The closing curtain text.",
+  "sanReward": "1d10",
+  "acts": [
+    {
+      "title": "Rainy Night",
+      "summary": "Keeper reference: the investigators arrive at the village and find the church unlit.",
+      "trigger": "When the investigators enter the village",
+      "description": "You reach the village gate in the rain. The church is dark, and water drips somewhere in the bell tower.",
+      "options": [
+        {
+          "text": "Inspect the church",
+          "skill": "spot_hidden",
+          "difficulty": "regular",
+          "success": "You find a line of wet footprints in the door gap.",
+          "successClue": "The old postmark came from Saltmarsh twenty years ago.",
+          "failure": "You only smell damp wood."
+        }
+      ],
+      "sideEvents": [
+        {
+          "title": "Side Scene: Water in the Bell Tower",
+          "trigger": "When an investigator approaches the bell tower",
+          "description": "The water stops. You hear someone counting upstairs.",
+          "options": [
+            {
+              "text": "Go upstairs",
+              "skill": "listen",
+              "difficulty": "regular",
+              "success": "The counting imitates your breathing.",
+              "failure": "A stair breaks under your foot.",
+              "failureClue": "A fresh claw mark runs along the handrail."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "The Cellar",
+      "summary": "The investigators enter the cellar and face the final choice.",
+      "trigger": "When the investigators open the cellar door",
+      "description": "A lamp burns deep in the cellar, though it should not.",
+      "options": [
+        {
+          "text": "Put it out",
+          "skill": "occult",
+          "difficulty": "hard",
+          "success": "The flame dies. Something in the dark exhales.",
+          "failure": "The wick bursts into blue fire."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "id": "s_lb_side_coins",
+  "title": "支线：会数钱的金币",
+  "description": "你在残骸里捡到一枚刻着怪脸的旧金币。它在你手心里轻轻震动，像在数你的脉搏。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "把金币放回去",
+      "outcome": {
+        "text": "金币落回水里，震动停了。你听见一声很轻的叹息。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    },
+    {
+      "text": "收进口袋",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "金币安静下来。你开始梦见海底有人数钱。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:gold_nugget",
+            "count": 1
+          }
+        ],
+        "handout": "旧金币：收进口袋后，梦见海底有人数钱。"
+      },
+      "failure": {
+        "text": "金币在你口袋里发烫。你掏出来时，它变成了一枚牙齿。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家捡起、收起或盯着海滩/木箱里的怪脸金币时。"
+}

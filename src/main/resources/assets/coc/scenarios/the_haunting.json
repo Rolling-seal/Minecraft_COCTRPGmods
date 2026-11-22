@@ -1,0 +1,124 @@
+{
+  "id": "the_haunting",
+  "title": "鬼屋",
+  "description": "向官方新手模组《鬼屋》(The Haunting) 致敬的中文原创改编：一栋被封死的旧宅，墙里有声音，前任租客失踪。",
+  "intro": "房产经纪人罗兰先生把一串黄铜钥匙推到你面前：『槐树街 17 号，前任租客失踪三周了。邻居说墙里有声音。你只需要进去看看，确认房子还能不能租。』\n\n（KP 提示：本剧本共十一幕，适合新手。正文为中文原创改编，不包含官方原文。建议关闭随机事件，按玩家调查顺序在“幕”页触发。）",
+  "outro": "你们离开槐树街时，天刚亮。罗兰先生在门口等着，手里攥着合同。你回头看了一眼，二楼的窗帘动了一下，但那里没有人。\n\n钥匙在你口袋里，比昨天更冷。",
+  "sanReward": "1d10",
+  "events": [
+    "s_th_prologue",
+    "s_th_neighborhood",
+    "s_th_ground_floor",
+    "s_th_bedroom",
+    "s_th_attic",
+    "s_th_research",
+    "s_th_basement",
+    "s_th_hidden_room",
+    "s_th_night_watch",
+    "s_th_exorcism",
+    "s_th_aftermath"
+  ],
+  "acts": [
+    {
+      "act": 1,
+      "event": "s_th_prologue",
+      "title": "委托",
+      "summary": "罗兰委托调查槐树街17号；前任租客失踪，邻居说墙里有声音。",
+      "trigger": "玩家在事务所接受委托、检查合同或询问罗兰时。",
+      "sideEvents": [
+        "s_th_side_client"
+      ]
+    },
+    {
+      "act": 2,
+      "event": "s_th_neighborhood",
+      "title": "槐树街 17 号",
+      "summary": "旧宅外观、邻居、信箱；确认房子多年无人住满。",
+      "trigger": "玩家到达槐树街、询问邻居或检查信箱时。",
+      "sideEvents": [
+        "s_th_side_dog",
+        "s_th_side_letters"
+      ]
+    },
+    {
+      "act": 3,
+      "event": "s_th_ground_floor",
+      "title": "一楼",
+      "summary": "白布家具、冷壁炉、被衣柜堵住的地下室门；墙里有三下敲击。",
+      "trigger": "玩家进入一楼、检查客厅/壁炉或移开衣柜时。",
+      "sideEvents": [
+        "s_th_side_letters"
+      ]
+    },
+    {
+      "act": 4,
+      "event": "s_th_bedroom",
+      "title": "二楼卧室",
+      "summary": "整齐的床、蒙布镜子、伊莱亚斯的日记；床下有皮带与血迹。",
+      "trigger": "玩家上二楼、读日记、掀镜子或检查床时。",
+      "sideEvents": [
+        "s_th_side_mirror"
+      ]
+    },
+    {
+      "act": 5,
+      "event": "s_th_attic",
+      "title": "阁楼",
+      "summary": "维尔家族相册、铜护符、剪报与孩子画的‘墙里人’。",
+      "trigger": "玩家上阁楼、查旧箱子或读剪报时。",
+      "sideEvents": []
+    },
+    {
+      "act": 6,
+      "event": "s_th_research",
+      "title": "旧记录",
+      "summary": "图书馆与教堂记录：维尔未被埋葬、封于宅内；盐铁与真名可束缚。",
+      "trigger": "玩家去图书馆/教堂查记录、问牧师时。",
+      "sideEvents": []
+    },
+    {
+      "act": 7,
+      "event": "s_th_basement",
+      "title": "地下室",
+      "summary": "玻璃罐、鼠群、新砖墙与墙后的呼吸。",
+      "trigger": "玩家下地下室、搜查酒窖或拆砖时。",
+      "sideEvents": [
+        "s_th_side_rats"
+      ]
+    },
+    {
+      "act": 8,
+      "event": "s_th_hidden_room",
+      "title": "砖墙后的房间",
+      "summary": "暗室、椅子上的遗骸、胸口骨匕首；匕首是锚点。",
+      "trigger": "玩家拆开砖墙、进入暗室或检查遗骸/匕首时。",
+      "sideEvents": []
+    },
+    {
+      "act": 9,
+      "event": "s_th_night_watch",
+      "title": "守夜",
+      "summary": "夜里钟停、床响、维尔从墙里走出；可守夜/查卧室/入睡。",
+      "trigger": "玩家决定留下过夜、天黑后守屋时。",
+      "sideEvents": []
+    },
+    {
+      "act": 10,
+      "event": "s_th_exorcism",
+      "title": "驱逐",
+      "summary": "维尔现身；烧遗骸/念束缚咒/盐铁封墙/逃跑。",
+      "trigger": "玩家正面面对维尔、准备驱逐或摧毁锚点时。",
+      "sideEvents": []
+    },
+    {
+      "act": 11,
+      "event": "s_th_aftermath",
+      "title": "余波",
+      "summary": "天亮后处理罗兰、合同、钥匙与旧宅；决定结局与后续钩子。",
+      "trigger": "事件解决/天亮后，玩家找罗兰、处理现场或离开时。",
+      "sideEvents": [
+        "s_th_side_client"
+      ]
+    }
+  ]
+}

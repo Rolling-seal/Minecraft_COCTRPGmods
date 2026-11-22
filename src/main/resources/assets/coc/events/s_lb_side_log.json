@@ -1,0 +1,60 @@
+{
+  "id": "s_lb_side_log",
+  "title": "支线：守塔人的日志",
+  "description": "日志最后一页被海水泡皱：『它们只要金币。把金币还回去，别开灯。』",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "读完整本",
+      "skill": "library_use",
+      "difficulty": "regular",
+      "success": {
+        "text": "日志记录：马修从沉船捞了金币，联系盐沼镇买家；昨晚有人敲门，门外没有脚印。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "守塔人日志：金币来自沉船；盐沼镇买家；门外没有脚印。"
+      },
+      "failure": {
+        "text": "日志的字迹在你眼前游动，你只记住‘别开灯’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "撕下最后一页",
+      "outcome": {
+        "text": "你把最后一页塞进口袋。纸上的字还在慢慢变。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          }
+        ],
+        "handout": "日志最后一页：‘它们只要金币。把金币还回去，别开灯。’"
+      }
+    }
+  ],
+  "triggerHint": "玩家在小屋翻开守塔人日志、读最后一页或撕页时。"
+}

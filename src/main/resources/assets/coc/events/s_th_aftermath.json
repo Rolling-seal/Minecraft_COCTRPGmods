@@ -1,0 +1,83 @@
+{
+  "id": "s_th_aftermath",
+  "title": "第十一幕：余波",
+  "description": "天亮了。罗兰先生站在街对面，手里攥着合同。二楼的窗帘动了一下。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "haunting"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "交还钥匙，隐瞒真相",
+      "outcome": {
+        "text": "罗兰松了口气。你离开时，钥匙在口袋里变暖了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "结局：交还钥匙；钥匙在口袋里变暖。"
+      }
+    },
+    {
+      "text": "追问罗兰与维尔家族",
+      "skill": "psychology",
+      "difficulty": "regular",
+      "success": {
+        "text": "罗兰承认房子是维尔家族托管的；他也不知道墙里有什么，只知道‘不能拆’。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "罗兰：房子由维尔家族托管；他只知道‘不能拆’。"
+      },
+      "failure": {
+        "text": "罗兰突然改口，说他从没见过你。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "烧掉房子",
+      "outcome": {
+        "text": "火焰吞没旧宅；你听见墙里有人松了口气。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "结局：旧宅被烧毁；墙里有人松了口气。"
+      }
+    },
+    {
+      "text": "带走护符/日记",
+      "outcome": {
+        "text": "你带走护符与日记；夜里，护符微微发热。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ],
+        "handout": "结局：带走护符与日记；护符在夜里发热。"
+      }
+    }
+  ]
+}

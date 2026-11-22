@@ -1,0 +1,95 @@
+{
+  "id": "s_dw_slab",
+  "title": "第八幕：石台",
+  "description": "石台上的人形穿着你的旧衣服。它的胸口放着那封信，脸是一张空白画布，画布后面露出一角金色画框。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查那封信",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "信纸上的字是你的笔迹，日期却是二十年前。信末多了一行你从未写过的话：『别让它想起自己。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "石台上的信：你的笔迹、二十年前的日期、『别让它想起自己』。"
+      },
+      "failure": {
+        "text": "信在你手里碎成盐粒。石台上的人形轻轻动了一下。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "查看画像",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "画像里是一个没有脸的人。画框背面刻着真名『伊奥斯』，还有一行小字：『烧掉锚点』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "画像：没有脸的人；背面刻着真名『伊奥斯』与『烧掉锚点』。"
+      },
+      "failure": {
+        "text": "画像里的脸慢慢变成了你的脸。你听见画布后面有人在呼吸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "触碰人形",
+      "skill": "medicine",
+      "difficulty": "regular",
+      "success": {
+        "text": "它的皮肤是温的，像在发烧。你碰到它的瞬间，看见了一座海底城市和那扇门。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "人形的梦：海底城市，所有街道通向同一扇门。"
+      },
+      "failure": {
+        "text": "它抓住你的手腕。它的力气大得不像一个躺着的东西。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d3"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

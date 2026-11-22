@@ -1,0 +1,78 @@
+{
+  "id": "forbidden_book",
+  "title": "禁书",
+  "description": "一本没有封面的书躺在旧书架上。书页之间夹着一根干枯的触须，它在你靠近时微微卷曲。",
+  "weight": 8,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "book",
+    "mythos"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "阅读",
+      "skill": "occult",
+      "difficulty": "hard",
+      "success": {
+        "text": "你读完了一章，理解了某种不该被理解的几何关系。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ],
+        "handout": "禁书残章：关于角度与饥饿的论述。"
+      },
+      "failure": {
+        "text": "文字在你眼前重排成一张嘴。你合上书，发现书页已经少了一页。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:blindness",
+            "duration": 200
+          }
+        ]
+      }
+    },
+    {
+      "text": "烧掉它",
+      "outcome": {
+        "text": "火焰是蓝色的。烧完后，灰烬在地上拼出一个笑脸。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "带走",
+      "outcome": {
+        "text": "你把书塞进背包。它比看上去重得多，像装着水。",
+        "effects": [
+          {
+            "type": "item",
+            "id": "minecraft:book",
+            "count": 1
+          },
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

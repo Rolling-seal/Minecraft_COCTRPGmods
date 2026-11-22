@@ -1,0 +1,65 @@
+{
+  "id": "s_dw_side_priest_room",
+  "title": "支线：牧师的房间",
+  "description": "牧师住宅的门没有锁。桌上摆着两副餐具，好像主人刚离开。壁炉里的灰还是温的。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "side"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "搜查书房",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "书桌抽屉里有一本账册：二十年来，村里每个新生儿都被记下名字，旁边写着『献给梦』。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "账册：二十年来每个新生儿都被记下名字，标注『献给梦』。"
+      },
+      "failure": {
+        "text": "你拉开抽屉，里面是一撮黑色的草茎和一只干枯的婴儿鞋。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "读墙上的信",
+      "skill": "library_use",
+      "difficulty": "regular",
+      "success": {
+        "text": "墙上钉着牧师的最后一封信：『它不是神。它只是一直在做梦。别让它醒。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "牧师最后的话：它不是神，它只是一直在做梦；别让它醒。"
+      },
+      "failure": {
+        "text": "墙上的字在你读完后重新排列成一句话：『你回来了。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    }
+  ],
+  "triggerHint": "玩家离开教堂去牧师住宅、搜查牧师房间时。"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "cat_human_eyes",
+  "title": "人眼之猫",
+  "description": "一只黑猫蹲在墙头。它的眼睛是人的眼睛，瞳孔里映出你从未去过的房间。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "cat",
+    "eyes"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "抚摸它",
+      "skill": "charm",
+      "difficulty": "regular",
+      "success": {
+        "text": "猫允许你摸了一下。它的毛下没有温度，但你的紧张感消失了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "1d3"
+          }
+        ]
+      },
+      "failure": {
+        "text": "猫突然抓住你的手，瞳孔里的房间开始着火。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "hp",
+            "value": "-1d2"
+          }
+        ]
+      }
+    },
+    {
+      "text": "与它对视",
+      "skill": "psychology",
+      "difficulty": "hard",
+      "success": {
+        "text": "你在它的瞳孔里看见了自己的童年，以及一个你不认识的自己。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "猫瞳孔里的房间：你童年的卧室，但家具位置相反。"
+      },
+      "failure": {
+        "text": "猫的眼睛眨了一下。你的视野里多了一块永远无法聚焦的盲区。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:blindness",
+            "duration": 100
+          }
+        ]
+      }
+    },
+    {
+      "text": "驱赶它",
+      "outcome": {
+        "text": "猫跳下墙头离开。它走路的姿势像人。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

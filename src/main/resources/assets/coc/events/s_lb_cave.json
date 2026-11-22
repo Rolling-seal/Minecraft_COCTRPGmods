@@ -1,0 +1,100 @@
+{
+  "id": "s_lb_cave",
+  "title": "第七幕：海蚀洞",
+  "description": "洞穴里都是海水和鱼腥味。墙上刻着达贡的符号，地上堆着金币和被啃过的骨头。",
+  "weight": 1,
+  "kpOnly": true,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "scenario",
+    "beacon"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "潜行",
+      "skill": "stealth",
+      "difficulty": "regular",
+      "success": {
+        "text": "你躲在礁石后，看见十几只年轻者围着一只穿旧外套的成熟体；它在数金币。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ],
+        "handout": "海蚀洞：年轻者围着一只穿旧外套的成熟体；它在数金币。"
+      },
+      "failure": {
+        "text": "一块碎石从你脚下滚进水里。所有年轻者同时转头。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "观察仪式",
+      "skill": "occult",
+      "difficulty": "regular",
+      "success": {
+        "text": "它们在把金币放进一只石槽；石槽下面刻着‘归还’两个字。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "海蚀洞仪式：金币被放进石槽；石槽下刻着‘归还’。"
+      },
+      "failure": {
+        "text": "你读懂了一个符号，然后所有人都开始头痛。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "正面冲突",
+      "skill": "firearms_handgun",
+      "difficulty": "regular",
+      "success": {
+        "text": "你打中一只成熟体，年轻者四散；洞深处传来更多湿漉漉的脚步声。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d4"
+          },
+          {
+            "type": "hp",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "成熟体受伤；洞深处还有更多年轻者。"
+      },
+      "failure": {
+        "text": "子弹打在石壁上。所有年轻者朝你涌来。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d6"
+          },
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}

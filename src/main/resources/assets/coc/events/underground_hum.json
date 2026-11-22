@@ -1,0 +1,93 @@
+{
+  "id": "underground_hum",
+  "title": "地底嗡鸣",
+  "description": "地面下传来持续的低频嗡鸣。你脚下的石子随着某种节拍轻轻跳动。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "underground",
+    "sound"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "挖掘",
+      "skill": "climb",
+      "difficulty": "regular",
+      "success": {
+        "text": "你挖到一块紫色的晶体碎片。嗡鸣在指尖碰到它时停了半秒。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          },
+          {
+            "type": "item",
+            "id": "minecraft:amethyst_shard",
+            "count": 1
+          }
+        ]
+      },
+      "failure": {
+        "text": "镐头打在某种柔软的东西上。一股温热的气流从裂缝里喷出来。",
+        "effects": [
+          {
+            "type": "hp",
+            "value": "-1d4"
+          },
+          {
+            "type": "san",
+            "value": "-1d4"
+          }
+        ]
+      }
+    },
+    {
+      "text": "贴近地面倾听",
+      "skill": "listen",
+      "difficulty": "hard",
+      "success": {
+        "text": "你听懂了嗡鸣的节奏：它在数数。数到你的年龄时停住了。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "mythos",
+            "value": 1
+          }
+        ],
+        "handout": "地底嗡鸣在数数，数到你的年龄时停住。"
+      },
+      "failure": {
+        "text": "嗡鸣突然变成尖啸。你的耳朵流出一缕温热的液体。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:nausea",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "离开",
+      "outcome": {
+        "text": "你走出很远，脚底仍残留着那种节拍。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": "faceless_photo",
+  "title": "无脸照片",
+  "description": "桌上多了一张照片。照片里是你和一群陌生人，所有人的脸都被仔细地刮掉了。",
+  "weight": 10,
+  "kpOnly": false,
+  "once": false,
+  "cooldown": 0,
+  "tags": [
+    "photo"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "检查照片",
+      "skill": "spot_hidden",
+      "difficulty": "regular",
+      "success": {
+        "text": "照片背面有你的笔迹：『第三个是我。』",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ],
+        "handout": "照片背面的字：第三个是我。"
+      },
+      "failure": {
+        "text": "你数了数照片里的人数。数到第三个时，照片上的空白处出现了眼睛。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    },
+    {
+      "text": "烧毁照片",
+      "outcome": {
+        "text": "照片烧起来时发出尖叫声。灰烬落在地上，拼成一个箭头。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d3"
+          }
+        ]
+      }
+    },
+    {
+      "text": "收进背包",
+      "outcome": {
+        "text": "你把照片收好。从那天起，你每次照镜子都觉得照片里多了一个人。",
+        "effects": [
+          {
+            "type": "item",
+            "id": "minecraft:paper",
+            "count": 1
+          },
+          {
+            "type": "san",
+            "value": "-1"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "id": "the_dreamer",
+  "title": "沉睡者",
+  "description": "山谷中央躺着一个巨大的人形。它的胸口缓慢起伏，呼吸带起整片森林的潮声。",
+  "weight": 2,
+  "kpOnly": false,
+  "once": true,
+  "cooldown": 0,
+  "tags": [
+    "dreamer",
+    "mythos"
+  ],
+  "conditions": {},
+  "options": [
+    {
+      "text": "靠近",
+      "skill": "occult",
+      "difficulty": "hard",
+      "success": {
+        "text": "你在它掌心里发现一座微缩的城市。街道上有人在走动，其中一个人抬头看了你一眼。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 2
+          },
+          {
+            "type": "san",
+            "value": "-1d10"
+          }
+        ],
+        "handout": "沉睡者掌心的城市：其中一个人抬头看了你一眼。"
+      },
+      "failure": {
+        "text": "它翻了个身。你被气浪掀飞，落地时发现自己少了一段记忆。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d10"
+          },
+          {
+            "type": "effect",
+            "id": "minecraft:darkness",
+            "duration": 300
+          }
+        ]
+      }
+    },
+    {
+      "text": "跪拜",
+      "outcome": {
+        "text": "你跪下。它的呼吸停了一拍，像是在确认什么。",
+        "effects": [
+          {
+            "type": "mythos",
+            "value": 1
+          },
+          {
+            "type": "san",
+            "value": "-1d8"
+          }
+        ]
+      }
+    },
+    {
+      "text": "逃离",
+      "outcome": {
+        "text": "你跑出山谷。身后传来一声漫长的、满足的叹息。",
+        "effects": [
+          {
+            "type": "san",
+            "value": "-1d6"
+          }
+        ]
+      }
+    }
+  ]
+}
