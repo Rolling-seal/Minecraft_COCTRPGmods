@@ -1,4 +1,4 @@
-# Call of Cthulhu Mod — English Guide (v2.1.1)
+# Call of Cthulhu Mod — English Guide (v2.2.0)
 
 > Minecraft 1.20.1 · Forge 47.4.29 · one jar supports both 简体中文 and English.
 > Language is selected by the **Minecraft client language**, not by a separate jar.
@@ -19,7 +19,7 @@
 
 ## 2. Installation
 
-1. Put `coc-2.1.1.jar` into the instance `mods/` folder.
+1. Put `coc-2.2.0.jar` into the instance `mods/` folder.
 2. Client and server must use the **same latest jar** (network protocol 4).
 3. No other dependencies.
 
@@ -82,7 +82,8 @@ Character sheet → **Background** shows belief, important person, significant p
 ### Keeper items
 - **Keeper’s Book** (`coc:kp_book`): 8-page in-game guide; right-click as Keeper. **Given automatically on join** (and on respawn if missing); no crafting.
 - **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap and whether players may allocate points. `-1` = automatic formula. Craft: comparator + gold ingot + redstone + book.
-- Both are Keeper-only and appear in the Tools creative tab.
+- **Scenario Book** (`coc:scenario_book`): automatically given/updated to every online Keeper when a scenario starts. Right-click to open the act-by-act Story Book for the current scenario; one book per Keeper, no crafting.
+- All three are Keeper-only and appear in the Tools creative tab.
 
 ### Character-sheet JSON
 - `K → Player → select player → Character Sheet JSON`.

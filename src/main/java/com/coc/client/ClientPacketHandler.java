@@ -193,6 +193,11 @@ public final class ClientPacketHandler {
                 case "kp_book" -> mc.setScreen(new KeeperGuideScreen());
                 case "global_settings" -> mc.setScreen(new GlobalSettingsScreen());
                 default -> {
+                    String screen = packet.screen == null ? "" : packet.screen;
+                    if (screen.startsWith("scenario_book:")) {
+                        String id = screen.substring("scenario_book:".length());
+                        mc.setScreen(new StoryBookScreen(null, id, 0));
+                    }
                 }
             }
         });

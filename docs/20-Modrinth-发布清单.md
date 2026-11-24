@@ -29,15 +29,15 @@
 上传：
 
 ```text
-coc-2.1.1.jar
+coc-2.2.0.jar
 ```
 
 当前文件信息（构建后填入）：
 
-- Size: `658,467` bytes
-- SHA1: `413f40e3a9140a0a8574dd20f7f0ede0ca8ce60d`
-- SHA512: `bbf40c9da3d3838f24d74ef378dcfa99831544bf61e950dfe825d503b7480563dde96ae61ec0f5db09d642425d3d30f89198a00827915f4339c9715ce04e9934`
-- Version: `2.1.1`
+- Size: `663,953` bytes
+- SHA1: `961ec03734444b052be5d4332ef9decf582962e3`
+- SHA512: `bbef0ae530aaf3276e3b5551733fd29d73468fcb73bfd823eaac6f497f05fa5f243788afffc54c273926858678cdf92e852837ea9ea92ae5a8c0ed28f59c4626`
+- Version: `2.2.0`
 - Protocol: `4`
 - Client/server must use the same jar.
 
@@ -53,10 +53,11 @@ coc-2.1.1.jar
 ## 三、版本 Changelog 建议
 
 ```text
-2.1.1
-- Keeper's Book is now granted automatically on join (and on respawn if missing); crafting recipe removed.
-- No duplicate book if the Keeper already carries one.
-- New Keeper items: Global Settings (new-character point rules).
+2.2.0
+- New Scenario Book item: every online Keeper receives/updates one when a scenario starts.
+- Right-click opens the act-by-act Story Book with summaries, triggers, scenes, paths and side scenes.
+- One book per Keeper; it updates to the latest scenario, no crafting.
+- Keeper's Book is granted automatically on join (and on respawn if missing); no recipe.
 - Character-sheet JSON export/import for the Keeper (coc-character-v1).
 - Per-item custom display names; granted items keep the name and appear with ★ in the item list.
 - Global Settings toggle no longer resets edited values.

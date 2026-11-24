@@ -8,7 +8,7 @@ A Call of Cthulhu 7e tabletop layer for **Minecraft 1.20.1 / Forge 47.x**.
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-3C8527)
 ![Forge](https://img.shields.io/badge/Forge-47.4.29-DA6E00)
-![Version](https://img.shields.io/badge/Version-2.1.1-C9A227)
+![Version](https://img.shields.io/badge/Version-2.2.0-C9A227)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 > Fan-made project. Not affiliated with or endorsed by Chaosium. The built-in scenarios are original adaptations inspired by the structure of *The Haunting* and *The Lightless Beacon*; no official scenario text is copied.
@@ -25,7 +25,7 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 - a Keeper Story Book with main and side plots;
 - player-authored scenario import;
 - an item library with per-item skill checks and custom names;
-- Keeper's Book and Global Settings items;
+- Keeper's Book, Global Settings and Scenario Book items;
 - character-sheet JSON export/import;
 - low-SAN visual effects;
 - Chinese and English in one jar.
@@ -78,7 +78,10 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
   - **Given automatically** to the Keeper on join (and on respawn if missing). No crafting required.
 - **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap, and whether players may allocate points.
   - Craft: comparator + gold ingot + redstone + book.
-- Both are Keeper-only and also available in the Tools creative tab.
+- **Scenario Book** (`coc:scenario_book`): automatically given/updated to the Keeper when a scenario starts.
+  - Right-click opens the Story Book for the current scenario: every act's summary, trigger, scene, possible paths and side scenes.
+  - One book per Keeper; it updates to the latest started scenario. No crafting.
+- All three are Keeper-only and also available in the Tools creative tab.
 
 ### Character-sheet JSON
 - The Keeper can export the selected investigator to a `.json` file and import it back.
@@ -125,7 +128,7 @@ The client and server must use the **same jar** (network protocol 4).
 ## Installation
 
 1. Install Minecraft Forge 47.4.29 for 1.20.1.
-2. Put [`releases/coc-2.1.1.jar`](releases/coc-2.1.1.jar) into `mods/`.
+2. Put [`releases/coc-2.2.0.jar`](releases/coc-2.2.0.jar) into `mods/`.
 3. Install the same jar on the server if playing multiplayer.
 4. Launch the game.
 
@@ -233,7 +236,7 @@ On Windows, set the same values as environment variables. The script expects:
 - `ForgeAutoRenamingTool-1.0.2-all.jar`;
 - Minecraft client/server libraries for the classpath.
 
-Output: `build/coc-2.1.1.jar`.
+Output: `build/coc-2.2.0.jar`.
 
 A prebuilt jar is recommended for normal users.
 

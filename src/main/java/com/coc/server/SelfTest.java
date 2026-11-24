@@ -102,6 +102,9 @@ public final class SelfTest {
         if (BuiltInRegistries.ITEM.get(new ResourceLocation("coc", "global_settings")) == Items.AIR) {
             failures.add("全局设置物品未注册");
         }
+        if (BuiltInRegistries.ITEM.get(new ResourceLocation("coc", "scenario_book")) == Items.AIR) {
+            failures.add("剧本之书物品未注册");
+        }
         if (source != null && source.getServer() != null) {
             if (source.getServer().getRecipeManager()
                     .byKey(new ResourceLocation("coc", "keeper_panel")).isEmpty()) {

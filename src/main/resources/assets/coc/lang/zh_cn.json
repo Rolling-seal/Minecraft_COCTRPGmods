@@ -11,5 +11,7 @@
   "item.coc.global_settings": "全局设置",
   "item.coc.global_settings.desc": "右键打开角色创建点数设置（仅KP）",
   "item.coc.kp_only": "仅限 KP 使用",
-  "item.coc.global_settings.detail": "调整新角色的职业点 / 兴趣点 / 总点数"
+  "item.coc.global_settings.detail": "调整新角色的职业点 / 兴趣点 / 总点数",
+  "item.coc.scenario_book": "剧本之书",
+  "item.coc.scenario_book.desc": "右键快速翻阅剧本每一幕"
 }

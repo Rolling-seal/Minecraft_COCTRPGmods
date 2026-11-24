@@ -10,5 +10,7 @@
   "item.coc.global_settings": "Global Settings",
   "item.coc.global_settings.desc": "Right-click to configure character creation points (Keeper only)",
   "item.coc.kp_only": "Keeper only",
-  "item.coc.global_settings.detail": "Tune occupation / interest / total points for new investigators"
+  "item.coc.global_settings.detail": "Tune occupation / interest / total points for new investigators",
+  "item.coc.scenario_book": "Scenario Book",
+  "item.coc.scenario_book.desc": "Right-click to skim every act of the scenario"
 }

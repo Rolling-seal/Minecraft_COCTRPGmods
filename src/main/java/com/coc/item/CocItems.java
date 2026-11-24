@@ -24,6 +24,8 @@ public final class CocItems {
             () -> new KeeperBookItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> GLOBAL_SETTINGS = ITEMS.register("global_settings",
             () -> new GlobalSettingsItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> SCENARIO_BOOK = ITEMS.register("scenario_book",
+            () -> new ScenarioBookItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     private CocItems() {
     }
@@ -38,6 +40,7 @@ public final class CocItems {
             event.accept(KP_PANEL);
             event.accept(KP_BOOK);
             event.accept(GLOBAL_SETTINGS);
+            event.accept(SCENARIO_BOOK);
         }
     }
 }

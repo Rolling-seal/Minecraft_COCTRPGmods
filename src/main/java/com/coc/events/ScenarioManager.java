@@ -7,6 +7,7 @@ import com.coc.net.CocNetwork;
 import com.coc.net.packet.S2CActCurtain;
 import com.coc.server.CocData;
 import com.coc.server.SanityService;
+import com.coc.server.ScenarioBookService;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -38,6 +39,7 @@ public final class ScenarioManager {
         state.startedGameTime = server.overworld().getGameTime();
         data.setScenario(state);
         broadcast(server, "═══ 剧本开始：「" + def.title + "」 ═══", ChatFormatting.DARK_PURPLE);
+        ScenarioBookService.giveToKeepers(server, def);
         sendCurtain(server, def, 0, def.title,
                 def.intro == null || def.intro.isBlank()
                         ? "KP 正在准备第一幕。请描述你们此刻在哪里、正在做什么。"

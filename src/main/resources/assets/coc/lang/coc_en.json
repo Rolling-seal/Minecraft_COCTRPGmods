@@ -1638,5 +1638,9 @@
   "这枚齿轮只响应守秘人的意志。": "This gear answers only the Keeper.",
   "选择角色卡 JSON": "Choose Character Sheet JSON",
   "道具页可发放常见或自定义物品。": "The Items page grants common or custom items.",
-  "KP之书已放入你的物品栏。": "The Keeper’s Book has been placed in your inventory."
+  "KP之书已放入你的物品栏。": "The Keeper’s Book has been placed in your inventory.",
+  "剧本之书已就绪：": "Scenario Book ready: ",
+  "剧本之书尚未绑定剧本；先开始一个剧本。": "The Scenario Book is not bound yet; start a scenario first.",
+  "剧本之书只对守秘人展开。": "The Scenario Book opens only for the Keeper.",
+  "开始剧本后你会获得《剧本之书》，右键快速翻幕。": "After starting a scenario you receive the Scenario Book; right-click to skim its acts."
 }

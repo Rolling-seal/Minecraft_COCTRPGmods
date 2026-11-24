@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.2.0 — 2026-11-24
+
+### Scenario Book
+- New item **Scenario Book** (`coc:scenario_book`).
+- When a scenario starts, every online Keeper receives/updates one Scenario Book bound to that scenario.
+- Right-click opens the Story Book for that scenario: each act's title, summary, trigger, scene, possible paths and side scenes.
+- One book per Keeper; starting another scenario updates it instead of adding clutter.
+- No crafting recipe; opening without an active/bound scenario gives a clear message.
+- Bilingual item name, tooltip, grant message and guide line.
+
+### Compatibility
+- Minecraft 1.20.1, Forge 47.4.29, Java 17.
+- Network protocol 4; client and server must use the same jar.
+
 ## 2.1.1 — 2026-11-24
 
 ### Keeper’s Book is automatic
