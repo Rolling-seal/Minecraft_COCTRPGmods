@@ -8,7 +8,7 @@ A Call of Cthulhu 7e tabletop layer for **Minecraft 1.20.1 / Forge 47.x**.
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-3C8527)
 ![Forge](https://img.shields.io/badge/Forge-47.4.29-DA6E00)
-![Version](https://img.shields.io/badge/Version-2.2.0-C9A227)
+![Version](https://img.shields.io/badge/Version-2.3.0-C9A227)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 > Fan-made project. Not affiliated with or endorsed by Chaosium. The built-in scenarios are original adaptations inspired by the structure of *The Haunting* and *The Lightless Beacon*; no official scenario text is copied.
@@ -39,6 +39,7 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 - 55 core skills, 15 occupations, occupation/interest points.
 - SAN, temporary/indefinite insanity, phobias, manias, improvement rolls.
 - Editable backstory: belief, important person, significant place, treasured possession, trait, injury.
+- Backstory and notes are shown **inline** under the injury row; scroll the left panel to read them.
 
 ### Keeper-led rolls
 - Only the Keeper can roll.
@@ -48,19 +49,21 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 - Players cannot open a personal dice screen or use old roll commands.
 
 ### Act curtains
-- Starting a scenario and advancing an act sends players only a curtain:
+- Starting a scenario and advancing an act sends players a curtain:
   - scenario name;
   - act number;
   - act title;
-  - description;
+  - **What Happened**;
+  - up to **three read-only possible actions** (view only; the Keeper adjudicates);
   - **Continue**.
-- No options, no automatic checks, no automatic rewards. The Keeper narrates.
+- No clickable options, no automatic checks, no automatic rewards. The Keeper narrates.
 
 ### Keeper Story Book
 - **Main Story**: per-act summary, trigger, description, possible paths, checks, success/failure and clues.
 - **Side Story**: trigger condition, description, options, consequences and clues.
-- “Show Act to Players” sends only the curtain.
+- “Show Act to Players” sends the curtain with its read-only actions.
 - Every option marks its success/failure/direct clue, or **No clue**.
+- Clue lines are clickable: choose an online player and send the clue to their journal.
 
 ### Item library and item checks
 - Grant items by common list or custom item ID.
@@ -76,12 +79,14 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 ### Keeper items
 - **Keeper’s Book** (`coc:kp_book`): an in-game 8-page operating guide; right-click as Keeper.
   - **Given automatically** to the Keeper on join (and on respawn if missing). No crafting required.
-- **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap, and whether players may allocate points.
+- **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total skill-point cap, whether players may allocate points, and starting Luck / HP / SAN ranges.
   - Craft: comparator + gold ingot + redstone + book.
+  - The Keeper’s Book “Global Settings” page has an **Open Global Settings** button.
 - **Scenario Book** (`coc:scenario_book`): automatically given/updated to the Keeper when a scenario starts.
   - Right-click opens the Story Book for the current scenario: every act's summary, trigger, scene, possible paths and side scenes.
   - One book per Keeper; it updates to the latest started scenario. No crafting.
 - All three are Keeper-only and also available in the Tools creative tab.
+- The Keeper player page has **Restore Sanity** and **Force Madness** buttons.
 
 ### Character-sheet JSON
 - The Keeper can export the selected investigator to a `.json` file and import it back.
@@ -91,6 +96,7 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 ### Scenario import
 - Players and Keepers can import a single `coc-scenario-v1` JSON file.
 - The server validates it and writes standard scenario/event data into `config/coc/`.
+- The file picker uses a Windows-native PowerShell dialog, so it does not depend on Java AWT headless detection; non-Windows desktop falls back to AWT.
 - Imported scenarios appear in the Story Book.
 - Limits: 64 KB, 24 acts, 8 options and 8 side scenes per act.
 - Only text, skills, difficulty, outcomes and clues; no effects, items, spawns or commands.
@@ -121,14 +127,14 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 | Side | Client **and** server |
 | Dependencies | None |
 
-The client and server must use the **same jar** (network protocol 4).
+The client and server must use the **same jar** (network protocol 5).
 
 ---
 
 ## Installation
 
 1. Install Minecraft Forge 47.4.29 for 1.20.1.
-2. Put [`releases/coc-2.2.0.jar`](releases/coc-2.2.0.jar) into `mods/`.
+2. Put [`releases/coc-2.3.0.jar`](releases/coc-2.3.0.jar) into `mods/`.
 3. Install the same jar on the server if playing multiplayer.
 4. Launch the game.
 
@@ -236,7 +242,7 @@ On Windows, set the same values as environment variables. The script expects:
 - `ForgeAutoRenamingTool-1.0.2-all.jar`;
 - Minecraft client/server libraries for the classpath.
 
-Output: `build/coc-2.2.0.jar`.
+Output: `build/coc-2.3.0.jar`.
 
 A prebuilt jar is recommended for normal users.
 

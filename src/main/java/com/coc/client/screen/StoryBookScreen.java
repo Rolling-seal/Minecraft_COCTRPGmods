@@ -176,19 +176,19 @@ public class StoryBookScreen extends Screen {
                 marked = true;
                 if (!o.success.isBlank()) addWrapped(lines, CocLang.tr("  成功：")
                         + CocLang.tr(o.success), CocUi.GREEN, width);
-                addWrapped(lines, CocLang.tr("  成功线索：") + clueText(o.successClue), CocUi.GOLD, width);
+                addClue(lines, "成功线索", o.successClue, width);
             }
             if (!o.failure.isBlank() || !o.failureClue.isBlank()) {
                 marked = true;
                 if (!o.failure.isBlank()) addWrapped(lines, CocLang.tr("  失败：")
                         + CocLang.tr(o.failure), CocUi.RED, width);
-                addWrapped(lines, CocLang.tr("  失败线索：") + clueText(o.failureClue), CocUi.GOLD, width);
+                addClue(lines, "失败线索", o.failureClue, width);
             }
             if (!o.outcome.isBlank() || !o.clue.isBlank()) {
                 marked = true;
                 if (!o.outcome.isBlank()) addWrapped(lines, CocLang.tr("  结果：")
                         + CocLang.tr(o.outcome), CocUi.TEXT, width);
-                addWrapped(lines, CocLang.tr("  线索：") + clueText(o.clue), CocUi.GOLD, width);
+                addClue(lines, "线索", o.clue, width);
             }
             if (!marked) {
                 addWrapped(lines, CocLang.tr("  线索：无（本选项不给线索）"), CocUi.MUTED, width);
@@ -197,8 +197,33 @@ public class StoryBookScreen extends Screen {
         }
     }
 
-    private String clueText(String clue) {
-        return clue == null || clue.isBlank() ? CocLang.tr("无") : CocLang.tr(clue);
+    /** 线索行可点击：点击后选择在线玩家发送。 */
+    private void addClue(List<Line> lines, String label, String clue, int width) {
+        if (clue == null || clue.isBlank()) {
+            addWrapped(lines, "  " + CocLang.tr(label) + "：" + CocLang.tr("无"), CocUi.MUTED, width);
+            return;
+        }
+        addClueWrapped(lines, "  " + CocLang.tr(label) + CocLang.tr("（点击发送）：") + CocLang.tr(clue),
+                clue, label, width);
+    }
+
+    private void addClueWrapped(List<Line> lines, String text, String clue, String label, int width) {
+        if (text == null || text.isBlank()) return;
+        for (String paragraph : text.replace("\r", "").split("\n", -1)) {
+            if (paragraph.isBlank()) {
+                lines.add(new Line("", CocUi.GOLD));
+                continue;
+            }
+            StringBuilder line = new StringBuilder();
+            for (char c : paragraph.toCharArray()) {
+                if (font.width(line.toString() + c) > width && line.length() > 0) {
+                    lines.add(new Line(line.toString(), CocUi.GOLD, clue, label));
+                    line.setLength(0);
+                }
+                line.append(c);
+            }
+            if (line.length() > 0) lines.add(new Line(line.toString(), CocUi.GOLD, clue, label));
+        }
     }
 
     private void addWrapped(List<Line> lines, String text, int color, int width) {
@@ -263,7 +288,13 @@ public class StoryBookScreen extends Screen {
             rebuildDetail();
             return true;
         }
-        if (detailList != null && detailList.mouseClicked(mouseX, mouseY, button)) return true;
+        if (detailList != null && detailList.mouseClicked(mouseX, mouseY, button)) {
+            Line line = detailList.getSelected();
+            if (line != null && line.clue != null && !line.clue.isBlank() && minecraft != null) {
+                minecraft.setScreen(new ClueTargetScreen(this, line.clue, line.clueLabel));
+            }
+            return true;
+        }
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
@@ -296,6 +327,9 @@ public class StoryBookScreen extends Screen {
         return false;
     }
 
-    private record Line(String text, int color) {
+    private record Line(String text, int color, String clue, String clueLabel) {
+        Line(String text, int color) {
+            this(text, color, "", "");
+        }
     }
 }

@@ -6,4 +6,10 @@ public final class GlobalSettingsView {
     public int occupationPoints = -1;
     public int interestPoints = -1;
     public int totalPoints = -1;
+    public int luckMin = -1;
+    public int luckMax = -1;
+    public int hpMin = -1;
+    public int hpMax = -1;
+    public int sanMin = -1;
+    public int sanMax = -1;
 }

@@ -32,6 +32,15 @@ public final class CocServerConfig {
     public int creationInterestPoints = -1;
     /** -1 表示不额外限制总点数；>=0 为职业+兴趣总上限。 */
     public int creationTotalPoints = -1;
+    /** 初始幸运范围；-1 表示沿用掷骰结果。 */
+    public int creationLuckMin = -1;
+    public int creationLuckMax = -1;
+    /** 初始 HP 范围；-1 表示沿用体质/体型公式。 */
+    public int creationHpMin = -1;
+    public int creationHpMax = -1;
+    /** 初始 SAN 范围；-1 表示沿用 POW。 */
+    public int creationSanMin = -1;
+    public int creationSanMax = -1;
     public List<String> kpNames = new ArrayList<>();
 
     public static Path path() {

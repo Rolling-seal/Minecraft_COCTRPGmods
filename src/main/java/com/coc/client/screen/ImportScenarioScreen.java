@@ -1,6 +1,7 @@
 package com.coc.client.screen;
 
 import com.coc.client.CocLang;
+import com.coc.client.NativeFileDialog;
 import com.coc.client.ui.CocUi;
 import com.coc.net.CocNetwork;
 import com.coc.net.packet.C2SImportScenario;
@@ -11,9 +12,6 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
-import java.awt.FileDialog;
-import java.awt.Frame;
-import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -43,38 +41,23 @@ public class ImportScenarioScreen extends Screen {
 
     private void chooseFile() {
         if (minecraft == null) return;
-        if (GraphicsEnvironment.isHeadless()) {
-            status = CocLang.tr("当前环境没有图形界面，无法打开文件选择器。");
-            success = false;
-            return;
-        }
         status = CocLang.tr("正在打开文件选择器……");
         success = true;
         Thread thread = new Thread(() -> {
             String json = null;
             String error = null;
             try {
-                FileDialog dialog = new FileDialog((Frame) null, CocLang.tr("选择剧本 JSON"), FileDialog.LOAD);
-                dialog.setFile("*.json");
-                dialog.setFilenameFilter((dir, name) -> name.toLowerCase().endsWith(".json"));
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
-                String name = dialog.getFile();
-                String dir = dialog.getDirectory();
-                dialog.dispose();
-                if (name == null) {
+                File file = NativeFileDialog.openJson(CocLang.tr("选择剧本 JSON"));
+                if (file == null) {
                     error = CocLang.tr("未选择文件。");
+                } else if (!file.isFile()) {
+                    error = CocLang.tr("文件不存在：") + file.getAbsolutePath();
+                } else if (!file.getName().toLowerCase().endsWith(".json")) {
+                    error = CocLang.tr("请选择 .json 文件。");
+                } else if (file.length() > C2SImportScenario.MAX_JSON) {
+                    error = CocLang.tr("JSON 文件超过 64KB 上限，请精简文本。");
                 } else {
-                    File file = new File(dir, name);
-                    if (!file.isFile()) {
-                        error = CocLang.tr("文件不存在：") + file.getAbsolutePath();
-                    } else if (!file.getName().toLowerCase().endsWith(".json")) {
-                        error = CocLang.tr("请选择 .json 文件。");
-                    } else if (file.length() > C2SImportScenario.MAX_JSON) {
-                        error = CocLang.tr("JSON 文件超过 64KB 上限，请精简文本。");
-                    } else {
-                        json = Files.readString(file.toPath(), StandardCharsets.UTF_8);
-                    }
+                    json = Files.readString(file.toPath(), StandardCharsets.UTF_8);
                 }
             } catch (Throwable e) {
                 error = CocLang.tr("读取文件失败：") + e.getMessage();

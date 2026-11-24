@@ -1,4 +1,4 @@
-# Call of Cthulhu Mod — English Guide (v2.2.0)
+# Call of Cthulhu Mod — English Guide (v2.3.0)
 
 > Minecraft 1.20.1 · Forge 47.4.29 · one jar supports both 简体中文 and English.
 > Language is selected by the **Minecraft client language**, not by a separate jar.
@@ -19,8 +19,8 @@
 
 ## 2. Installation
 
-1. Put `coc-2.2.0.jar` into the instance `mods/` folder.
-2. Client and server must use the **same latest jar** (network protocol 4).
+1. Put `coc-2.3.0.jar` into the instance `mods/` folder.
+2. Client and server must use the **same latest jar** (network protocol 5).
 3. No other dependencies.
 
 ---
@@ -42,7 +42,7 @@ Players no longer have a dice key. The Keeper rolls for them.
 
 | Page | Use |
 |---|---|
-| Player | Select player; view sheet; status/luck adjustment; restore sanity; improvement; character-sheet JSON; delete sheet. |
+| Player | Select player; view sheet; status/luck adjustment; restore sanity / force madness; improvement; character-sheet JSON; delete sheet. |
 | Roll | Select player + skill + difficulty + bonus/penalty; **Roll for Selected Player**; public dice. |
 | Items | View selected player's inventory; grant items; item library/rules; public item-use check. |
 | Story Book | Pick scenario; **Main Story / Side Story**; start/stop; import scenario. |
@@ -54,11 +54,12 @@ All Keeper skill rolls, arbitrary dice, item-use checks and SAN checks are sent 
 Players cannot initiate rolls themselves.
 
 ### Story flow
-- Each act sends players **only a curtain** with title + description. No option buttons.
-- The Keeper reads the Story Book and narrates the options.
+- Each act sends players a curtain with **What Happened** and up to **three read-only possible actions**; no option buttons.
+- The Keeper reads the Story Book and adjudicates; players cannot click the listed actions.
 - Main Story shows per-act summary, trigger, description, possible paths, success/failure, clues.
 - Side Story shows trigger condition, description, options and consequences.
-- **Show Act to Players** sends only the curtain.
+- **Show Act to Players** sends the curtain with its read-only actions.
+- Clue lines in the Story Book are clickable; choose an online player to send the clue to their journal.
 
 ### Item library and rules
 - `K → Items → Grant Item / Rules`.
@@ -77,11 +78,11 @@ Players cannot initiate rolls themselves.
 - Full HP/MP.
 
 ### Backstory
-Character sheet → **Background** shows belief, important person, significant place, treasured possession, trait, injury and notes; scrollable in small windows.
+The character sheet’s left panel now shows belief, important person, significant place, treasured possession, trait, injury and notes inline under the injury row. Scroll the left panel; no separate Background button is needed.
 
 ### Keeper items
 - **Keeper’s Book** (`coc:kp_book`): 8-page in-game guide; right-click as Keeper. **Given automatically on join** (and on respawn if missing); no crafting.
-- **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap and whether players may allocate points. `-1` = automatic formula. Craft: comparator + gold ingot + redstone + book.
+- **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total skill-point cap, whether players may allocate points, and starting Luck / HP / SAN ranges. `-1` = automatic formula. Craft: comparator + gold ingot + redstone + book. The Keeper’s Book Global Settings page has an **Open Global Settings** button.
 - **Scenario Book** (`coc:scenario_book`): automatically given/updated to every online Keeper when a scenario starts. Right-click to open the act-by-act Story Book for the current scenario; one book per Keeper, no crafting.
 - All three are Keeper-only and appear in the Tools creative tab.
 
@@ -171,7 +172,7 @@ The English text is a fan translation for play; proper names and tone may be adj
 - Custom imported scenario text is **not machine-translated**; author it in the language you want.
 - Some dynamic chat lines with custom names may mix languages.
 - `SELFTEST OK · events 75 · scenarios 3` is the current dedicated-server check.
-- File picker uses the desktop file dialog; on headless/no-desktop Linux it cannot open.
+- Windows uses a PowerShell/WinForms native file dialog that does not depend on Java AWT headless detection; other desktops fall back to AWT. Truly headless environments cannot show a picker.
 - Global Settings and Keeper’s Book are Keeper-only; non-Keeper players get a refusal message.
 - Character-sheet import is Keeper-only and works only on online players.
 

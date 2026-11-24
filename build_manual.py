@@ -32,7 +32,7 @@ RAT = os.path.join(
     r"\ForgeAutoRenamingTool-1.0.2-all.jar")
 
 MOD_ID = "coc"
-MOD_VERSION = "2.2.0"
+MOD_VERSION = "2.3.0"
 JAR_NAME = f"{MOD_ID}-{MOD_VERSION}.jar"
 
 MAIN_JAVA = os.path.join(PROJECT, "src", "main", "java")

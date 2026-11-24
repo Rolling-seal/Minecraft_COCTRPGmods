@@ -1,6 +1,7 @@
 package com.coc.client;
 
 import com.coc.client.screen.CharacterCreationScreen;
+import com.coc.client.screen.ClueTargetScreen;
 import com.coc.client.screen.CharacterSheetScreen;
 import com.coc.client.screen.CurtainScreen;
 import com.coc.client.screen.EventScreen;
@@ -92,6 +93,7 @@ public final class ClientPacketHandler {
             ClientCache.kpView = KpView.fromNbt(packet.data);
             if (mc.screen instanceof KeeperScreen screen) screen.refresh();
             else if (mc.screen instanceof ItemPickerScreen screen) screen.refresh();
+            else if (mc.screen instanceof ClueTargetScreen screen) screen.refresh();
         });
     }
 
@@ -141,6 +143,12 @@ public final class ClientPacketHandler {
             view.occupationPoints = packet.occupationPoints;
             view.interestPoints = packet.interestPoints;
             view.totalPoints = packet.totalPoints;
+            view.luckMin = packet.luckMin;
+            view.luckMax = packet.luckMax;
+            view.hpMin = packet.hpMin;
+            view.hpMax = packet.hpMax;
+            view.sanMin = packet.sanMin;
+            view.sanMax = packet.sanMax;
             ClientCache.globalSettings = view;
             if (mc.screen instanceof GlobalSettingsScreen screen) screen.onSettings(view);
         });

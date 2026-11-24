@@ -91,6 +91,10 @@ public final class CharacterService {
         sheet.stats.pow = finalStats.pow;
         sheet.stats.edu = finalStats.edu;
         sheet.stats.luck = finalStats.luck;
+        int[] luckRange = resolveRange(cfg.creationLuckMin, cfg.creationLuckMax, 0, 99);
+        if (luckRange != null) {
+            sheet.stats.luck = rollRange(player, luckRange[0], luckRange[1]);
+        }
 
         for (SkillDef def : SkillRegistry.all()) {
             int baseValue = def.baseValue(finalStats.dex, finalStats.edu);
@@ -100,10 +104,24 @@ public final class CharacterService {
         sheet.mythos = 0;
         sheet.maxSan = 99;
         sheet.san = Math.min(99, finalStats.pow);
+        int[] sanRange = resolveRange(cfg.creationSanMin, cfg.creationSanMax, 0, 99);
+        if (sanRange != null) {
+            sheet.san = Math.min(sheet.maxSan, rollRange(player, sanRange[0], sanRange[1]));
+        }
         sheet.recalculateDerived();
-        sheet.hp = sheet.maxHp;
+        int[] hpRange = resolveRange(cfg.creationHpMin, cfg.creationHpMax, 1, 99);
+        if (hpRange != null) {
+            sheet.maxHp = rollRange(player, hpRange[0], hpRange[1]);
+            sheet.hp = sheet.maxHp;
+        } else {
+            sheet.hp = sheet.maxHp;
+        }
         sheet.mp = sheet.maxMp;
         sheet.dying = false;
+        if (sheet.san <= 0) {
+            sheet.retired = true;
+            sheet.indefiniteInsanity = true;
+        }
         sheet.lastSanDay = CocData.day(player);
 
         CompoundTag backstory = tag.getCompound("backstory");
@@ -118,6 +136,25 @@ public final class CharacterService {
         player.sendSystemMessage(Component.literal(
                 "角色创建完成：" + sheet.name + " · " + occupation.name + " · SAN " + sheet.san + "/" + sheet.maxSan)
                 .withStyle(ChatFormatting.GOLD));
+    }
+
+    private static int[] resolveRange(int min, int max, int lower, int upper) {
+        if (min < 0 && max < 0) return null;
+        int lo = min < 0 ? max : min;
+        int hi = max < 0 ? min : max;
+        lo = Math.max(lower, Math.min(upper, lo));
+        hi = Math.max(lower, Math.min(upper, hi));
+        if (lo > hi) {
+            int swap = lo;
+            lo = hi;
+            hi = swap;
+        }
+        return new int[]{lo, hi};
+    }
+
+    private static int rollRange(ServerPlayer player, int min, int max) {
+        if (max <= min) return min;
+        return min + player.serverLevel().random.nextInt(max - min + 1);
     }
 
     /** 按名字找在线或离线角色卡。 */

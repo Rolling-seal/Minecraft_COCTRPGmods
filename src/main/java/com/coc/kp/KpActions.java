@@ -111,6 +111,9 @@ public final class KpActions {
             case "clear_insanity" -> {
                 if (sheet != null) SanityService.clearInsanity(target, sheet);
             }
+            case "madness" -> {
+                if (sheet != null) SanityService.forceTemporaryInsanity(target, sheet);
+            }
             case "growth" -> {
                 if (sheet != null) GrowthService.grow(target, sheet);
             }

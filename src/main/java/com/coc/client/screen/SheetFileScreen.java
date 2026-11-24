@@ -1,6 +1,7 @@
 package com.coc.client.screen;
 
 import com.coc.client.CocLang;
+import com.coc.client.NativeFileDialog;
 import com.coc.client.ui.CocUi;
 import com.coc.net.CocNetwork;
 import com.coc.net.packet.C2SExportSheet;
@@ -13,9 +14,6 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
-import java.awt.FileDialog;
-import java.awt.Frame;
-import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -61,30 +59,22 @@ public class SheetFileScreen extends Screen {
 
     private void chooseImport() {
         if (minecraft == null || target == null) return;
-        if (GraphicsEnvironment.isHeadless()) {
-            status = CocLang.tr("当前环境没有图形界面，无法打开文件选择器。");
-            return;
-        }
         status = CocLang.tr("正在选择文件……");
         Thread thread = new Thread(() -> {
             String json = null;
             String error = null;
             try {
-                FileDialog dialog = new FileDialog((Frame) null, CocLang.tr("选择角色卡 JSON"), FileDialog.LOAD);
-                dialog.setFile("*.json");
-                dialog.setFilenameFilter((dir, name) -> name.toLowerCase().endsWith(".json"));
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
-                String name = dialog.getFile();
-                String dir = dialog.getDirectory();
-                dialog.dispose();
-                if (name == null) {
+                File file = NativeFileDialog.openJson(CocLang.tr("选择角色卡 JSON"));
+                if (file == null) {
                     error = CocLang.tr("未选择文件。");
+                } else if (!file.isFile()) {
+                    error = CocLang.tr("文件不存在。");
+                } else if (!file.getName().toLowerCase().endsWith(".json")) {
+                    error = CocLang.tr("请选择 .json 文件。");
+                } else if (file.length() > MAX_JSON) {
+                    error = CocLang.tr("角色卡 JSON 超过 256KB。");
                 } else {
-                    File file = new File(dir, name);
-                    if (!file.isFile()) error = CocLang.tr("文件不存在。");
-                    else if (file.length() > MAX_JSON) error = CocLang.tr("角色卡 JSON 超过 256KB。");
-                    else json = Files.readString(file.toPath(), StandardCharsets.UTF_8);
+                    json = Files.readString(file.toPath(), StandardCharsets.UTF_8);
                 }
             } catch (Throwable e) {
                 error = CocLang.tr("读取文件失败：") + e.getMessage();
@@ -107,25 +97,14 @@ public class SheetFileScreen extends Screen {
 
     public void onExport(S2CSheetJson packet) {
         if (minecraft == null) return;
-        if (GraphicsEnvironment.isHeadless()) {
-            status = CocLang.tr("当前环境没有图形界面，无法保存文件。");
-            return;
-        }
         Thread thread = new Thread(() -> {
             String err = null;
             try {
-                FileDialog dialog = new FileDialog((Frame) null, CocLang.tr("保存角色卡 JSON"), FileDialog.SAVE);
-                dialog.setFile(packet.fileName == null ? "character.json" : packet.fileName);
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
-                String name = dialog.getFile();
-                String dir = dialog.getDirectory();
-                dialog.dispose();
-                if (name == null) {
+                File file = NativeFileDialog.saveJson(CocLang.tr("保存角色卡 JSON"),
+                        packet.fileName == null ? "character.json" : packet.fileName);
+                if (file == null) {
                     err = CocLang.tr("未选择保存位置。");
                 } else {
-                    if (!name.toLowerCase().endsWith(".json")) name += ".json";
-                    File file = new File(dir, name);
                     Files.writeString(file.toPath(), packet.json, StandardCharsets.UTF_8);
                 }
             } catch (Throwable e) {

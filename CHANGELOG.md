@@ -1,5 +1,38 @@
 # Changelog
 
+## 2.3.0 — 2026-11-24
+
+### Global Settings
+- The Keeper’s Book “Global Settings” page now has an **Open Global Settings** button.
+- Added starting **Luck**, **HP** and **SAN** ranges (min/max; `-1` = default formula).
+- Skill-point total cap remains configurable; occupation and interest points can be set separately.
+- Ranges are applied server-side on character creation and verified: Luck 42, HP 13/13, SAN 55/99.
+
+### Keeper player controls
+- Added a **Force Madness** button beside **Restore Sanity** on the Keeper player page.
+- It applies a temporary insanity bout without deducting SAN and broadcasts the result.
+
+### Character sheet
+- Backstory and notes are now shown **inline** under the injury row; the left sheet panel scrolls with the mouse wheel.
+- Removed the separate “Background” button; a scroll hint is shown when content overflows.
+- Status line is visible at the top; summary scrolls with the rest.
+
+### Act curtains
+- Player curtains now show **What Happened** and up to **three read-only possible actions**.
+- Actions are display-only; the Keeper still adjudicates and no option can be clicked.
+
+### Story Book clues
+- Clue lines in the Story Book are clickable.
+- Clicking a clue opens a player picker; select an online investigator and send the clue to their journal.
+
+### File picker
+- Windows uses a PowerShell/WinForms native file dialog, bypassing Java `GraphicsEnvironment.isHeadless()`.
+- Non-Windows desktop falls back to AWT; truly headless environments get a clear message.
+
+### Compatibility
+- Minecraft 1.20.1, Forge 47.4.29, Java 17.
+- Network protocol 5; client and server must use the same jar.
+
 ## 2.2.0 — 2026-11-24
 
 ### Scenario Book

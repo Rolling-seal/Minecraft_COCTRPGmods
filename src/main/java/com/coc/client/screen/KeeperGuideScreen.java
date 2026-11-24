@@ -17,6 +17,7 @@ public class KeeperGuideScreen extends Screen {
     private int selected;
     private CocList<Page> pageList;
     private CocList<Line> lineList;
+    private Button settingsButton;
     private boolean compact;
 
     public KeeperGuideScreen() {
@@ -61,6 +62,7 @@ public class KeeperGuideScreen extends Screen {
                 "全局设置物品可调整新角色的职业点、兴趣点、总点数。",
                 "-1 表示自动公式：职业点按职业，兴趣点为 INT×2。",
                 "关闭“允许玩家自行分配点数”后，新角色只保留基础技能。",
+                "还可设置初始幸运、初始 HP、初始 SAN 的随机范围。",
                 "设置只影响新角色，不修改已有角色卡。"));
     }
 
@@ -89,6 +91,12 @@ public class KeeperGuideScreen extends Screen {
                 (g, font, line, x, y, w, h, hovered, selected) ->
                         g.drawString(font, line.text, x, y, line.color, false));
         rebuildDetail();
+        settingsButton = addBtn(CocLang.tr("打开全局设置"), 12, bottom, 132, 18,
+                () -> {
+                    if (minecraft != null) minecraft.setScreen(new GlobalSettingsScreen());
+                });
+        settingsButton.visible = selected == 7;
+        settingsButton.active = selected == 7;
         addBtn(CocLang.tr("关闭"), width - 80, bottom, 68, 18, this::onClose);
     }
 
@@ -107,6 +115,10 @@ public class KeeperGuideScreen extends Screen {
         }
         lineList.setItems(lines);
         lineList.setScroll(0);
+        if (settingsButton != null) {
+            settingsButton.visible = selected == 7;
+            settingsButton.active = selected == 7;
+        }
     }
 
     private void addWrapped(List<Line> lines, String text, int color, int width) {
@@ -136,9 +148,11 @@ public class KeeperGuideScreen extends Screen {
         if (line.length() > 0) lines.add(new Line(line.toString(), color));
     }
 
-    private void addBtn(String label, int x, int y, int w, int h, Runnable action) {
-        addRenderableWidget(Button.builder(Component.literal(label), b -> action.run())
-                .bounds(x, y, w, h).build());
+    private Button addBtn(String label, int x, int y, int w, int h, Runnable action) {
+        Button button = Button.builder(Component.literal(label), b -> action.run())
+                .bounds(x, y, w, h).build();
+        addRenderableWidget(button);
+        return button;
     }
 
     @Override

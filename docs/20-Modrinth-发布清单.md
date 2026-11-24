@@ -29,16 +29,16 @@
 上传：
 
 ```text
-coc-2.2.0.jar
+coc-2.3.0.jar
 ```
 
 当前文件信息（构建后填入）：
 
-- Size: `663,953` bytes
-- SHA1: `961ec03734444b052be5d4332ef9decf582962e3`
-- SHA512: `bbef0ae530aaf3276e3b5551733fd29d73468fcb73bfd823eaac6f497f05fa5f243788afffc54c273926858678cdf92e852837ea9ea92ae5a8c0ed28f59c4626`
-- Version: `2.2.0`
-- Protocol: `4`
+- Size: `678,304` bytes
+- SHA1: `71d6b4571724db4bdde8f049abb93ab1fd38f19d`
+- SHA512: `aad3bcae8df472c844165b07533656ed59246ccf2672f4ca8be4127f19141c6373ae3fb728c6320eaaccfc4d262fa8bad3f415d0b0c498135aedb55b39a14c98`
+- Version: `2.3.0`
+- Protocol: `5`
 - Client/server must use the same jar.
 
 可选附加文件：
@@ -53,16 +53,14 @@ coc-2.2.0.jar
 ## 三、版本 Changelog 建议
 
 ```text
-2.2.0
-- New Scenario Book item: every online Keeper receives/updates one when a scenario starts.
-- Right-click opens the act-by-act Story Book with summaries, triggers, scenes, paths and side scenes.
-- One book per Keeper; it updates to the latest scenario, no crafting.
-- Keeper's Book is granted automatically on join (and on respawn if missing); no recipe.
-- Character-sheet JSON export/import for the Keeper (coc-character-v1).
-- Per-item custom display names; granted items keep the name and appear with ★ in the item list.
-- Global Settings toggle no longer resets edited values.
-- Bilingual tooltips for the new items.
-- Network protocol 4.
+2.3.0
+- Global Settings: starting Luck/HP/SAN ranges; Open Global Settings button in the Keeper's Book.
+- Keeper player page: Force Madness button.
+- Character sheet: backstory and notes inline under the injury row; scrollable.
+- Act curtains: What Happened + up to three read-only possible actions.
+- Story Book clues: click a clue and send it to an online player.
+- Windows native file picker via PowerShell/WinForms; no AWT headless dependency.
+- Network protocol 5.
 - Built-in scenarios: The Haunting (11 acts), The Lightless Beacon (11 acts), Whispers in the Dark (12 acts).
 ```
 

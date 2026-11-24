@@ -77,7 +77,9 @@ public final class ServerPacketHandler {
             return;
         }
         com.coc.server.GlobalSettingsService.save(player, packet.allowPoints,
-                packet.occupationPoints, packet.interestPoints, packet.totalPoints);
+                packet.occupationPoints, packet.interestPoints, packet.totalPoints,
+                packet.luckMin, packet.luckMax, packet.hpMin, packet.hpMax,
+                packet.sanMin, packet.sanMax);
     }
 
     public static void exportSheet(ServerPlayer player, UUID target) {

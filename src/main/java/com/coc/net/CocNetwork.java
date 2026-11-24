@@ -11,7 +11,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 
 /** 网络通道：协议版本 4。所有复杂数据用 NBT 传递。 */
 public final class CocNetwork {
-    private static final String PROTOCOL = "4";
+    private static final String PROTOCOL = "5";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation("coc", "main"),
             () -> PROTOCOL,

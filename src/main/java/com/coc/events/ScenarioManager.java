@@ -10,6 +10,8 @@ import com.coc.server.SanityService;
 import com.coc.server.ScenarioBookService;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -43,7 +45,7 @@ public final class ScenarioManager {
         sendCurtain(server, def, 0, def.title,
                 def.intro == null || def.intro.isBlank()
                         ? "KP 正在准备第一幕。请描述你们此刻在哪里、正在做什么。"
-                        : def.intro);
+                        : def.intro, List.of());
         for (ServerPlayer player : participants(server)) {
             player.sendSystemMessage(Component.literal("KP 已开始剧本。等待第一幕……")
                     .withStyle(ChatFormatting.GRAY));
@@ -118,18 +120,34 @@ public final class ScenarioManager {
                 ? (act == null ? "" : act.summary) : event.description);
         broadcast(server, "── 第 " + (index + 1) + " 幕 / " + def.events.size()
                 + " ── " + title, ChatFormatting.AQUA);
-        sendCurtain(server, def, index + 1, title, description);
+        List<String> options = new java.util.ArrayList<>();
+        if (event != null && event.options != null) {
+            for (EventDef.Option option : event.options) {
+                if (option != null && option.text != null && !option.text.isBlank()
+                        && options.size() < 3) {
+                    options.add(option.text);
+                }
+            }
+        }
+        sendCurtain(server, def, index + 1, title, description, options);
     }
 
     /** 给所有有角色卡的玩家发一幕幕布；不发送任何选项或事件卡。 */
     private static void sendCurtain(MinecraftServer server, ScenarioDef def, int actNumber,
-                                    String title, String description) {
+                                    String title, String description, List<String> options) {
         CompoundTag tag = new CompoundTag();
         tag.putString("scenario", def.title == null ? def.id : def.title);
         tag.putInt("act", actNumber);
         tag.putInt("total", def.events == null ? 0 : def.events.size());
         tag.putString("title", title == null ? "" : title);
         tag.putString("description", description == null ? "" : description);
+        ListTag optionTags = new ListTag();
+        if (options != null) {
+            for (String option : options) {
+                if (option != null && !option.isBlank()) optionTags.add(StringTag.valueOf(option));
+            }
+        }
+        tag.put("options", optionTags);
         for (ServerPlayer player : participants(server)) {
             CocNetwork.sendToPlayer(player, new S2CActCurtain(tag));
         }
@@ -138,7 +156,7 @@ public final class ScenarioManager {
     private static void end(MinecraftServer server, ScenarioDef def, ScenarioState state, CocWorldData data) {
         broadcast(server, "═══ 剧本结束：「" + def.title + "」 ═══", ChatFormatting.GOLD);
         sendCurtain(server, def, 0, def.title,
-                def.outro == null || def.outro.isBlank() ? "故事到这里告一段落。" : def.outro);
+                def.outro == null || def.outro.isBlank() ? "故事到这里告一段落。" : def.outro, List.of());
         for (ServerPlayer player : participants(server)) {
             CharacterSheet sheet = CocData.sheet(player);
             if (sheet != null && def.sanReward != null && !def.sanReward.isBlank()) {

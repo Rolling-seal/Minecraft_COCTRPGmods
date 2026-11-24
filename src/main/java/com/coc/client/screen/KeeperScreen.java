@@ -126,7 +126,11 @@ public class KeeperScreen extends Screen {
         addBtn(CocLang.tr("查看角色卡"), rx, y, rw, bh, () -> send("sheet", selectedUuid, "", 0));
         addBtn(CocLang.tr("状态调整 / 燃运"), rx, y + step, rw, bh,
                 () -> openAdjust(view));
-        addBtn(CocLang.tr("恢复神志"), rx, y + step * 2, rw, bh, () -> send("clear_insanity", selectedUuid, "", 0));
+        int halfW = Math.max(48, rw / 2 - 2);
+        addBtn(CocLang.tr("恢复神志"), rx, y + step * 2, halfW, bh,
+                () -> send("clear_insanity", selectedUuid, "", 0));
+        addBtn(CocLang.tr("神志不清"), rx + halfW + 4, y + step * 2, halfW, bh,
+                () -> send("madness", selectedUuid, "", 0));
         addBtn(CocLang.tr("成长检定"), rx, y + step * 3, rw, bh, () -> send("growth", selectedUuid, "", 0));
         addBtn(CocLang.tr("角色卡 JSON"), rx, y + step * 4, rw, bh, () -> {
             KpView.Player p = selectedPlayer(view);

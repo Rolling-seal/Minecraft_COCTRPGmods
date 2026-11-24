@@ -104,6 +104,25 @@ public final class SanityService {
         CocNetwork.syncSheet(player, sheet);
     }
 
+    /** KP 直接让目标进入临时疯狂，不扣 SAN。 */
+    public static void forceTemporaryInsanity(ServerPlayer player, CharacterSheet sheet) {
+        if (player == null || sheet == null) return;
+        RandomSource random = player.serverLevel().random;
+        long gameTime = player.serverLevel().getGameTime();
+        int hours = SanityRules.insanityHours(random);
+        long end = gameTime + hours * 1000L;
+        sheet.tempInsanityEnd = Math.max(sheet.tempInsanityEnd, end);
+        int idx = random.nextInt(SanityRules.BOUTS.length);
+        String bout = SanityRules.BOUTS[idx];
+        sheet.tempInsanity = bout;
+        applyBout(player, sheet, idx, random);
+        player.sendSystemMessage(Component.literal(
+                "【KP】你被推入临时性疯狂：" + bout + "，持续约 " + hours + " 小时。")
+                .withStyle(ChatFormatting.DARK_RED));
+        broadcast(player.getServer(), "☠ " + sheet.name + " 陷入了临时性疯狂（KP 裁定）。");
+        CocNetwork.syncSheet(player, sheet);
+    }
+
     public static void clearInsanity(ServerPlayer player, CharacterSheet sheet) {
         if (player == null || sheet == null) return;
         sheet.tempInsanityEnd = 0;

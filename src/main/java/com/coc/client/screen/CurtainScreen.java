@@ -12,10 +12,10 @@ import net.minecraft.network.chat.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 玩家幕布：只显示新一幕的标题与介绍，不提供选项。 */
+/** 玩家幕布：显示本幕发生了什么，并列出最多三个只读的常规选项。 */
 public class CurtainScreen extends Screen {
     private final CurtainView view;
-    private final List<String> lines = new ArrayList<>();
+    private final List<Line> lines = new ArrayList<>();
     private int scroll;
     private boolean compact;
     private int textX, textY, textW, textH;
@@ -37,29 +37,46 @@ public class CurtainScreen extends Screen {
         textY = y + (compact ? 42 : 62);
         textW = panelW - 32;
         textH = panelH - (compact ? 70 : 94);
-        wrap(CocLang.tr(view.description), textW);
+        lines.add(new Line(CocLang.tr("发生了什么"), CocUi.ACCENT));
+        wrap(CocLang.tr(view.description), textW, CocUi.TEXT);
+        if (!view.options.isEmpty()) {
+            lines.add(new Line("", CocUi.TEXT));
+            lines.add(new Line(CocLang.tr("可能的行动（仅供查看，由 KP 裁定）"), CocUi.GOLD));
+            int shown = 0;
+            for (String option : view.options) {
+                if (shown >= 3) break;
+                show(new Line((shown + 1) + ". " + CocLang.tr(option), CocUi.MUTED));
+                shown++;
+            }
+        }
         addRenderableWidget(Button.builder(Component.literal(CocLang.tr("继续")), b -> onClose())
                 .bounds(width / 2 - 40, y + panelH - 24, 80, 18).build());
         scroll = 0;
     }
 
-    private void wrap(String text, int width) {
+    private void wrap(String text, int width, int color) {
         if (text == null) return;
         for (String paragraph : text.replace("\r", "").split("\n", -1)) {
             if (paragraph.isBlank()) {
-                lines.add("");
+                lines.add(new Line("", color));
                 continue;
             }
-            StringBuilder line = new StringBuilder();
-            for (char c : paragraph.toCharArray()) {
-                if (font.width(line.toString() + c) > width && line.length() > 0) {
-                    lines.add(line.toString());
-                    line.setLength(0);
-                }
-                line.append(c);
-            }
-            if (line.length() > 0) lines.add(line.toString());
+            show(new Line(paragraph, color));
         }
+    }
+
+    /** 按宽度拆行，保留颜色。 */
+    private void show(Line source) {
+        String paragraph = source.text;
+        StringBuilder line = new StringBuilder();
+        for (char c : paragraph.toCharArray()) {
+            if (font.width(line.toString() + c) > textW && line.length() > 0) {
+                lines.add(new Line(line.toString(), source.color));
+                line.setLength(0);
+            }
+            line.append(c);
+        }
+        if (line.length() > 0) lines.add(new Line(line.toString(), source.color));
     }
 
     @Override
@@ -102,7 +119,7 @@ public class CurtainScreen extends Screen {
         for (int i = 0; i < lines.size(); i++) {
             int ly = textY + i * lineHeight - scroll;
             if (ly + lineHeight < textY || ly > textY + textH) continue;
-            graphics.drawString(font, lines.get(i), textX, ly, CocUi.TEXT, false);
+            graphics.drawString(font, lines.get(i).text, textX, ly, lines.get(i).color, false);
         }
         graphics.disableScissor();
         if (maxScroll > 0) {
@@ -121,5 +138,8 @@ public class CurtainScreen extends Screen {
     @Override
     public boolean isPauseScreen() {
         return false;
+    }
+
+    private record Line(String text, int color) {
     }
 }

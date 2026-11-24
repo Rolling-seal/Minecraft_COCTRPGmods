@@ -24,6 +24,9 @@ public class CharacterSheetScreen extends Screen {
     private CharacterSheet sheet;
     private CocList<SkillRow> skillList;
     private boolean compact;
+    private int sheetPanelX, sheetPanelY, sheetPanelW, sheetPanelH;
+    private int sheetScroll;
+    private int sheetMaxScroll;
 
     public CharacterSheetScreen(UUID target, boolean editable) {
         super(Component.literal(CocLang.tr("调查员档案")));
@@ -46,6 +49,10 @@ public class CharacterSheetScreen extends Screen {
         this.skillList = null;
         if (sheet != null) {
             int leftW = Math.max(150, width / 2 - 22);
+            sheetPanelX = 12;
+            sheetPanelY = compact ? 24 : 40;
+            sheetPanelW = leftW;
+            sheetPanelH = Math.max(110, (height - 34) - sheetPanelY);
             int listX = Math.max(width / 2 + 6, 12 + leftW + 8);
             int listY = compact ? 48 : 78;
             int listW = Math.max(100, width - listX - 12);
@@ -65,9 +72,9 @@ public class CharacterSheetScreen extends Screen {
         }
 
         int btnY = height - 24;
-        int btnW = Math.max(44, Math.min(84, (width - 40) / 5 - 4));
+        int btnW = Math.max(44, Math.min(100, (width - 40) / 4 - 4));
         int gap = 4;
-        int startX = Math.max(8, (width - (btnW * 5 + gap * 4)) / 2);
+        int startX = Math.max(8, (width - (btnW * 4 + gap * 3)) / 2);
         if (sheet == null) {
             if (minecraft != null && minecraft.player != null && target.equals(minecraft.player.getUUID())) {
                 addRenderableWidget(Button.builder(Component.literal(CocLang.tr("创建角色")), b -> {
@@ -79,21 +86,18 @@ public class CharacterSheetScreen extends Screen {
             return;
         }
 
-        addRenderableWidget(Button.builder(Component.literal(CocLang.tr("背景")), b -> {
-            if (minecraft != null) minecraft.setScreen(new BackstoryScreen(this, sheet));
-        }).bounds(startX, btnY, btnW, 18).build());
         addRenderableWidget(Button.builder(Component.literal(CocLang.tr("线索")), b -> {
             if (minecraft != null) minecraft.setScreen(new JournalScreen());
-        }).bounds(startX + btnW + gap, btnY, btnW, 18).build());
+        }).bounds(startX, btnY, btnW, 18).build());
         addRenderableWidget(Button.builder(Component.literal(CocLang.tr("设置")), b -> {
             if (minecraft != null) minecraft.setScreen(new SettingsScreen(this));
-        }).bounds(startX + (btnW + gap) * 2, btnY, btnW, 18).build());
+        }).bounds(startX + btnW + gap, btnY, btnW, 18).build());
         addRenderableWidget(Button.builder(Component.literal(CocLang.tr("刷新")), b -> {
             com.coc.net.CocNetwork.sendToServer(new com.coc.net.packet.C2SRequestSync());
             rebuildWidgets();
-        }).bounds(startX + (btnW + gap) * 3, btnY, btnW, 18).build());
+        }).bounds(startX + (btnW + gap) * 2, btnY, btnW, 18).build());
         addRenderableWidget(Button.builder(Component.literal(CocLang.tr("关闭")), b -> onClose())
-                .bounds(startX + (btnW + gap) * 4, btnY, btnW, 18).build());
+                .bounds(startX + (btnW + gap) * 3, btnY, btnW, 18).build());
     }
 
     public void refresh() {
@@ -122,69 +126,106 @@ public class CharacterSheetScreen extends Screen {
     }
 
     private void drawSheet(GuiGraphics graphics) {
-        int leftX = 12;
-        int leftY = compact ? 24 : 40;
-        int leftW = Math.max(150, width / 2 - 22);
-        int panelBottom = height - 34;
-        int leftH = Math.max(110, panelBottom - leftY);
+        int leftX = sheetPanelX;
+        int leftY = sheetPanelY;
+        int leftW = sheetPanelW;
+        int leftH = sheetPanelH;
         CocUi.panel(graphics, leftX, leftY, leftW, leftH);
+        graphics.enableScissor(leftX + 2, leftY + 2, leftX + leftW - 2, leftY + leftH - 2);
 
-        graphics.drawString(font, CocUi.truncate(font, sheet.name, leftW - 16), leftX + 8, leftY + 6, CocUi.GOLD, false);
+        int y = leftY + 6 - sheetScroll;
+        graphics.drawString(font, CocUi.truncate(font, sheet.name, leftW - 16), leftX + 8, y, CocUi.GOLD, false);
+        y += compact ? 16 : 18;
         graphics.drawString(font, CocUi.truncate(font, CocLang.tr(sheet.occupationName) + " · " + sheet.age + CocLang.tr(" 岁"),
-                leftW - 16), leftX + 8, leftY + (compact ? 18 : 22), CocUi.MUTED, false);
+                leftW - 16), leftX + 8, y, CocUi.MUTED, false);
+        y += compact ? 16 : 20;
 
         Stat[] stats = {Stat.STR, Stat.CON, Stat.SIZ, Stat.DEX, Stat.APP, Stat.INT, Stat.POW, Stat.EDU, Stat.LUCK};
-        int statsY = leftY + (compact ? 32 : 42);
         int cellW = Math.max(45, (leftW - 16) / 3);
         int lineH = compact ? 13 : 18;
         for (int i = 0; i < stats.length; i++) {
             int col = i % 3;
             int row = i / 3;
             int x = leftX + 8 + col * cellW;
-            int y = statsY + row * lineH;
+            int sy = y + row * lineH;
             Stat stat = stats[i];
             String label = compact ? stat.abbr() : stat.abbr() + " " + CocLang.tr(stat.cn());
-            graphics.drawString(font, label, x, y, CocUi.ACCENT, false);
+            graphics.drawString(font, label, x, sy, CocUi.ACCENT, false);
             String value = String.valueOf(sheet.stats.get(stat));
-            graphics.drawString(font, value, x + (compact ? 40 : 56), y, CocUi.TEXT, false);
+            graphics.drawString(font, value, x + (compact ? 40 : 56), sy, CocUi.TEXT, false);
         }
+        y += 3 * lineH + (compact ? 6 : 12);
 
-        int barY = statsY + 3 * lineH + (compact ? 6 : 12);
         int barGap = compact ? 15 : 24;
         int barW = leftW - 40;
-        drawBar(graphics, leftX + 8, barY, barW, "SAN", sheet.san, sheet.maxSan,
+        drawBar(graphics, leftX + 8, y, barW, "SAN", sheet.san, sheet.maxSan,
                 CocUi.sanColor(sheet.san, sheet.maxSan));
-        drawBar(graphics, leftX + 8, barY + barGap, barW, "HP", sheet.hp, sheet.maxHp, CocUi.RED);
-        drawBar(graphics, leftX + 8, barY + barGap * 2, barW, "MP", sheet.mp, sheet.maxMp, CocUi.BLUE);
-        drawBar(graphics, leftX + 8, barY + barGap * 3, barW, CocLang.tr("幸运"), sheet.stats.luck, 99, CocUi.GREEN);
+        drawBar(graphics, leftX + 8, y + barGap, barW, "HP", sheet.hp, sheet.maxHp, CocUi.RED);
+        drawBar(graphics, leftX + 8, y + barGap * 2, barW, "MP", sheet.mp, sheet.maxMp, CocUi.BLUE);
+        drawBar(graphics, leftX + 8, y + barGap * 3, barW, CocLang.tr("幸运"), sheet.stats.luck, 99, CocUi.GREEN);
+        y += barGap * 4 + 4;
 
-        int infoY = barY + barGap * 4 + 4;
         graphics.drawString(font, CocLang.tr("移动 ") + sheet.mov + CocLang.tr("  伤害 ") + sheet.db + CocLang.tr("  体格 ") + sheet.build,
-                leftX + 8, infoY, CocUi.TEXT, false);
+                leftX + 8, y, CocUi.TEXT, false);
+        y += 11;
         graphics.drawString(font, CocLang.tr("神话 ") + sheet.mythos + CocLang.tr("  最大 SAN ") + sheet.maxSan,
-                leftX + 8, infoY + 11, sheet.mythos > 0 ? CocUi.GOLD : CocUi.MUTED, false);
+                leftX + 8, y, sheet.mythos > 0 ? CocUi.GOLD : CocUi.MUTED, false);
+        y += 12;
         long gameTime = minecraft != null && minecraft.level != null ? minecraft.level.getGameTime() : 0;
-        CocUi.wrapped(graphics, font, CocLang.tr("状态：") + CocLang.message(sheet.statusLine(gameTime)),
-                leftX + 8, infoY + 23, leftW - 16, sheet.isInsane(gameTime) ? CocUi.RED : CocUi.GREEN);
-        int phobiaY = infoY + 36;
+        y = drawWrapped(graphics, CocLang.tr("状态：") + CocLang.message(sheet.statusLine(gameTime)),
+                leftX + 8, y, leftW - 16, sheet.isInsane(gameTime) ? CocUi.RED : CocUi.GREEN) + 2;
+
         if (!sheet.phobias.isEmpty() || !sheet.manias.isEmpty()) {
             String phobias = String.join(" / ", sheet.phobias.stream().map(CocLang::tr).toList());
             String manias = String.join(" / ", sheet.manias.stream().map(CocLang::tr).toList());
             String mental = CocLang.tr("恐惧：") + phobias
                     + (sheet.manias.isEmpty() ? "" : CocLang.tr("  狂躁：") + manias);
-            CocUi.wrapped(graphics, font, mental, leftX + 8, phobiaY, leftW - 16, CocUi.MUTED);
+            y = drawWrapped(graphics, mental, leftX + 8, y, leftW - 16, CocUi.MUTED) + 2;
         }
-        if (!compact && !sheet.backstory.isEmpty()) {
-            int by = phobiaY + 22;
-            for (String key : CharacterSheet.BACKSTORY_KEYS) {
-                String value = sheet.backstory.getOrDefault(key, "");
-                if (value == null || value.isBlank()) continue;
-                if (by > leftY + leftH - 12) break;
-                graphics.drawString(font, key + "：" + CocUi.truncate(font, value, leftW - 70),
-                        leftX + 8, by, CocUi.MUTED, false);
-                by += 12;
+
+        y += 2;
+        for (String key : CharacterSheet.BACKSTORY_KEYS) {
+            String value = sheet.backstory.getOrDefault(key, "");
+            boolean blank = value == null || value.isBlank();
+            String text = CocLang.tr(key) + "：" + (blank ? CocLang.tr("（未填写）") : value);
+            y = drawWrapped(graphics, text, leftX + 8, y, leftW - 16, blank ? CocUi.MUTED : CocUi.TEXT) + 2;
+        }
+        String notes = sheet.notes == null || sheet.notes.isBlank()
+                ? CocLang.tr("（未填写）") : sheet.notes;
+        y = drawWrapped(graphics, CocLang.tr("备注：") + notes, leftX + 8, y, leftW - 16, CocUi.TEXT) + 2;
+
+        sheetMaxScroll = Math.max(0, (y + sheetScroll) - (leftY + leftH - 28));
+        sheetScroll = Math.max(0, Math.min(sheetMaxScroll, sheetScroll));
+        graphics.disableScissor();
+
+        if (sheetMaxScroll > 0) {
+            int trackX = leftX + leftW - 4;
+            int viewTop = leftY + 2;
+            int viewH = leftH - 4;
+            graphics.fill(trackX, viewTop, trackX + 2, viewTop + viewH, 0x66000000);
+            int thumbH = Math.max(12, viewH * viewH / (viewH + sheetMaxScroll));
+            int thumbY = viewTop + (viewH - thumbH) * sheetScroll / sheetMaxScroll;
+            graphics.fill(trackX, thumbY, trackX + 2, thumbY + thumbH, 0xFF8B7AA8);
+            String hint = CocLang.tr("滚轮查看背景/备注");
+            graphics.fill(leftX + 2, leftY + leftH - 11, leftX + leftW - 6, leftY + leftH - 2, 0xCC1A1410);
+            graphics.drawString(font, CocUi.truncate(font, hint, leftW - 16),
+                    leftX + 8, leftY + leftH - 10, CocUi.MUTED, false);
+        }
+    }
+
+    private int drawWrapped(GuiGraphics graphics, String text, int x, int y, int width, int color) {
+        if (text == null || text.isEmpty()) return y;
+        for (String paragraph : text.replace("\r", "").split("\n", -1)) {
+            if (paragraph.isEmpty()) {
+                y += 9;
+                continue;
+            }
+            for (var line : font.split(Component.literal(paragraph), width)) {
+                graphics.drawString(font, line, x, y, color, false);
+                y += 9;
             }
         }
+        return y;
     }
 
     private void drawBar(GuiGraphics graphics, int x, int y, int width, String label,
@@ -206,6 +247,13 @@ public class CharacterSheetScreen extends Screen {
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        if (sheet != null
+                && mouseX >= sheetPanelX && mouseX < sheetPanelX + sheetPanelW
+                && mouseY >= sheetPanelY && mouseY < sheetPanelY + sheetPanelH) {
+            sheetScroll = Math.max(0, Math.min(sheetMaxScroll,
+                    sheetScroll - (int) (delta * 18)));
+            return true;
+        }
         if (skillList != null && skillList.mouseScrolled(mouseX, mouseY, delta)) return true;
         return super.mouseScrolled(mouseX, mouseY, delta);
     }
