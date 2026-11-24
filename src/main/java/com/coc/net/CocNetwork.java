@@ -9,9 +9,9 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-/** 网络通道：协议版本 3。所有复杂数据用 NBT 传递。 */
+/** 网络通道：协议版本 4。所有复杂数据用 NBT 传递。 */
 public final class CocNetwork {
-    private static final String PROTOCOL = "3";
+    private static final String PROTOCOL = "4";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation("coc", "main"),
             () -> PROTOCOL,
@@ -61,6 +61,20 @@ public final class CocNetwork {
                 C2SImportScenario::encode, C2SImportScenario::new, C2SImportScenario::handle);
         CHANNEL.registerMessage(id++, S2CImportResult.class,
                 S2CImportResult::encode, S2CImportResult::new, S2CImportResult::handle);
+        CHANNEL.registerMessage(id++, C2SGlobalSettings.class,
+                C2SGlobalSettings::encode, C2SGlobalSettings::new, C2SGlobalSettings::handle);
+        CHANNEL.registerMessage(id++, S2CGlobalSettings.class,
+                S2CGlobalSettings::encode, S2CGlobalSettings::new, S2CGlobalSettings::handle);
+        CHANNEL.registerMessage(id++, C2SExportSheet.class,
+                C2SExportSheet::encode, C2SExportSheet::new, C2SExportSheet::handle);
+        CHANNEL.registerMessage(id++, S2CSheetJson.class,
+                S2CSheetJson::encode, S2CSheetJson::new, S2CSheetJson::handle);
+        CHANNEL.registerMessage(id++, C2SImportSheet.class,
+                C2SImportSheet::encode, C2SImportSheet::new, C2SImportSheet::handle);
+        CHANNEL.registerMessage(id++, S2CSheetResult.class,
+                S2CSheetResult::encode, S2CSheetResult::new, S2CSheetResult::handle);
+        CHANNEL.registerMessage(id++, C2SItemRule.class,
+                C2SItemRule::encode, C2SItemRule::new, C2SItemRule::handle);
     }
 
     public static void sendToPlayer(ServerPlayer player, Object message) {

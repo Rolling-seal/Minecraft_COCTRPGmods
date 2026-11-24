@@ -17,6 +17,7 @@ public final class ClientCache {
     public static PendingEventView pendingEvent;
     public static RollView lastRoll;
     public static KpView kpView;
+    public static GlobalSettingsView globalSettings = new GlobalSettingsView();
     public static CurtainView curtain;
     public static ItemView items;
     public static BookView book;
@@ -43,6 +44,7 @@ public final class ClientCache {
         pendingEvent = null;
         lastRoll = null;
         kpView = null;
+        globalSettings = new GlobalSettingsView();
         curtain = null;
         items = null;
         book = null;

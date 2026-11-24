@@ -1,6 +1,8 @@
 package com.coc.client.screen;
 
 import com.coc.client.CocLang;
+import com.coc.client.ClientCache;
+import com.coc.client.GlobalSettingsView;
 import com.coc.client.ui.CocList;
 import com.coc.client.ui.CocUi;
 import com.coc.data.CharacterSheet;
@@ -53,6 +55,7 @@ public class CharacterCreationScreen extends Screen {
         compact = height < 420 || width < 700;
         if (baseStats == null) rollStats();
         updatePreview();
+        if (page == 1 && !allowPoints()) page = 2;
         occList = null;
         skillList = null;
         if (page == 0) {
@@ -99,12 +102,13 @@ public class CharacterCreationScreen extends Screen {
         }).bounds(64, by, 54, 18).build());
         addRenderableWidget(Button.builder(Component.literal(CocLang.tr("取消")), b -> onClose())
                 .bounds(width - 172, by, 54, 18).build());
-        addRenderableWidget(Button.builder(Component.literal(CocLang.tr("下一步：技能")), b -> {
+        addRenderableWidget(Button.builder(Component.literal(CocLang.tr(
+                allowPoints() ? "下一步：技能" : "下一步：背景")), b -> {
             if (occupation == null) {
                 status = CocLang.tr("请先选择一个职业。");
                 return;
             }
-            page = 1;
+            page = allowPoints() ? 1 : 2;
             rebuildWidgets();
         }).bounds(width - 114, by, 102, 18).build());
     }
@@ -211,16 +215,40 @@ public class CharacterCreationScreen extends Screen {
         return intAlloc.values().stream().mapToInt(Integer::intValue).sum();
     }
 
+    private GlobalSettingsView settings() {
+        return ClientCache.globalSettings == null ? new GlobalSettingsView() : ClientCache.globalSettings;
+    }
+
+    private boolean allowPoints() {
+        return settings().allowPoints;
+    }
+
     private int occPoints() {
+        if (!allowPoints()) return 0;
+        GlobalSettingsView s = settings();
+        if (s.occupationPoints >= 0) return s.occupationPoints;
         return occupation == null || preview == null ? 0 : occupation.points(preview);
     }
 
     private int intPoints() {
+        if (!allowPoints()) return 0;
+        GlobalSettingsView s = settings();
+        if (s.interestPoints >= 0) return s.interestPoints;
         return preview == null ? 0 : preview.intel * 2;
+    }
+
+    private int totalPoints() {
+        GlobalSettingsView s = settings();
+        if (s.totalPoints >= 0) return s.totalPoints;
+        return occPoints() + intPoints();
     }
 
     private void addPoints(boolean useOccupation) {
         if (skillList == null) return;
+        if (!allowPoints()) {
+            status = CocLang.tr("KP 已关闭玩家自行分配点数。");
+            return;
+        }
         SkillAlloc row = skillList.getSelected();
         if (row == null) {
             status = CocLang.tr("请先在列表中选择一个技能。");
@@ -231,6 +259,10 @@ public class CharacterCreationScreen extends Screen {
         int max = base >= 70 ? 99 : 70;
         if (current + 5 > max) {
             status = CocLang.tr("该技能创建时不能超过 ") + max + "。";
+            return;
+        }
+        if (occSpent() + intSpent() + 5 > totalPoints()) {
+            status = CocLang.tr("总点数不足。");
             return;
         }
         if (useOccupation) {
@@ -291,6 +323,10 @@ public class CharacterCreationScreen extends Screen {
             return;
         }
         saveBackstory();
+        if (!allowPoints()) {
+            occAlloc.clear();
+            intAlloc.clear();
+        }
         CompoundTag tag = new CompoundTag();
         tag.putInt("age", age);
         tag.putString("occupation", occupation.id);
@@ -384,9 +420,10 @@ public class CharacterCreationScreen extends Screen {
     private void renderSkills(GuiGraphics graphics, int mouseX, int mouseY) {
         CocUi.title(graphics, font, CocLang.tr("分配技能点 · ") + (occupation == null ? "" : CocLang.tr(occupation.name)),
                 width / 2, compact ? 8 : 18);
-        graphics.drawString(font, CocLang.tr("职业点 ") + occSpent() + " / " + occPoints()
-                        + CocLang.tr("    兴趣点 ") + intSpent() + " / " + intPoints(),
-                12, compact ? 24 : 42, CocUi.ACCENT, false);
+        String points = CocLang.tr("职业点 ") + occSpent() + " / " + occPoints()
+                + CocLang.tr("    兴趣点 ") + intSpent() + " / " + intPoints();
+        if (totalPoints() >= 0) points += CocLang.tr("    总点数 ") + (occSpent() + intSpent()) + " / " + totalPoints();
+        graphics.drawString(font, points, 12, compact ? 24 : 42, CocUi.ACCENT, false);
         if (!compact) {
             graphics.drawString(font, CocLang.tr("选择技能后点击下方按钮；创建时技能上限 70（母语可更高）"),
                     12, 62, CocUi.MUTED, false);

@@ -74,6 +74,7 @@ public final class KpDataBuilder {
         for (ItemLibrary.ItemRule rule : ItemLibrary.rules()) {
             CompoundTag rt = new CompoundTag();
             rt.putString("id", rule.id);
+            rt.putString("name", rule.name == null ? "" : rule.name);
             rt.putString("skill", rule.skill == null ? "" : rule.skill);
             rt.putInt("target", rule.target);
             itemRules.add(rt);

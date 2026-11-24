@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:book" },
+    { "item": "minecraft:ink_sac" },
+    { "item": "minecraft:gold_ingot" }
+  ],
+  "result": {
+    "item": "coc:kp_book",
+    "count": 1
+  }
+}

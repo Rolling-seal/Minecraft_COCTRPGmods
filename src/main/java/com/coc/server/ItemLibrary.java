@@ -43,6 +43,10 @@ public final class ItemLibrary {
     }
 
     public static synchronized boolean upsert(String itemId, String skill, int target) {
+        return upsert(itemId, skill, target, "");
+    }
+
+    public static synchronized boolean upsert(String itemId, String skill, int target, String name) {
         if (!load()) return false;
         String id = canonical(itemId);
         if (id == null) return false;
@@ -67,6 +71,8 @@ public final class ItemLibrary {
         }
         found.skill = skillId;
         found.target = goal;
+        found.name = name == null ? "" : name.trim();
+        if (found.name.length() > 64) found.name = found.name.substring(0, 64);
         save();
         return true;
     }
@@ -109,6 +115,8 @@ public final class ItemLibrary {
                     }
                     rule.id = id;
                     rule.target = Math.max(1, Math.min(100, rule.target));
+                    if (rule.name == null) rule.name = "";
+                    if (rule.name.length() > 64) rule.name = rule.name.substring(0, 64);
                     rules.add(rule);
                 }
             }
@@ -137,6 +145,7 @@ public final class ItemLibrary {
 
     public static final class ItemRule {
         public String id = "";
+        public String name = "";
         public String skill = "";
         public int target = 50;
     }

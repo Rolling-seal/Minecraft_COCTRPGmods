@@ -32,6 +32,7 @@ public final class CharacterService {
         } else {
             CocNetwork.syncSheet(player, sheet);
         }
+        GlobalSettingsService.send(player);
     }
 
     public static void create(ServerPlayer player, CompoundTag tag) {
@@ -64,8 +65,14 @@ public final class CharacterService {
         for (String key : allocation.getAllKeys()) {
             totalAdded += Math.max(0, allocation.getInt(key));
         }
-        int maxPoints = occupation.points(finalStats) + Math.max(0, finalStats.intel * 2);
-        if (totalAdded > maxPoints + 5) {
+        com.coc.config.CocServerConfig cfg = com.coc.config.CocServerConfig.get();
+        int occMax = cfg.creationOccupationPoints >= 0
+                ? cfg.creationOccupationPoints : occupation.points(finalStats);
+        int intMax = cfg.creationInterestPoints >= 0
+                ? cfg.creationInterestPoints : Math.max(0, finalStats.intel * 2);
+        int maxPoints = cfg.allowCreationPoints ? occMax + intMax : 0;
+        if (cfg.creationTotalPoints >= 0) maxPoints = Math.min(maxPoints, cfg.creationTotalPoints);
+        if (totalAdded > maxPoints) {
             player.sendSystemMessage(Component.literal("技能点超出上限（" + totalAdded + " / " + maxPoints + "）。")
                     .withStyle(ChatFormatting.RED));
             return;

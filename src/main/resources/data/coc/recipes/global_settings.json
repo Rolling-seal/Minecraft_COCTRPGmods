@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:comparator" },
+    { "item": "minecraft:gold_ingot" },
+    { "item": "minecraft:redstone" },
+    { "item": "minecraft:book" }
+  ],
+  "result": {
+    "item": "coc:global_settings",
+    "count": 1
+  }
+}

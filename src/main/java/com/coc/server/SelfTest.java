@@ -1,5 +1,6 @@
 package com.coc.server;
 
+import com.coc.data.CharacterSheet;
 import com.coc.events.EventDef;
 import com.coc.events.EventRegistry;
 import com.coc.events.ScenarioAct;
@@ -95,10 +96,43 @@ public final class SelfTest {
         if (BuiltInRegistries.ITEM.get(new ResourceLocation("coc", "kp_panel")) == Items.AIR) {
             failures.add("KP面板物品未注册");
         }
-        if (source != null && source.getServer() != null
-                && source.getServer().getRecipeManager()
-                .byKey(new ResourceLocation("coc", "keeper_panel")).isEmpty()) {
-            failures.add("KP面板配方未加载（coc:keeper_panel）");
+        if (BuiltInRegistries.ITEM.get(new ResourceLocation("coc", "kp_book")) == Items.AIR) {
+            failures.add("KP之书物品未注册");
+        }
+        if (BuiltInRegistries.ITEM.get(new ResourceLocation("coc", "global_settings")) == Items.AIR) {
+            failures.add("全局设置物品未注册");
+        }
+        if (source != null && source.getServer() != null) {
+            if (source.getServer().getRecipeManager()
+                    .byKey(new ResourceLocation("coc", "keeper_panel")).isEmpty()) {
+                failures.add("KP面板配方未加载（coc:keeper_panel）");
+            }
+            if (source.getServer().getRecipeManager()
+                    .byKey(new ResourceLocation("coc", "keeper_book")).isEmpty()) {
+                failures.add("KP之书配方未加载（coc:keeper_book）");
+            }
+            if (source.getServer().getRecipeManager()
+                    .byKey(new ResourceLocation("coc", "global_settings")).isEmpty()) {
+                failures.add("全局设置配方未加载（coc:global_settings）");
+            }
+        }
+
+        try {
+            CharacterSheet sample = new CharacterSheet(java.util.UUID.randomUUID(), "SelfTest");
+            sample.stats.str = 60; sample.stats.con = 60; sample.stats.siz = 60;
+            sample.stats.dex = 60; sample.stats.app = 60; sample.stats.intel = 60;
+            sample.stats.pow = 60; sample.stats.edu = 60; sample.stats.luck = 55;
+            sample.mythos = 0; sample.recalculateDerived();
+            sample.hp = sample.maxHp; sample.mp = sample.maxMp; sample.san = 50;
+            sample.setSkill("spot_hidden", 65);
+            sample.backstory.put("信念", "test");
+            CharacterSheetJsonService.SheetJson json = CharacterSheetJsonService.SheetJson.from(sample);
+            CharacterSheet back = json.toSheet(sample.uuid, "SelfTest");
+            if (!"SelfTest".equals(back.name) || back.skill("spot_hidden") != 65 || !"test".equals(back.backstory.get("信念"))) {
+                failures.add("角色卡 JSON 往返失败");
+            }
+        } catch (Exception e) {
+            failures.add("角色卡 JSON 自检异常: " + e.getMessage());
         }
 
         EventRegistry.reload();

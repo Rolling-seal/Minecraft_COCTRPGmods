@@ -1,7 +1,7 @@
 # Call of Cthulhu Mod — Scenario Import JSON Specification
 
 > Format ID: `coc-scenario-v1`
-> Applies to: `coc-2.0.0.jar` (Minecraft 1.20.1 / Forge)
+> Applies to: `coc-2.1.0.jar` (Minecraft 1.20.1 / Forge)
 > This is **content import data**, not a Modrinth mod manifest. See the release checklist separately.
 
 ---

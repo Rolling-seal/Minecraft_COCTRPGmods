@@ -4,7 +4,7 @@ import com.coc.client.CocLang;
 import com.coc.client.KpView;
 import com.coc.client.ui.CocUi;
 import com.coc.net.CocNetwork;
-import com.coc.net.packet.C2SKpAction;
+import com.coc.net.packet.C2SItemRule;
 import com.coc.rules.SkillDef;
 import com.coc.rules.SkillRegistry;
 import net.minecraft.client.gui.GuiGraphics;
@@ -17,12 +17,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-/** KP 为单个物品配置：使用技能 + 目标点数。 */
+/** KP 为单个物品配置：自定义名称、使用技能、目标点数。 */
 public class ItemRuleScreen extends Screen {
     private final Screen parent;
     private final String itemId;
     private final String itemName;
     private final KpView.ItemRule rule;
+    private EditBox nameBox;
     private EditBox skillBox;
     private EditBox targetBox;
     private String status = "";
@@ -39,17 +40,22 @@ public class ItemRuleScreen extends Screen {
     @Override
     protected void init() {
         compact = height < 420 || width < 700;
-        int panelW = Math.min(width - 24, 340);
-        int panelH = Math.min(height - 20, 200);
+        int panelW = Math.min(width - 24, 360);
+        int panelH = Math.min(height - 12, 228);
         int x = (width - panelW) / 2;
         int y = (height - panelH) / 2;
         int boxW = panelW - 20;
-        skillBox = new EditBox(font, x + 10, y + 48, boxW, 18, Component.literal(CocLang.tr("技能 ID")));
+        nameBox = new EditBox(font, x + 10, y + 48, boxW, 18, Component.literal(CocLang.tr("自定义名称")));
+        nameBox.setMaxLength(64);
+        nameBox.setValue(rule == null ? "" : rule.name);
+        nameBox.setHint(Component.literal(CocLang.tr("留空则使用物品原名")));
+        addRenderableWidget(nameBox);
+        skillBox = new EditBox(font, x + 10, y + 80, boxW, 18, Component.literal(CocLang.tr("技能 ID")));
         skillBox.setMaxLength(64);
         skillBox.setValue(rule == null ? "" : rule.skill);
         skillBox.setHint(Component.literal(CocLang.tr("可空，例如 spot_hidden / listen")));
         addRenderableWidget(skillBox);
-        targetBox = new EditBox(font, x + 10, y + 88, 70, 18, Component.literal(CocLang.tr("目标点数")));
+        targetBox = new EditBox(font, x + 10, y + 112, 70, 18, Component.literal(CocLang.tr("目标点数")));
         targetBox.setMaxLength(3);
         targetBox.setValue(rule == null ? "50" : String.valueOf(rule.target));
         addRenderableWidget(targetBox);
@@ -68,6 +74,7 @@ public class ItemRuleScreen extends Screen {
             status = CocLang.tr("未知道具：") + itemId;
             return;
         }
+        String name = nameBox.getValue().trim();
         String skill = skillBox.getValue().trim();
         if (!skill.isEmpty()) {
             SkillDef def = SkillRegistry.resolve(skill);
@@ -85,8 +92,7 @@ public class ItemRuleScreen extends Screen {
             return;
         }
         target = Math.max(1, Math.min(100, target));
-        CocNetwork.sendToServer(new C2SKpAction("item_rule", null,
-                itemId + "|" + skill, target));
+        CocNetwork.sendToServer(new C2SItemRule(itemId, name, skill, target));
         status = CocLang.tr("已提交：目标 ") + target + CocLang.tr("；返回道具列表可看到规则。");
     }
 
@@ -99,18 +105,19 @@ public class ItemRuleScreen extends Screen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics);
         graphics.fill(0, 0, width, height, 0xB0000000);
-        int panelW = Math.min(width - 24, 340);
-        int panelH = Math.min(height - 20, 200);
+        int panelW = Math.min(width - 24, 360);
+        int panelH = Math.min(height - 12, 228);
         int x = (width - panelW) / 2;
         int y = (height - panelH) / 2;
         CocUi.panel(graphics, x, y, panelW, panelH);
         CocUi.title(graphics, font, CocLang.tr("道具规则"), width / 2, y + 6);
         graphics.drawString(font, CocUi.truncate(font, CocLang.tr("物品：") + itemName, panelW - 20),
                 x + 10, y + 24, CocUi.GOLD, false);
-        graphics.drawString(font, CocLang.tr("技能 ID（可空）"), x + 10, y + 38, CocUi.ACCENT, false);
-        graphics.drawString(font, CocLang.tr("目标点数（1~100）"), x + 10, y + 78, CocUi.ACCENT, false);
+        graphics.drawString(font, CocLang.tr("自定义名称（可空）"), x + 10, y + 38, CocUi.ACCENT, false);
+        graphics.drawString(font, CocLang.tr("技能 ID（可空）"), x + 10, y + 70, CocUi.ACCENT, false);
+        graphics.drawString(font, CocLang.tr("目标点数（1~100）"), x + 10, y + 102, CocUi.ACCENT, false);
         if (!status.isEmpty()) {
-            CocUi.wrapped(graphics, font, status, x + 10, y + 112, panelW - 20, CocUi.MUTED);
+            CocUi.wrapped(graphics, font, status, x + 10, y + 136, panelW - 20, CocUi.MUTED);
         }
         super.render(graphics, mouseX, mouseY, partialTick);
     }

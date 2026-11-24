@@ -1,4 +1,4 @@
-# Call of Cthulhu Mod — English Guide (v2.0.0)
+# Call of Cthulhu Mod — English Guide (v2.1.0)
 
 > Minecraft 1.20.1 · Forge 47.4.29 · one jar supports both 简体中文 and English.
 > Language is selected by the **Minecraft client language**, not by a separate jar.
@@ -19,8 +19,8 @@
 
 ## 2. Installation
 
-1. Put `coc-2.0.0.jar` into the instance `mods/` folder.
-2. Client and server must use the **same latest jar** (network protocol 3).
+1. Put `coc-2.1.0.jar` into the instance `mods/` folder.
+2. Client and server must use the **same latest jar** (network protocol 4).
 3. No other dependencies.
 
 ---
@@ -42,7 +42,7 @@ Players no longer have a dice key. The Keeper rolls for them.
 
 | Page | Use |
 |---|---|
-| Player | Select player; view sheet; status/luck adjustment; restore sanity; improvement; delete sheet. |
+| Player | Select player; view sheet; status/luck adjustment; restore sanity; improvement; character-sheet JSON; delete sheet. |
 | Roll | Select player + skill + difficulty + bonus/penalty; **Roll for Selected Player**; public dice. |
 | Items | View selected player's inventory; grant items; item library/rules; public item-use check. |
 | Story Book | Pick scenario; **Main Story / Side Story**; start/stop; import scenario. |
@@ -64,6 +64,7 @@ Players cannot initiate rolls themselves.
 - `K → Items → Grant Item / Rules`.
 - Enter any item ID and **Configure Custom (add to list)** to add it to the Keeper item list.
 - For each item set:
+  - **Custom name** (optional; kept on granted items and shown in the list)
   - **Skill ID** (optional, e.g. `spot_hidden`, `listen`, `occult`)
   - **Target number** (1–100)
 - Saved to `config/coc/items.json`.
@@ -77,6 +78,17 @@ Players cannot initiate rolls themselves.
 
 ### Backstory
 Character sheet → **Background** shows belief, important person, significant place, treasured possession, trait, injury and notes; scrollable in small windows.
+
+### Keeper items
+- **Keeper’s Book** (`coc:kp_book`): 8-page in-game guide; right-click as Keeper. Craft: book + ink sac + gold ingot.
+- **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap and whether players may allocate points. `-1` = automatic formula. Craft: comparator + gold ingot + redstone + book.
+- Both are Keeper-only and appear in the Tools creative tab.
+
+### Character-sheet JSON
+- `K → Player → select player → Character Sheet JSON`.
+- **Export** sends the sheet to a client save dialog; **Import** reads a `.json` file and overwrites the selected player's sheet.
+- Format `coc-character-v1`; the target keeps their Minecraft name/UUID. See [character sheet JSON](21-角色卡JSON格式.md).
+- Import clears the target's temporary event/check state; export a backup first.
 
 ---
 
@@ -159,6 +171,8 @@ The English text is a fan translation for play; proper names and tone may be adj
 - Some dynamic chat lines with custom names may mix languages.
 - `SELFTEST OK · events 75 · scenarios 3` is the current dedicated-server check.
 - File picker uses the desktop file dialog; on headless/no-desktop Linux it cannot open.
+- Global Settings and Keeper’s Book are Keeper-only; non-Keeper players get a refusal message.
+- Character-sheet import is Keeper-only and works only on online players.
 
 ---
 
@@ -172,4 +186,4 @@ The English text is a fan translation for play; proper names and tone may be adj
 - `截图/48-English-Chat.png`
 - `截图/49-English-Tools.png`
 
-Chinese documentation remains in `05`, `15`, `16`, `17`.
+Chinese documentation remains in `05`, `15`, `16`, `17`, and `21`.

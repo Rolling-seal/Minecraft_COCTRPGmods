@@ -11,7 +11,7 @@
 |---|---|
 | Project type | Mod |
 | Name | Call of Cthulhu |
-| Summary | A Call of Cthulhu 7e tabletop RPG layer for Minecraft: investigator sheets, Keeper-only public d100 rolls, act curtains, Story Book, scenario import and item rules. |
+| Summary | A Call of Cthulhu 7e tabletop RPG layer for Minecraft: investigator sheets, Keeper-only public d100 rolls, act curtains, Story Book, scenario import, item rules and character-sheet JSON. |
 | Loader | Forge |
 | Game version | 1.20.1 |
 | Environment | Client and server (both required) |
@@ -29,16 +29,16 @@
 上传：
 
 ```text
-coc-2.0.0.jar
+coc-2.1.0.jar
 ```
 
-当前文件信息：
+当前文件信息（构建后填入）：
 
-- Size: `608,475` bytes
-- SHA1: `c86a0957948cf799dbf354500847c6f177f04fd0`
-- SHA512: `7c4f05950385fd8b5d6077a96814ddca068f4cb93e66a4c9c16ed6586f78896b3c8cc38c20efbbad811374c3e63f5544ea65707a86f6271520c6925217a8ff19`
-- Version: `2.0.0`
-- Protocol: `3`
+- Size: `657,520` bytes
+- SHA1: `380245c39e49f71224d4df623a44e70b4e7f476f`
+- SHA512: `3e22d8ed2f8cc6d3f342cdda2b267546cf64165ad6f9848d5872c27862445fbd44ed4b829d0cc2fedc9059a511423e2878e448a8671ba8008d481cd382f3f49c`
+- Version: `2.1.0`
+- Protocol: `4`
 - Client/server must use the same jar.
 
 可选附加文件：
@@ -46,20 +46,20 @@ coc-2.0.0.jar
 - `示例/example_scenario.json`：可直接导入的示例剧本。
 - `19-Scenario-Import-Format-Spec-EN.md`：英文剧本导入格式说明。
 - `18-English-Guide.md`：英文使用说明。
+- `21-角色卡JSON格式.md`：角色卡 JSON 格式与示例。
 
 ---
 
 ## 三、版本 Changelog 建议
 
 ```text
-2.0.0
-- Keeper-only public d100 rolls; players no longer roll.
-- Act curtains: players see only the act title and description.
-- Keeper Story Book with Main Story / Side Story, triggers and clues.
-- Item library: add items by ID, configure skill + target number.
-- Player scenario import (coc-scenario-v1, max 64KB).
-- Luck/HP free adjustment, backstory page.
-- Chinese and English in one jar, following the Minecraft client language.
+2.1.0
+- New Keeper items: Keeper's Book (8-page in-game guide) and Global Settings (new-character point rules).
+- Character-sheet JSON export/import for the Keeper (coc-character-v1).
+- Per-item custom display names; granted items keep the name and appear with ★ in the item list.
+- Global Settings toggle no longer resets edited values.
+- Bilingual tooltips for the new items.
+- Network protocol 4.
 - Built-in scenarios: The Haunting (11 acts), The Lightless Beacon (11 acts), Whispers in the Dark (12 acts).
 ```
 

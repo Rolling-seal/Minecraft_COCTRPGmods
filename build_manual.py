@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Offline build: javac -> package -> RAT remap to SRG.
+"""离线构建：javac -> 打包 -> RAT 重映射到 SRG。
 
-Requirements: Java 17, a local ForgeGradle cache, and Minecraft libraries.
-Set these environment variables when needed:
-    COC_GRADLE_CACHE  (default: ~/.gradle/caches/forge_gradle)
-    COC_GAME_LIBS     (Minecraft libraries directory)
-    COC_TARGET_MODS   (optional; if set, the jar is copied there)
-
-Usage:
+环境：Java 17；本地 ForgeGradle 缓存 + 游戏 libraries；不需要 Gradle。
+用法：
+    python build_manual.py            # 构建并部署到实例 mods
     python build_manual.py --no-deploy
-    python build_manual.py            # deploys only when COC_TARGET_MODS is set
 """
 import glob
 import os
@@ -19,10 +14,9 @@ import sys
 import zipfile
 
 PROJECT = os.path.dirname(os.path.abspath(__file__))
-GRADLE_CACHE = os.environ.get(
-    "COC_GRADLE_CACHE", os.path.join(os.path.expanduser("~"), ".gradle", "caches", "forge_gradle"))
-GAME_LIBS = os.environ.get("COC_GAME_LIBS", "")
-TARGET_MODS = os.environ.get("COC_TARGET_MODS", "")
+GRADLE_CACHE = r"C:\Users\ASUS\.gradle\caches\forge_gradle"
+GAME_LIBS = r"D:\FUWUQI\ABC\.minecraft\versions\Knock\.minecraft\libraries"
+TARGET_MODS = r"D:\FUWUQI\ABC\.minecraft\versions\Knock\.minecraft\versions\克苏鲁的呼唤\mods"
 
 MAPPED_FORGE = os.path.join(
     GRADLE_CACHE,
@@ -38,7 +32,7 @@ RAT = os.path.join(
     r"\ForgeAutoRenamingTool-1.0.2-all.jar")
 
 MOD_ID = "coc"
-MOD_VERSION = "2.0.0"
+MOD_VERSION = "2.1.0"
 JAR_NAME = f"{MOD_ID}-{MOD_VERSION}.jar"
 
 MAIN_JAVA = os.path.join(PROJECT, "src", "main", "java")
@@ -145,9 +139,6 @@ def remap(dev_jar):
 
 
 def deploy(final_jar):
-    if not TARGET_MODS:
-        print("[deploy] COC_TARGET_MODS is not set; skipping deployment")
-        return
     os.makedirs(TARGET_MODS, exist_ok=True)
     for old in glob.glob(os.path.join(TARGET_MODS, "coc-*.jar")):
         try:
@@ -168,10 +159,8 @@ def main():
     classes = compile_sources(sources)
     dev_jar = package_dev_jar(classes)
     final_jar = remap(dev_jar)
-    if "--no-deploy" not in sys.argv and TARGET_MODS:
+    if "--no-deploy" not in sys.argv:
         deploy(final_jar)
-    elif "--no-deploy" not in sys.argv:
-        print("[deploy] COC_TARGET_MODS is not set; skipping deployment")
     print("[done] coc 构建完成")
 
 

@@ -5,5 +5,11 @@
   "key.coc.kp": "守秘人面板",
   "key.coc.journal": "线索日志",
   "item.coc.kp_panel": "KP面板",
-  "item.coc.kp_panel.desc": "右键打开守秘人面板（仅KP）"
+  "item.coc.kp_panel.desc": "右键打开守秘人面板（仅KP）",
+  "item.coc.kp_book": "KP之书",
+  "item.coc.kp_book.desc": "右键阅读 KP 操作指南（仅KP）",
+  "item.coc.global_settings": "全局设置",
+  "item.coc.global_settings.desc": "右键打开角色创建点数设置（仅KP）",
+  "item.coc.kp_only": "仅限 KP 使用",
+  "item.coc.global_settings.detail": "调整新角色的职业点 / 兴趣点 / 总点数"
 }

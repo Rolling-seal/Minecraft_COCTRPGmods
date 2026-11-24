@@ -68,4 +68,38 @@ public final class ServerPacketHandler {
     public static void importScenario(ServerPlayer player, String json) {
         com.coc.server.ScenarioImportService.importJson(player, json);
     }
+
+    public static void globalSettings(ServerPlayer player, com.coc.net.packet.C2SGlobalSettings packet) {
+        if (player == null || packet == null) return;
+        if (!KpManager.isKp(player)) {
+            player.sendSystemMessage(Component.literal("只有 KP 可以修改全局设置。")
+                    .withStyle(net.minecraft.ChatFormatting.RED));
+            return;
+        }
+        com.coc.server.GlobalSettingsService.save(player, packet.allowPoints,
+                packet.occupationPoints, packet.interestPoints, packet.totalPoints);
+    }
+
+    public static void exportSheet(ServerPlayer player, UUID target) {
+        com.coc.server.CharacterSheetJsonService.export(player, target);
+    }
+
+    public static void importSheet(ServerPlayer player, UUID target, String json) {
+        com.coc.server.CharacterSheetJsonService.importJson(player, target, json);
+    }
+
+    public static void itemRule(ServerPlayer player, com.coc.net.packet.C2SItemRule packet) {
+        if (player == null || packet == null) return;
+        if (!KpManager.isKp(player)) return;
+        // ItemLibrary will be extended with the custom name.
+        boolean ok = com.coc.server.ItemLibrary.upsert(packet.itemId, packet.skillId, packet.target, packet.name);
+        if (ok) {
+            player.sendSystemMessage(Component.literal("已保存道具规则：" + packet.itemId)
+                    .withStyle(net.minecraft.ChatFormatting.AQUA));
+        } else {
+            player.sendSystemMessage(Component.literal("保存道具规则失败：物品或技能无效。")
+                    .withStyle(net.minecraft.ChatFormatting.RED));
+        }
+        com.coc.kp.KpDataBuilder.send(player);
+    }
 }

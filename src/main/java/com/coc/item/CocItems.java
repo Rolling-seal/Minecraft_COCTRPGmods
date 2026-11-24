@@ -20,6 +20,10 @@ public final class CocItems {
 
     public static final RegistryObject<Item> KP_PANEL = ITEMS.register("kp_panel",
             () -> new KeeperPanelItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> KP_BOOK = ITEMS.register("kp_book",
+            () -> new KeeperBookItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> GLOBAL_SETTINGS = ITEMS.register("global_settings",
+            () -> new GlobalSettingsItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
     private CocItems() {
     }
@@ -32,6 +36,8 @@ public final class CocItems {
     public static void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (CreativeModeTabs.TOOLS_AND_UTILITIES.equals(event.getTabKey())) {
             event.accept(KP_PANEL);
+            event.accept(KP_BOOK);
+            event.accept(GLOBAL_SETTINGS);
         }
     }
 }

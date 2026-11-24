@@ -8,7 +8,7 @@ A Call of Cthulhu 7e tabletop layer for **Minecraft 1.20.1 / Forge 47.x**.
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-3C8527)
 ![Forge](https://img.shields.io/badge/Forge-47.4.29-DA6E00)
-![Version](https://img.shields.io/badge/Version-2.0.0-C9A227)
+![Version](https://img.shields.io/badge/Version-2.1.0-C9A227)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 > Fan-made project. Not affiliated with or endorsed by Chaosium. The built-in scenarios are original adaptations inspired by the structure of *The Haunting* and *The Lightless Beacon*; no official scenario text is copied.
@@ -24,7 +24,9 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 - act curtains instead of automatic event cards;
 - a Keeper Story Book with main and side plots;
 - player-authored scenario import;
-- an item library with per-item skill checks;
+- an item library with per-item skill checks and custom names;
+- Keeper's Book and Global Settings items;
+- character-sheet JSON export/import;
 - low-SAN visual effects;
 - Chinese and English in one jar.
 
@@ -64,10 +66,24 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 - Grant items by common list or custom item ID.
 - Add an item ID to the Keeper item list.
 - Configure per item:
+  - custom display name (optional);
   - skill ID (optional);
   - target number (1–100).
+- Granted items keep the custom name in the player’s inventory.
 - Using an item removes one from the player’s inventory and makes a public check using the configured rule.
 - Rules persist in `config/coc/items.json`.
+
+### Keeper items
+- **Keeper’s Book** (`coc:kp_book`): an in-game 8-page operating guide; right-click as Keeper.
+- **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap, and whether players may allocate points.
+- Both are Keeper-only and available in the Tools creative tab; recipes:
+  - Keeper’s Book: book + ink sac + gold ingot;
+  - Global Settings: comparator + gold ingot + redstone + book.
+
+### Character-sheet JSON
+- The Keeper can export the selected investigator to a `.json` file and import it back.
+- Import overwrites the selected player’s sheet; the player keeps their Minecraft name and UUID.
+- Format `coc-character-v1`; see [character sheet JSON](docs/21-角色卡JSON格式.md).
 
 ### Scenario import
 - Players and Keepers can import a single `coc-scenario-v1` JSON file.
@@ -102,14 +118,14 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 | Side | Client **and** server |
 | Dependencies | None |
 
-The client and server must use the **same jar** (network protocol 3).
+The client and server must use the **same jar** (network protocol 4).
 
 ---
 
 ## Installation
 
 1. Install Minecraft Forge 47.4.29 for 1.20.1.
-2. Put [`releases/coc-2.0.0.jar`](releases/coc-2.0.0.jar) into `mods/`.
+2. Put [`releases/coc-2.1.0.jar`](releases/coc-2.1.0.jar) into `mods/`.
 3. Install the same jar on the server if playing multiplayer.
 4. Launch the game.
 
@@ -127,6 +143,8 @@ No other mod is required. Voice chat is optional and unrelated.
 5. When a check is needed, open **Roll**, select the player and skill, and press **Roll for the Selected Player**.
 6. When the group moves to a new act, select it in the Story Book and press **Show Act to Players**.
 7. For side scenes, read them from **Side Story** and narrate; they are not sent automatically.
+8. Forgot a step? Right-click the **Keeper’s Book**. To tune creation points, right-click **Global Settings**.
+9. To back up a sheet, open **Players → Character Sheet JSON → Export**. Import overwrites the selected player’s sheet.
 
 ### Players
 1. Press `C` to create/view a character.
@@ -215,7 +233,7 @@ On Windows, set the same values as environment variables. The script expects:
 - `ForgeAutoRenamingTool-1.0.2-all.jar`;
 - Minecraft client/server libraries for the classpath.
 
-Output: `build/coc-2.0.0.jar`.
+Output: `build/coc-2.1.0.jar`.
 
 A prebuilt jar is recommended for normal users.
 
@@ -243,6 +261,7 @@ releases/                    built jar
 - [Chinese usage guide](docs/05-使用说明.md)
 - [Keeper seven features and Story Book](docs/15-KP七功能与幕布剧情书.md)
 - [Item library and rules](docs/17-KP道具库与规则.md)
+- [Character sheet JSON format](docs/21-角色卡JSON格式.md)
 
 ---
 

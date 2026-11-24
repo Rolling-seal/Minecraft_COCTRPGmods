@@ -24,6 +24,14 @@ public final class CocServerConfig {
     public int minPlayerEventIntervalTicks = 6000;
     public int eventTimeoutTicks = 2400;
     public boolean allowPlayerDice = true;
+    /** 角色创建时是否允许玩家自行分配技能点。 */
+    public boolean allowCreationPoints = true;
+    /** -1 表示沿用职业公式；>=0 为固定职业点。 */
+    public int creationOccupationPoints = -1;
+    /** -1 表示 INT×2；>=0 为固定兴趣点。 */
+    public int creationInterestPoints = -1;
+    /** -1 表示不额外限制总点数；>=0 为职业+兴趣总上限。 */
+    public int creationTotalPoints = -1;
     public List<String> kpNames = new ArrayList<>();
 
     public static Path path() {

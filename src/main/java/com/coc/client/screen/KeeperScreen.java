@@ -128,7 +128,15 @@ public class KeeperScreen extends Screen {
                 () -> openAdjust(view));
         addBtn(CocLang.tr("恢复神志"), rx, y + step * 2, rw, bh, () -> send("clear_insanity", selectedUuid, "", 0));
         addBtn(CocLang.tr("成长检定"), rx, y + step * 3, rw, bh, () -> send("growth", selectedUuid, "", 0));
-        addBtn(CocLang.tr("删除角色卡"), rx, y + step * 4, rw, bh, () -> {
+        addBtn(CocLang.tr("角色卡 JSON"), rx, y + step * 4, rw, bh, () -> {
+            KpView.Player p = selectedPlayer(view);
+            if (p == null) {
+                status = CocLang.tr("请先选择玩家。");
+                return;
+            }
+            if (minecraft != null) minecraft.setScreen(new SheetFileScreen(this, p.uuid, p.name));
+        });
+        addBtn(CocLang.tr("删除角色卡"), rx, y + step * 5, rw, bh, () -> {
             KpView.Player p = selectedPlayer(view);
             if (p == null) {
                 status = CocLang.tr("请先选择玩家。");
@@ -318,7 +326,11 @@ public class KeeperScreen extends Screen {
         ResourceLocation id = ResourceLocation.tryParse(entry.id);
         if (id != null) {
             var item = BuiltInRegistries.ITEM.get(id);
-            if (item != Items.AIR) return new ItemStack(item).getHoverName().getString();
+            if (item != Items.AIR) {
+                String local = new ItemStack(item).getHoverName().getString();
+                if (entry.name != null && !entry.name.isBlank() && !entry.name.equals(local)) return entry.name;
+                return local;
+            }
         }
         return entry.name == null ? entry.id : entry.name;
     }

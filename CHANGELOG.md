@@ -1,5 +1,32 @@
 # Changelog
 
+## 2.1.0 — 2026-11-24
+
+### New Keeper items
+- **Keeper’s Book** (`coc:kp_book`): 8-page in-game guide covering session start, rolls, curtains, Story Book, items, sheets, import and global settings. Keeper-only, right-click to open.
+- **Global Settings** (`coc:global_settings`): Keeper-only item to configure new-investigator occupation points, interest points, total point cap and whether players may allocate points. `-1` keeps the automatic formula.
+- Recipes for both items; both appear in the Tools creative tab.
+
+### Character-sheet JSON
+- Keeper can export the selected player’s sheet to `coc-character-v1` JSON.
+- Keeper can import a `.json` file and overwrite the selected player’s sheet.
+- Server-side validation, clamping and derived-stat recalculation; handouts, backstory, skills and improvement marks are preserved.
+- Native file picker on the client; no clipboard.
+
+### Custom item names
+- Per-item custom display name in the item library, persisted in `config/coc/items.json`.
+- Granted items keep that name in the player’s inventory.
+- Custom names show with `★` in the Keeper item list.
+
+### Fixes / polish
+- Global Settings toggle no longer resets numbers being edited.
+- Blank occupation is allowed in imported sheets.
+- New item tooltips and labels are bilingual.
+- Network protocol 4; client and server must use the same jar.
+
+### Compatibility
+- Minecraft 1.20.1, Forge 47.4.29, Java 17.
+
 ## 2.0.0 — 2026-11-22
 
 ### Keeper-led redesign

@@ -37,7 +37,8 @@ public class ItemPickerScreen extends Screen {
             {"minecraft:lead", CocLang.tr("拴绳")}, {"minecraft:string", CocLang.tr("绳子")}, {"minecraft:glass_bottle", CocLang.tr("玻璃瓶")},
             {"minecraft:gold_nugget", CocLang.tr("金粒")}, {"minecraft:bone", CocLang.tr("骨头")},
             {"minecraft:amethyst_shard", CocLang.tr("紫水晶碎片")}, {"minecraft:ender_pearl", CocLang.tr("末影珍珠")},
-            {"minecraft:ink_sac", CocLang.tr("墨囊")}, {"minecraft:coal", CocLang.tr("煤炭")}
+            {"minecraft:ink_sac", CocLang.tr("墨囊")}, {"minecraft:coal", CocLang.tr("煤炭")},
+            {"coc:kp_book", CocLang.tr("KP之书")}, {"coc:global_settings", CocLang.tr("全局设置")}
     };
     private final Screen parent;
     private final UUID target;
@@ -69,7 +70,9 @@ public class ItemPickerScreen extends Screen {
                 (g, font, item, x, y, w, h, hovered, selected) -> {
                     KpView view = ClientCache.kpView;
                     KpView.ItemRule rule = view == null ? null : view.itemRule(item.id);
-                    String name = (rule == null ? "" : "★ ") + CocLang.tr(item.name);
+                    String custom = rule == null ? "" : rule.name;
+                    String name = (custom != null && !custom.isBlank())
+                            ? "★ " + custom : CocLang.tr(item.name);
                     g.drawString(font, CocUi.truncate(font, name, w - 58), x, y + 4,
                             selected ? CocUi.GOLD : CocUi.TEXT, false);
                     if (rule != null) {

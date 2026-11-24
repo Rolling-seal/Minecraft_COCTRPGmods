@@ -60,11 +60,15 @@ public final class ItemService {
         }
         int amount = Math.max(1, Math.min(64, count));
         ItemStack stack = new ItemStack(item, amount);
+        ItemLibrary.ItemRule rule = ItemLibrary.get(id.toString());
+        if (rule != null && rule.name != null && !rule.name.isBlank()) {
+            stack.setHoverName(Component.literal(rule.name));
+        }
+        String name = stack.getHoverName().getString();
         target.getInventory().add(stack);
         if (!stack.isEmpty()) target.drop(stack, false);
         target.getInventory().setChanged();
         target.containerMenu.broadcastChanges();
-        String name = new ItemStack(item).getHoverName().getString();
         viewer.sendSystemMessage(Component.literal("已发放给 " + target.getGameProfile().getName()
                 + "：" + name + " ×" + amount).withStyle(ChatFormatting.GOLD));
         if (target != viewer) {

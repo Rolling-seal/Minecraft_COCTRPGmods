@@ -37,6 +37,7 @@ public final class KpView {
 
     public static final class ItemRule {
         public String id = "";
+        public String name = "";
         public String skill = "";
         public int target = 50;
     }
@@ -112,6 +113,7 @@ public final class KpView {
             CompoundTag t = itemRules.getCompound(i);
             ItemRule r = new ItemRule();
             r.id = t.getString("id");
+            r.name = t.getString("name");
             r.skill = t.getString("skill");
             r.target = t.getInt("target");
             view.itemRules.add(r);

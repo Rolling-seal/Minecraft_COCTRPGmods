@@ -4,7 +4,11 @@ import com.coc.client.screen.CharacterCreationScreen;
 import com.coc.client.screen.CharacterSheetScreen;
 import com.coc.client.screen.CurtainScreen;
 import com.coc.client.screen.EventScreen;
+import com.coc.client.GlobalSettingsView;
+import com.coc.client.screen.GlobalSettingsScreen;
 import com.coc.client.screen.ImportScenarioScreen;
+import com.coc.client.screen.KeeperGuideScreen;
+import com.coc.client.screen.SheetFileScreen;
 import com.coc.client.screen.ItemPickerScreen;
 import com.coc.client.screen.JournalScreen;
 import com.coc.client.screen.KeeperScreen;
@@ -129,6 +133,39 @@ public final class ClientPacketHandler {
         });
     }
 
+    public static void globalSettings(S2CGlobalSettings packet) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> {
+            GlobalSettingsView view = new GlobalSettingsView();
+            view.allowPoints = packet.allowPoints;
+            view.occupationPoints = packet.occupationPoints;
+            view.interestPoints = packet.interestPoints;
+            view.totalPoints = packet.totalPoints;
+            ClientCache.globalSettings = view;
+            if (mc.screen instanceof GlobalSettingsScreen screen) screen.onSettings(view);
+        });
+    }
+
+    public static void sheetJson(S2CSheetJson packet) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> {
+            if (mc.screen instanceof SheetFileScreen screen) screen.onExport(packet);
+            else if (mc.player != null) {
+                mc.player.displayClientMessage(Component.literal("【角色卡】导出数据已收到，但当前没有文件界面。"), false);
+            }
+        });
+    }
+
+    public static void sheetResult(S2CSheetResult packet) {
+        Minecraft mc = Minecraft.getInstance();
+        mc.execute(() -> {
+            if (mc.screen instanceof SheetFileScreen screen) screen.onResult(packet);
+            else if (mc.player != null) {
+                mc.player.displayClientMessage(Component.literal("【角色卡】" + packet.message), false);
+            }
+        });
+    }
+
     public static void handout(S2CHandout packet) {
         Minecraft mc = Minecraft.getInstance();
         mc.execute(() -> {
@@ -153,6 +190,8 @@ public final class ClientPacketHandler {
                 case "kp" -> mc.setScreen(new KeeperScreen());
                 case "journal" -> mc.setScreen(new JournalScreen());
                 case "settings" -> mc.setScreen(new SettingsScreen(null));
+                case "kp_book" -> mc.setScreen(new KeeperGuideScreen());
+                case "global_settings" -> mc.setScreen(new GlobalSettingsScreen());
                 default -> {
                 }
             }
