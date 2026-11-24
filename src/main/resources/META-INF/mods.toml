@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="coc"
-version="2.3.0"
+version="2.3.1"
 displayName="克苏鲁的呼唤"
 authors="Rolling-seal"
 logoFile="icon.png"

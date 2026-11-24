@@ -1,5 +1,25 @@
 # Changelog
 
+## 2.3.1 — 2026-11-25
+
+### Global Settings access
+- In the Keeper’s Book, **clicking the Global Settings entry** now opens the settings panel directly.
+- Removed the separate “Open Global Settings” button; closing the panel returns to the Keeper’s Book.
+
+### Formula labels
+- The Global Settings screen now spells out the defaults instead of only “-1”:
+  - occupation points use the chosen occupation formula (e.g. EDU×4, EDU×2+DEX×2);
+  - interest points = INT×2;
+  - total cap = occupation + interest;
+  - starting HP = (CON+SIZ)/10;
+  - starting SAN = POW;
+  - starting Luck = 3d6×5.
+- Short field labels prevent the English labels from colliding.
+
+### Compatibility
+- Minecraft 1.20.1, Forge 47.4.29, Java 17.
+- Network protocol 5; client and server must use the same jar.
+
 ## 2.3.0 — 2026-11-24
 
 ### Global Settings

@@ -28,8 +28,15 @@ public class GlobalSettingsScreen extends Screen {
     private String status = "";
     private boolean compact;
 
+    private final Screen parent;
+
     public GlobalSettingsScreen() {
+        this(null);
+    }
+
+    public GlobalSettingsScreen(Screen parent) {
         super(Component.literal(CocLang.tr("全局设置")));
+        this.parent = parent;
     }
 
     @Override
@@ -150,31 +157,30 @@ public class GlobalSettingsScreen extends Screen {
         int row3 = y + 124;
         CocUi.panel(graphics, x, y, panelW, panelH);
         CocUi.title(graphics, font, CocLang.tr("全局设置"), width / 2, y + 6);
-        graphics.drawString(font, CocLang.tr("职业点（-1=公式）"), leftX, row1 - 10, CocUi.ACCENT, false);
-        graphics.drawString(font, CocLang.tr("兴趣点（-1=INT×2）"), leftX, row2 - 10, CocUi.ACCENT, false);
-        graphics.drawString(font, CocLang.tr("技能点总和上限（-1=不限）"), leftX, row3 - 10, CocUi.ACCENT, false);
-        graphics.drawString(font, CocLang.tr("初始幸运范围（-1=默认）"), rightX, row1 - 10, CocUi.GOLD, false);
-        graphics.drawString(font, CocLang.tr("初始血量范围（-1=公式）"), rightX, row2 - 10, CocUi.GOLD, false);
-        graphics.drawString(font, CocLang.tr("初始 SAN 范围（-1=POW）"), rightX, row3 - 10, CocUi.GOLD, false);
+        graphics.drawString(font, CocLang.tr("职业点"), leftX, row1 - 10, CocUi.ACCENT, false);
+        graphics.drawString(font, CocLang.tr("兴趣点"), leftX, row2 - 10, CocUi.ACCENT, false);
+        graphics.drawString(font, CocLang.tr("技能点总上限"), leftX, row3 - 10, CocUi.ACCENT, false);
+        graphics.drawString(font, CocLang.tr("初始幸运"), rightX, row1 - 10, CocUi.GOLD, false);
+        graphics.drawString(font, CocLang.tr("初始血量"), rightX, row2 - 10, CocUi.GOLD, false);
+        graphics.drawString(font, CocLang.tr("初始 SAN"), rightX, row3 - 10, CocUi.GOLD, false);
         int boxW = Math.max(52, ((half - 20) - 18) / 2);
         int gap = 8;
         graphics.drawString(font, "~", rightX + boxW + 2, row1 + 5, CocUi.MUTED, false);
         graphics.drawString(font, "~", rightX + boxW + 2, row2 + 5, CocUi.MUTED, false);
         graphics.drawString(font, "~", rightX + boxW + 2, row3 + 5, CocUi.MUTED, false);
-        if (!compact) {
-            CocUi.wrapped(graphics, font, CocLang.tr("这些设置只影响新角色创建；已有角色卡不改变。"),
-                    x + 10, y + 150, panelW - 20, CocUi.MUTED);
-        }
+        CocUi.wrapped(graphics, font, CocLang.tr(
+                        "默认公式（-1）：职业点=所选职业公式（EDU×4 或 EDU×2+DEX×2 等）；兴趣点=INT×2；技能点总上限=职业点+兴趣点；HP=(CON+SIZ)/10；SAN=POW；幸运=3d6×5。仅影响新角色。"),
+                x + 10, y + 146, panelW - 20, CocUi.MUTED);
         if (!status.isEmpty()) {
             graphics.drawString(font, CocUi.truncate(font, status, panelW - 20),
-                    x + 10, y + 166, CocUi.GOLD, false);
+                    x + 10, y + 188, CocUi.GOLD, false);
         }
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
     @Override
     public void onClose() {
-        if (minecraft != null) minecraft.setScreen(null);
+        if (minecraft != null) minecraft.setScreen(parent);
     }
 
     @Override

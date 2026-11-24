@@ -17,7 +17,6 @@ public class KeeperGuideScreen extends Screen {
     private int selected;
     private CocList<Page> pageList;
     private CocList<Line> lineList;
-    private Button settingsButton;
     private boolean compact;
 
     public KeeperGuideScreen() {
@@ -91,12 +90,6 @@ public class KeeperGuideScreen extends Screen {
                 (g, font, line, x, y, w, h, hovered, selected) ->
                         g.drawString(font, line.text, x, y, line.color, false));
         rebuildDetail();
-        settingsButton = addBtn(CocLang.tr("打开全局设置"), 12, bottom, 132, 18,
-                () -> {
-                    if (minecraft != null) minecraft.setScreen(new GlobalSettingsScreen());
-                });
-        settingsButton.visible = selected == 7;
-        settingsButton.active = selected == 7;
         addBtn(CocLang.tr("关闭"), width - 80, bottom, 68, 18, this::onClose);
     }
 
@@ -115,10 +108,6 @@ public class KeeperGuideScreen extends Screen {
         }
         lineList.setItems(lines);
         lineList.setScroll(0);
-        if (settingsButton != null) {
-            settingsButton.visible = selected == 7;
-            settingsButton.active = selected == 7;
-        }
     }
 
     private void addWrapped(List<Line> lines, String text, int color, int width) {
@@ -173,6 +162,10 @@ public class KeeperGuideScreen extends Screen {
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (pageList != null && pageList.mouseClicked(mouseX, mouseY, button)) {
             selected = pageList.getSelectedIndex();
+            if (selected == 7 && minecraft != null) {
+                minecraft.setScreen(new GlobalSettingsScreen(this));
+                return true;
+            }
             rebuildDetail();
             return true;
         }

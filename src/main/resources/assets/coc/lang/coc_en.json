@@ -1663,5 +1663,18 @@
   "发生了什么": "What Happened",
   "可能的行动（仅供查看，由 KP 裁定）": "Possible actions (view only; the Keeper adjudicates)",
   "滚轮查看背景/备注": "Scroll for background / notes",
-  "还可设置初始幸运、初始 HP、初始 SAN 的随机范围。": "You can also set starting Luck, HP and SAN ranges."
+  "还可设置初始幸运、初始 HP、初始 SAN 的随机范围。": "You can also set starting Luck, HP and SAN ranges.",
+  "职业点（-1=职业公式）": "Occupation points (-1 = occupation formula)",
+  "技能点总上限（-1=职业+兴趣）": "Total skill cap (-1 = occupation + interest)",
+  "初始幸运（-1=3d6×5）": "Starting Luck (-1 = 3d6×5)",
+  "初始血量（-1=(CON+SIZ)/10）": "Starting HP (-1 = (CON+SIZ)/10)",
+  "初始 SAN（-1=POW）": "Starting SAN (-1 = POW)",
+  "默认公式：职业点按所选职业（如 EDU×4 或 EDU×2+DEX×2）；兴趣点=INT×2；HP=(CON+SIZ)/10；SAN=POW；幸运=3d6×5。仅影响新角色。": "Defaults: occupation points use the chosen occupation formula (e.g. EDU×4 or EDU×2+DEX×2); interest = INT×2; HP = (CON+SIZ)/10; SAN = POW; Luck = 3d6×5. New characters only.",
+  "职业点": "Occupation points",
+  "兴趣点": "Interest points",
+  "技能点总上限": "Total skill cap",
+  "初始幸运": "Starting Luck",
+  "初始血量": "Starting HP",
+  "初始 SAN": "Starting SAN",
+  "默认公式（-1）：职业点=所选职业公式（EDU×4 或 EDU×2+DEX×2 等）；兴趣点=INT×2；技能点总上限=职业点+兴趣点；HP=(CON+SIZ)/10；SAN=POW；幸运=3d6×5。仅影响新角色。": "Defaults (-1): occupation = chosen formula (EDU×4, EDU×2+DEX×2, etc.); interest = INT×2; total cap = occupation + interest; HP = (CON+SIZ)/10; SAN = POW; Luck = 3d6×5. New characters only."
 }

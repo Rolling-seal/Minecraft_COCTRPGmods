@@ -29,15 +29,15 @@
 上传：
 
 ```text
-coc-2.3.0.jar
+coc-2.3.1.jar
 ```
 
 当前文件信息（构建后填入）：
 
-- Size: `678,304` bytes
-- SHA1: `71d6b4571724db4bdde8f049abb93ab1fd38f19d`
-- SHA512: `aad3bcae8df472c844165b07533656ed59246ccf2672f4ca8be4127f19141c6373ae3fb728c6320eaaccfc4d262fa8bad3f415d0b0c498135aedb55b39a14c98`
-- Version: `2.3.0`
+- Size: `678,520` bytes
+- SHA1: `2be622a21547063ca133e129eb19029c42c6225d`
+- SHA512: `8734f8fb43da9c19888186e35792643a67a3352db10ae065f155c832c6613d2b754c57a2188d67d0105254589cb59496f4d125e35805b75cb43a6ff50bc4f625`
+- Version: `2.3.1`
 - Protocol: `5`
 - Client/server must use the same jar.
 
@@ -53,8 +53,10 @@ coc-2.3.0.jar
 ## 三、版本 Changelog 建议
 
 ```text
-2.3.0
-- Global Settings: starting Luck/HP/SAN ranges; Open Global Settings button in the Keeper's Book.
+2.3.1
+- Keeper's Book: click the Global Settings entry to open the panel directly.
+- Global Settings labels now spell out default formulas (EDU×4, INT×2, (CON+SIZ)/10, POW, 3d6×5).
+- Starting Luck/HP/SAN ranges; no separate Open Global Settings button.
 - Keeper player page: Force Madness button.
 - Character sheet: backstory and notes inline under the injury row; scrollable.
 - Act curtains: What Happened + up to three read-only possible actions.
