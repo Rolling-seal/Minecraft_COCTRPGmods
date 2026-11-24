@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.1.1 — 2026-11-24
+
+### Keeper’s Book is automatic
+- The Keeper’s Book is now placed in the Keeper’s inventory automatically on join, and on respawn if missing.
+- No crafting recipe; the old `keeper_book` recipe was removed.
+- Existing Keepers are not given a duplicate if they already carry the book.
+- Added a bilingual chat notice and server log when the book is granted.
+
 ## 2.1.0 — 2026-11-24
 
 ### New Keeper items

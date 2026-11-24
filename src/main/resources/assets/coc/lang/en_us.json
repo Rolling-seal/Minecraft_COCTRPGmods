@@ -6,7 +6,7 @@
   "key.coc.journal": "Clue Journal",
   "item.coc.kp_panel": "Keeper's Panel",
   "item.coc.kp_book": "Keeper's Book",
-  "item.coc.kp_book.desc": "Right-click to read the Keeper guide (Keeper only)",
+  "item.coc.kp_book.desc": "Right-click to read the Keeper guide; given to the Keeper on join",
   "item.coc.global_settings": "Global Settings",
   "item.coc.global_settings.desc": "Right-click to configure character creation points (Keeper only)",
   "item.coc.kp_only": "Keeper only",

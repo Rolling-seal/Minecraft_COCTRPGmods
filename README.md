@@ -8,7 +8,7 @@ A Call of Cthulhu 7e tabletop layer for **Minecraft 1.20.1 / Forge 47.x**.
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-3C8527)
 ![Forge](https://img.shields.io/badge/Forge-47.4.29-DA6E00)
-![Version](https://img.shields.io/badge/Version-2.1.0-C9A227)
+![Version](https://img.shields.io/badge/Version-2.1.1-C9A227)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
 > Fan-made project. Not affiliated with or endorsed by Chaosium. The built-in scenarios are original adaptations inspired by the structure of *The Haunting* and *The Lightless Beacon*; no official scenario text is copied.
@@ -75,10 +75,10 @@ Run a Keeper-led Call of Cthulhu session inside Minecraft:
 
 ### Keeper items
 - **Keeper’s Book** (`coc:kp_book`): an in-game 8-page operating guide; right-click as Keeper.
+  - **Given automatically** to the Keeper on join (and on respawn if missing). No crafting required.
 - **Global Settings** (`coc:global_settings`): configure new-investigator occupation points, interest points, total cap, and whether players may allocate points.
-- Both are Keeper-only and available in the Tools creative tab; recipes:
-  - Keeper’s Book: book + ink sac + gold ingot;
-  - Global Settings: comparator + gold ingot + redstone + book.
+  - Craft: comparator + gold ingot + redstone + book.
+- Both are Keeper-only and also available in the Tools creative tab.
 
 ### Character-sheet JSON
 - The Keeper can export the selected investigator to a `.json` file and import it back.
@@ -125,7 +125,7 @@ The client and server must use the **same jar** (network protocol 4).
 ## Installation
 
 1. Install Minecraft Forge 47.4.29 for 1.20.1.
-2. Put [`releases/coc-2.1.0.jar`](releases/coc-2.1.0.jar) into `mods/`.
+2. Put [`releases/coc-2.1.1.jar`](releases/coc-2.1.1.jar) into `mods/`.
 3. Install the same jar on the server if playing multiplayer.
 4. Launch the game.
 
@@ -233,7 +233,7 @@ On Windows, set the same values as environment variables. The script expects:
 - `ForgeAutoRenamingTool-1.0.2-all.jar`;
 - Minecraft client/server libraries for the classpath.
 
-Output: `build/coc-2.1.0.jar`.
+Output: `build/coc-2.1.1.jar`.
 
 A prebuilt jar is recommended for normal users.
 

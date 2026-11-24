@@ -108,10 +108,6 @@ public final class SelfTest {
                 failures.add("KP面板配方未加载（coc:keeper_panel）");
             }
             if (source.getServer().getRecipeManager()
-                    .byKey(new ResourceLocation("coc", "keeper_book")).isEmpty()) {
-                failures.add("KP之书配方未加载（coc:keeper_book）");
-            }
-            if (source.getServer().getRecipeManager()
                     .byKey(new ResourceLocation("coc", "global_settings")).isEmpty()) {
                 failures.add("全局设置配方未加载（coc:global_settings）");
             }

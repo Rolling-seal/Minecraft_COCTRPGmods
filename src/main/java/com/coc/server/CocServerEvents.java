@@ -5,7 +5,12 @@ import com.coc.command.CocCommands;
 import com.coc.config.CocServerConfig;
 import com.coc.events.CocEventService;
 import com.coc.events.EventRegistry;
+import com.coc.item.CocItems;
+import com.coc.kp.KpManager;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -49,6 +54,7 @@ public final class CocServerEvents {
     public static void onLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             CharacterService.requestSync(player);
+            ensureKeeperBook(player);
         }
     }
 
@@ -64,7 +70,26 @@ public final class CocServerEvents {
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             CharacterService.requestSync(player);
+            ensureKeeperBook(player);
         }
+    }
+
+    /** KP 进入世界/重生时自动获得一本 KP之书；已有则不重复发放。 */
+    private static void ensureKeeperBook(ServerPlayer player) {
+        if (!KpManager.isKp(player)) return;
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack.is(CocItems.KP_BOOK.get())) return;
+        }
+        for (ItemStack stack : player.getInventory().offhand) {
+            if (stack.is(CocItems.KP_BOOK.get())) return;
+        }
+        ItemStack book = new ItemStack(CocItems.KP_BOOK.get());
+        if (!player.getInventory().add(book)) player.drop(book, false);
+        player.getInventory().setChanged();
+        player.containerMenu.broadcastChanges();
+        player.sendSystemMessage(Component.literal("KP之书已放入你的物品栏。")
+                .withStyle(ChatFormatting.GOLD));
+        CallOfCthulhu.LOGGER.info("已向 {} 发放 KP之书", player.getGameProfile().getName());
     }
 
     @SubscribeEvent

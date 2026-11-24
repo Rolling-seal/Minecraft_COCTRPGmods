@@ -29,15 +29,15 @@
 上传：
 
 ```text
-coc-2.1.0.jar
+coc-2.1.1.jar
 ```
 
 当前文件信息（构建后填入）：
 
-- Size: `657,520` bytes
-- SHA1: `380245c39e49f71224d4df623a44e70b4e7f476f`
-- SHA512: `3e22d8ed2f8cc6d3f342cdda2b267546cf64165ad6f9848d5872c27862445fbd44ed4b829d0cc2fedc9059a511423e2878e448a8671ba8008d481cd382f3f49c`
-- Version: `2.1.0`
+- Size: `658,467` bytes
+- SHA1: `413f40e3a9140a0a8574dd20f7f0ede0ca8ce60d`
+- SHA512: `bbf40c9da3d3838f24d74ef378dcfa99831544bf61e950dfe825d503b7480563dde96ae61ec0f5db09d642425d3d30f89198a00827915f4339c9715ce04e9934`
+- Version: `2.1.1`
 - Protocol: `4`
 - Client/server must use the same jar.
 
@@ -53,8 +53,10 @@ coc-2.1.0.jar
 ## 三、版本 Changelog 建议
 
 ```text
-2.1.0
-- New Keeper items: Keeper's Book (8-page in-game guide) and Global Settings (new-character point rules).
+2.1.1
+- Keeper's Book is now granted automatically on join (and on respawn if missing); crafting recipe removed.
+- No duplicate book if the Keeper already carries one.
+- New Keeper items: Global Settings (new-character point rules).
 - Character-sheet JSON export/import for the Keeper (coc-character-v1).
 - Per-item custom display names; granted items keep the name and appear with ★ in the item list.
 - Global Settings toggle no longer resets edited values.
